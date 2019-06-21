@@ -1,14 +1,50 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>RentOCar</title>
-  <base href="/">
+	<head>
+  		<meta charset="utf-8">
+  		<title>RentOCar</title>
+  		<base href="/">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+  		<app-root></app-root>
+
+		<!-- JQuery -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!-- Initializing all the materialize elements -->
+		<script type="text/javascript">
+			$(document).ready(
+				() => {
+					// Sidenav initialization
+					$('.sidenav').sidenav();
+
+					// Slider initialization and params setting
+					$('.slider').slider({
+						indicators: false,
+						height: 450,
+						interval: 3000
+					});
+
+					// Modal initialization
+					$('.modal').modal();
+
+					// Form initialization
+					$('select').formSelect();
+
+					// $('.datepicker').datepicker();
+					// $('.timepicker').timepicker();
+				}
+			);
+		</script>
+	</body>
 </html>
