@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BodyComponent } from './body/body.component';
+import { HomepageComponent } from './homepage/homepage.component';
 import { BookingComponent } from './booking/booking.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
 	{
 		path:'',
-		component: BodyComponent,
+		component: HomepageComponent,
 		pathMatch: 'full'
 	},
 	{
@@ -18,6 +19,10 @@ const routes: Routes = [
 	{
 		path: 'user_profile',
 		component: UserProfileComponent
+	},
+	{
+		path: '**',
+		component: PageNotFoundComponent
 	}
 ];
 
@@ -27,6 +32,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const RouterComponents = [
+	PageNotFoundComponent,
 	BookingComponent,
-	UserProfileComponent
+	UserProfileComponent,
+	HomepageComponent
 ];

@@ -6,20 +6,16 @@ import { AppRoutingModule, RouterComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
-import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
-
-//import { BookingComponent } from './booking/booking.component';
 
 import { FetchJSONService } from './fetch-json.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RouterComponents,
     HeaderComponent,
-    BodyComponent,
-    FooterComponent,
-    RouterComponents
+    FooterComponent
 ],
   imports: [
     BrowserModule,
