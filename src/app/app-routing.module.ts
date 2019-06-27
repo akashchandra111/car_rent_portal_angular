@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BodyComponent } from './body/body.component';
 import { BookingComponent } from './booking/booking.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
 	{
@@ -13,6 +14,10 @@ const routes: Routes = [
 	{
 		path: 'booking',
 		component: BookingComponent
+	},
+	{
+		path: 'user_profile',
+		component: UserProfileComponent
 	}
 ];
 
@@ -22,5 +27,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const RouterComponents = [
-	BookingComponent
+	BookingComponent,
+	UserProfileComponent
 ];

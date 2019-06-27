@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
+
 //import { BookingComponent } from './booking/booking.component';
 
 import { FetchJSONService } from './fetch-json.service';
@@ -18,8 +19,8 @@ import { FetchJSONService } from './fetch-json.service';
     HeaderComponent,
     BodyComponent,
     FooterComponent,
-	RouterComponents
-  ],
+    RouterComponents
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
