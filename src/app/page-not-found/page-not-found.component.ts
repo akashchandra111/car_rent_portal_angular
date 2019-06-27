@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+	public urlHit: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+	  this.urlHit = window.location.href;
+	  console.log(this.urlHit);
   }
 
 }
