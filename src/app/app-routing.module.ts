@@ -6,6 +6,7 @@ import { BookingComponent } from './booking/booking.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ChooseCarComponent } from './choose-car/choose-car.component';
 
 const routes: Routes = [
 	{
@@ -22,9 +23,17 @@ const routes: Routes = [
 		component: UserProfileComponent
 	},
 	{
+		path: 'admin',
+		component: AdminPanelComponent
+	},
+	{
+		path: 'choose_car',
+		component: ChooseCarComponent
+	},
+	{
 		path: '**',
 		component: PageNotFoundComponent
-	}
+	},
 ];
 
 @NgModule({
@@ -37,5 +46,6 @@ export const RouterComponents = [
 	BookingComponent,
 	UserProfileComponent,
 	HomepageComponent,
-	AdminPanelComponent
+	AdminPanelComponent,
+	ChooseCarComponent
 ];
