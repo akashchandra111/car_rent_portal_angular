@@ -1,0 +1,522 @@
+<p>
+  admin-panel works!
+</p>
+<div class="row">
+  <div class="col s12">
+     <ul class="tabs blue accent-1">
+        <li class="tab col s3 l4"><a class="active black-text" href="#test2">CAR ACTION</a></li>
+        <li class="tab col s3 l4"><a href="#test3"class="black-text">Statistics</a></li>
+        <li class="tab col s3 l4"><a href="#test4"class="black-text">TICKETS</a></li>
+     </ul>
+  </div>
+  <!-- First Tab content -->
+  <div id="test2" class="col s12">
+     <!-- Card Panel [Author: Akash Chandra]-->
+     <div class="row">
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-2 addcard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">add_box</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Add Car</h4>
+                       <p>There are currently <b>1004</b>Cars we have </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-3 updatecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">edit</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Update Car</h4>
+                       <p>At the moment <b>5000</b> had rented our Car </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-3 deletecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">delete</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Delete Car</h4>
+                       <p>There are currently  <b>4000</b>  </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- ADD CAr Form  Author Dheeraj Joshi-->
+     <div class="container addcarform " >
+        <div class="card">
+           <div class="row">
+              <form class="col s12 ">
+                 <div class="container">
+                    <h3 class="indigo-text">ADD Car</h3>
+                    <div class="row">
+                       <div class="col s12">
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <input id="car_name" type="text" class="validate">
+                                <label for="car_name">Car Name</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">directions_car</i>
+                                <input id="car_no" type="text" class="validate">
+                                <label for="car_no">Enter Car Number</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">ev_station</i>
+                                <input id="mileage" type="text" class="validate">
+                                <label for="mileage">Mileage</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="input-field col s12">
+                                <select>
+                                   <option value="" disabled selected>Choose your option</option>
+                                   <option value="1">Micro</option>
+                                   <option value="2">Mini</option>
+                                   <option value="3">SUV</option>
+                                   <option value="4">Deluxe</option>
+                                </select>
+                                <label>Select Car Type</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field" style="margin-left:1%;">
+                                <!-- Dropdown Trigger -->
+                                <div class="file-field input-field">
+                                   <div class="btn indigo">
+                                      <span class="">File</span>
+                                      <input type="file">
+                                   </div>
+                                   <div class="file-path-wrapper">
+                                      <input class="file-path validate" type="text">
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <a class="waves-effect waves-light btn indigo">Add Car</a>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </form>
+           </div>
+        </div>
+     </div>
+     <!--  Update car form-->
+     <div class="container updatecarform" style="display:none">
+        <div class="card">
+           <div class="row">
+              <form class="col s12">
+                 <div class="container">
+                    <h3 class="indigo-text">update car</h3>
+                    <div class="row">
+                       <div class="col s12">
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <input id="car_name" type="text" class="validate">
+                                <label for="car_name">Car Name</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">directions_car</i>
+                                <input id="car_no" type="text" class="validate">
+                                <label for="car_no">Enter Car Number</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field">
+                                <i class="material-icons prefix">ev_station</i>
+                                <input id="mileage" type="text" class="validate">
+                                <label for="mileage">Mileage</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="input-field col s12">
+                                <select>
+                                   <option value="" disabled selected>Choose your option</option>
+                                   <option value="1">Micro</option>
+                                   <option value="2">Mini</option>
+                                   <option value="3">SUV</option>
+                                   <option value="4">Deluxe</option>
+                                </select>
+                                <label>Select Car Type</label>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col s12 input-field" style="margin-left:1%;">
+                                <!-- Dropdown Trigger -->
+                                <div class="file-field input-field">
+                                   <div class="btn indigo">
+                                      <span>File</span>
+                                      <input type="file">
+                                   </div>
+                                   <div class="file-path-wrapper">
+                                      <input class="file-path validate" type="text">
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
+          <div class="row">
+           <a class="waves-effect waves-light btn indigo">Update Car</a>
+          </div>
+                       </div>
+                    </div>
+                 </div>
+              </form>
+           </div>
+        </div>
+     </div>
+     <!-- DELETE  car form -->
+     <div class="container deletecarform" style="display:none">
+        <div class="card">
+           <div class="row">
+              <form class="col s12">
+                 <div class="container " >
+                    <h3 class="indigo-text">Delete car</h3>
+                    <div class="row ">
+                       <div class="col s12 deleteinput">
+                          <div class="row">
+                             <div class="col s10 m10 l10 input-field " >
+                                <i class="material-icons prefix">directions_car</i>
+                                <input id="car_no" type="text" class="validate" style="margin-top:0px;">
+                                <label for="car_no">Enter Car Number</label>
+                             </div>
+                             <div class="col s2 l2 m2">
+                                <a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform"><i class="material-icons">add</i></a>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+  <!-- Second Tab  Starts Here -->
+  <div id="test3" class="col s12">
+     <!-- Card Panel [Author: Akash Chandra]-->
+     <div class="row">
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-2 userstatcard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">person</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Total Users</h4>
+                       <p>There are currently <b>100000 Users</b>using our app </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-3 rentedstatecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">directions_car</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Current Cars Booked</h4>
+                       <p>At the moment <b>5000</b> had rented our Car </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l4">
+           <div class="card-panel blue darken-3 z-depth-3 topcarstatcard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">vertical_align_top</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h4>Top Rented Cars</h4>
+                       <p>These Cars are Rented  <b>Most</b> often </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="card" >
+        <canvas id="myuserstatChart"></canvas>
+     </div>
+     <div class="card">
+        <canvas id="myrentedcarstatChart" style="display:none"></canvas>
+     </div>
+     <div class="card">
+        <canvas id="mytopcarChart" style="display:none"></canvas>
+     </div>
+  </div>
+  <!-- Third Tab Starts here -->
+  <div id="test4" class="col s12">
+     <!-- Card Panel [Author: Akash Chandra]-->
+     <div class="row">
+        <div class="col s12 m6 l3">
+           <div class="card-panel blue darken-3 z-depth-2 paymentissuecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">sync_problem</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h5>Payment Issue</h5>
+                       <p>There are currently <b>100</b>payment related tickets generated </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l3">
+           <div class="card-panel blue darken-3 z-depth-3 accidentissuecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">warning</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h5>Accidental Issue</h5>
+                       <p>At the moment there are currently <b>50</b> Accident issue reported </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l3">
+           <div class="card-panel blue darken-3 z-depth-3 mechanicalissuecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">settings</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h5> Mechanical Issue</h5>
+                       <p>There are currently <b>100</b> Mechanical Issue's </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="col s12 m6 l3">
+           <div class="card-panel blue darken-3 z-depth-3 cancellationissuecard">
+              <div class="row">
+                 <div class="col s3">
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">cancel</i>
+                 </div>
+                 <div class="col s9">
+                    <div class="card-content white-text">
+                       <h5>Cancellation Issue</h5>
+                       <p>There's currently<b>100</b> Cancellation Issue's </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- Payment Ticket collection for admin -->
+        <div class="row paymentticket">
+           <div class="container">
+              <ul class="collection ">
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">sync_problem</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">sync_problem</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">sync_problem</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">sync_problem</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+              </ul>
+           </div>
+        </div>
+        <!-- Accidental Ticket collection for admin -->
+        <div class="row accidentticket" style="display:none;">
+           <div class="container">
+              <ul class="collection paymentticket">
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+              </ul>
+           </div>
+        </div>
+        <!-- Mechanical Ticket collection for admin -->
+        <div class="row mechanicalticket" style="display:none;">
+           <div class="container">
+              <ul class="collection mechanicalticket">
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">settings</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">settings</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">settings</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">settings</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+              </ul>
+           </div>
+        </div>
+        <!-- Accidental Ticket collection for admin -->
+        <div class="row accidentticket" style="display:none;">
+           <div class="container">
+              <ul class="collection accidentticket">
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">warning</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+              </ul>
+           </div>
+        </div>
+        <!-- Cancellation Ticket collection for admin -->
+        <div class="row cancelticket" style="display:none;">
+           <div class="container">
+              <ul class="collection cancelticket">
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">cancel</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">cancel</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">cancel</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+                 <li class="collection-item avatar">
+                    <i class="material-icons circle red">cancel</i>
+                    <span class="title">Title</span>
+                    <p>Problem Statement <br>
+                    </p>
+                    <a class="btn-floating btn-medium waves-effect waves-light red addbuttondeleteform secondary-content"><i class="material-icons">delete</i></a>
+                 </li>
+              </ul>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
