@@ -12,7 +12,7 @@ export class FetchJSONService {
   }
 
 	// This will return the JSON object that we have to subscribe in the using class in ngOnInit
-  getData(url: string)	{
+  getData()	{
 	  return this.http.get('https://api.github.com/users/petrgazarov');
   }
 }
