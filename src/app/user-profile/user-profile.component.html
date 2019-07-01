@@ -10,35 +10,35 @@
          <img src="assets/images/profile.jpg">
       </div>
       <div class="col s6 m8 l6">
-         <h5>V Bhavana</h5>
-          <p>Mobile No:   <span>123-123-1234</span></p>
-          <p>Email Id :   <span>bhavana9999@gmail.com</span></p>
-          <p>UID Number:  <span>534623490998</span></p>
-          <p>Wallet Amount:  <span></span></p>
+         <h5>{{userFirstName}} {{userLastName}}</h5>
+          <p>Mobile No:   <span>{{userMobile }}</span></p>
+          <p>Email Id :   <span>{{userEmail }}</span></p>
+          <p>UID Number:  <span>{{id }}</span></p>
+          <p>Wallet Amount:  <span>{{userWallet}}</span></p>
       </div>
        
      </div>
    </div>
      <div class="card"><!--change user name and password -->
         <span class="card-title brown-text">Customize Credentials</span>
-          <form id="updatecredentialform" action="form" method="">
+          <form #userprofile ="ngForm" (ngSubmit) = "onClickSubmit(userprofile.value)" >
             
             <div class="input-field">
             <i class="material-icons indigo-text prefix">contacts</i>
-             <input   type="text" name="ChangeUserName">
+             <input   type="text" name="ChangeUserName" ng-Model>
              <label for="ChangeUserName">User Name</label>
            
             </div>
            
             <div class="input-field">
             <i class="material-icons indigo-text prefix">clear</i>
-             <input   type="text" name="ChangePassword" id="ChangePassword">
+             <input   type="text" name="ChangePassword" id="ChangePassword" ng-Model>
              <label for="ChangePassword">Old Password</label>
           
             </div>
              <div class="input-field">
             <i class="material-icons indigo-text prefix">clear</i>
-             <input   type="text" name="ChangePassword" id="ChangePassword">
+             <input   type="text" name="ChangePassword" id="ChangePassword" >
              <label for="ChangePassword">New Password</label>
           
             </div>
@@ -62,7 +62,7 @@
       
           <div class="input-field">
            <i class="material-icons indigo-text prefix">contact_mail</i>
-             <input  id="email" type="text" name="">
+             <input  type="text" name="emailid"  >
              <label for="updateEmail">Update Email</label>
            </div>
        
@@ -104,3 +104,4 @@
     
    </div>
   </div>
+  

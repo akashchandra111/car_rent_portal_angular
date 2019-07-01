@@ -24,6 +24,7 @@
             </div>
          </nav>
       </div>
+
       <!-- Side Navigation for mobile devices -->
       <ul class="sidenav" id="menu-link">
          <li>
@@ -36,3 +37,94 @@
             <a href="#about">About Us</a>
          </li>
       </ul>
+
+      <!-- Login modal -->
+      <div class="modal one" id="login">
+         <form class="form" action="login" method="post">
+            <div class="modal-content">
+               <div class="">
+                  <h4>Login</h4>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="username" id="username" class="validate" required>
+                  <label for="username">Username/ Email/ Phone</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="password" id="password" class="validate" required>
+                  <label for="password">Password</label>
+               </div>
+               <div id="logindiv" style="color:red;display:none">
+               Login Failed
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit">
+               Login
+               <i class="material-icons right">send</i>
+               </button>
+            </div>
+         </form>
+      </div>
+	  
+      <!-- Register modal -->
+      <div class="modal" id="register">
+         <form class="form" action="register" method="post">
+            <div class="modal-content">
+               <div class="">
+                  <h4>Register with Us</h4>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="firstname" id="firstname" class="validate" required>
+                  <label for="firstname">First name</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="lastname" id="lastname" class="validate" required>
+                  <label for="lastname">Last name</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="mobileno" id="mobileno" class="validate" required>
+                  <label for="mobileno">Mobile number</label>
+               </div>
+               <div class="row">
+                  <div class="input-field col s4">
+                     <select class="input-field" name="idtype">
+                        <option value="" selected disabled>Verify with</option>
+                        <option value="aadhar">Aadhar</option>
+                        <option value="pan">PAN</option>
+                        <option value="passport">Passport</option>
+                     </select>
+                  </div>
+                  <div class="input-field col s8">
+                     <input type="text" name="verification_id" id="verification_id" class="validate" required>
+                     <label for="verification_id">UID number</label>
+                  </div>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="driving_id" id="driving_id" class="validate" required>
+                  <label for="username">Driving License Number</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="username" id="username" class="validate" required>
+                  <label for="username">Username</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="email" id="email" class="validate" required>
+                  <label for="username">Email</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="password" id="password" class="validate" required>
+                  <label for="password">Password</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="cpassword" id="cpassword" class="validate" required>
+                  <label for="cpassword">Confirm Password</label>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" name="submit">
+               Register
+               <i class="material-icons right">send</i>
+               </button>
+            </div>
+         </form>
+      </div>
