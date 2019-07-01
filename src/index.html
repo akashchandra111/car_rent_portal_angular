@@ -6,7 +6,14 @@
   		<base href="/">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
   		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<!-- JQuery -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!-- Initializing all the materialize elements -->
 
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 		<!-- Compiled and minified JavaScript -->
@@ -17,45 +24,296 @@
 	<body>
   		<app-root></app-root>
 
-		<!-- JQuery -->
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<script type="text/javascript">
+		$(document).ready(
+			() => {
+				// Sidenav initialization
+				$('.sidenav').sidenav();
+
+				// Slider initialization and params setting
+				$('.slider').slider({
+					indicators: false,
+					height: 450,
+					interval: 3000
+				});
+
+				// Modal initialization
+				$('.modal').modal();
+
+				// Form initialization
+				$('select').formSelect();
+
+				//  $('.datepicker').datepicker();
+				//  $('.timepicker').timepicker();
+				//Author Dheeraj Joshi
+				//User profile Drop down
+				$(".dropdown-trigger").dropdown();
+				//Time picker
+				$(document).ready(function(){
+					$('.timepicker').timepicker();
+				});
+				//Date picker
+				$(document).ready(function(){
+					$('.datepicker').datepicker();
+				});
+			}
+		);
+
+
+		$(document).ready(
+			()=>	{
+				// Sidenav initialization
+				$('.sidenav').sidenav();
+				$('.tabs').tabs();
+
+				$('.dropdown-trigger').dropdown();
+				$('.dropdown-trigger2').dropdown();
+				// Slider initialization and params setting
+				$('.slider').slider(
+				{
+					indicators: false,
+					height: 450,
+					interval: 3000
+				}
+				);
+
+				// show add car form and hide the cards
+				$(".addcard").click(function(){
+
+					$(".addcarform").show("slow");
+
+					$(".updatecarform").hide("slow");
+					$(".deletecarform").hide("slow");
+				});
+
+				// show update car form and hide the other forms
+				$(".updatecard").click(function(){
+
+					$(".addcarform").hide("slow");
+					$(".updatecarform").show("slow");
+					$(".deletecarform").hide("slow");
+
+				});
+				// show delete car form and hide other forms
+				$(".deletecard").click(function(){
+
+					$(".addcarform").hide("slow");
+					$(".updatecarform").hide("slow");
+					$(".deletecarform").show("slow");
+
+				});
+
+
+
+
+
+
+
+
+
+				// show total user stats
+				$(".userstatcard").click(function(){
+					$('html, body').animate({
+						scrollTop: $("#myuserstatChart").offset().top
+					}, 1000);
+					$("#myuserstatChart").show("slow");
+
+					$("#myrentedcarstatChart").hide("slow");
+					$("#mytopcarChart").hide("slow");
+
+				});
+				// show total car rented stats
+				$(".rentedstatecard").click(function(){
+					$('html, body').animate({
+						scrollTop: $("#myrentedcarstatChart").offset().top
+					}, 1000);
+					$("#myuserstatChart").hide("slow");
+
+					$("#myrentedcarstatChart").show("slow");
+					$("#mytopcarChart").hide("slow");
+
+				});
+				// show top car rented stats
+				$(".topcarstatcard").click(function(){
+					$('html, body').animate({
+						scrollTop: $("#mytopcarChart").offset().top
+					}, 1000);
+					$("#myuserstatChart").hide("slow");
+
+					$("#myrentedcarstatChart").hide("slow");
+					$("#mytopcarChart").show("slow");
+
+				});
+
+
+				// show payment issue collection
+				$(".paymentissuecard").click(function(){
+
+					$(".paymentticket").show("slow");
+
+					$(".mechanicalticket").hide("slow");
+					$(".accidentticket").hide("slow");
+					$(".cancelticket").hide("slow");
+				});
+
+				// show accident issue collection
+				$(".accidentissuecard").click(function(){
+
+					$(".paymentticket").hide("slow");
+
+					$(".cancelticket").hide("slow");
+					$(".accidentticket").show("slow");
+					$(".mechanicalticket").hide("slow");
+				});
+
+				// show mechanical issue collection
+				$(".mechanicalissuecard").click(function(){
+
+					$(".paymentticket").hide("slow");
+
+					$(".accidentticket").hide("slow");
+
+					$(".cancelticket").hide("slow");
+					$(".mechanicalticket").show("slow");
+				});
+
+
+				// show cancellation issue collection
+				$(".cancellationissuecard").click(function(){
+
+					$(".paymentticket").hide("slow");
+
+					$(".accidentticket").hide("slow");
+
+					$(".cancelticket").show("slow");
+					$(".mechanicalticket").hide("slow");
+				});
+
+				$(".deletecard").click(function(){
+					$(".addcarform").hide("slow");
+					$(".updatecarform").hide("slow");
+
+				});
+				// Modal initialization
+				$('.modal').modal();
+
+				// Form initialization
+				$('select').formSelect();
+
+				// $('.datepicker').datepicker();
+				// $('.timepicker').timepicker();
+
+
+
+
+
+
+				// 	$('.addbuttondeleteform').on('click',function(){
+				// 		var inputfield = $('<div class="row"><div class="col s10 m10 l10 input-field"><i class="material-icons prefix ">directions_car</i><input id="car_no" type="text" class="validate"><label for="car_no">Enter Car Number</label></div><div class="col s2 l2 m2"><a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform"><i class="material-icons ">add</i></a><a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform"><i class="material-icons addbuttondeleteform">delete</i></a></div></div>');
+				// 	$(".deleteinput").append(inputfield);
+
+				// });
+				var i=1;
+				$(document).on('click',".addbuttondeleteform",function(){
+
+
+					var inputfield = $('<div class="row delete_'+i+'"><div class="col s10 m10 l10 input-field"><i class="material-icons prefix ">directions_car</i><input id="car_no" type="text" class="validate"><label for="car_no">Enter Car Number</label></div><div class="col s2 l2 m2"><a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform" id=delete_'+i+' ><i class="material-icons ">add</i></a><a class="btn-floating btn-small waves-effect waves-light red deleteinputfield" id="delete_'+i+'"><i class="material-icons" id="delete_"'+i+'>delete</i></a></div></div>');
+					$(".deleteinput").append(inputfield);
+					i++;
+
+				});
+
+				$(document).on('click',".deleteinputfield",function(){
+					var id = $(this).attr('id');
+
+					$("."+id).remove();
+
+				});
+			}
+			);
+		</script>
+		<script>
+			// total users rented graph
+			window.onload = function () {
+				var ctx = document.getElementById('myuserstatChart').getContext('2d');
+				var chart = new Chart(ctx, {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agust','September'],
+						datasets: [{
+							label: 'Car Rented Statistics',
+							// backgroundColor: 'rgb(255, 99, 132)',
+							borderColor: 'rgb(255, 99, 132)',
+							data: [0, 10, 5, 2, 20, 30, 45,7,27]
+						}]
+					},
+
+					// Configuration options go here
+					options: {}
+				});
+
+				// total cars rented graph
+				var ctx = document.getElementById('myrentedcarstatChart').getContext('2d');
+				var chart = new Chart(ctx, {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						labels: ['Januray', 'February', 'March', 'April', 'May', 'June', 'July','Agust','September'],
+						datasets: [{
+							label: 'Booking Statistics',
+							// backgroundColor: 'rgb(255, 99, 132)',
+							borderColor: 'rgb(122, 99, 132)',
+							data: [0, 10, 5, 2, 20, 30, 45,7,27]
+						}]
+					},
+
+					// Configuration options go here
+					options: {}
+				});
+
+
+
+				// Top Cars rented graph
+				var ctx = document.getElementById('mytopcarChart').getContext('2d');
+				var chart = new Chart(ctx, {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						labels: ['Audi', 'Bmw', 'Mercedes', 'Ferrari'],
+						datasets: [{
+							label: 'Top Cars Rented Graph',
+							// backgroundColor: 'rgb(255, 99, 132)',
+							borderColor: 'rgb(222, 129, 32)',
+							data: [20, 10, 15, 2]
+						}]
+					},
+
+					// Configuration options go here
+					options: {}
+				});
+
+
+
+			}
+			
+
+		</script>
 		<!-- Initializing all the materialize elements -->
 		<script type="text/javascript">
-			$(document).ready(
-				() => {
-					// Sidenav initialization
-					$('.sidenav').sidenav();
 
-					// Slider initialization and params setting
-					$('.slider').slider({
-						indicators: false,
-						height: 450,
-						interval: 3000
-					});
-
-					// Modal initialization
-					$('.modal').modal();
-
-					// Form initialization
-					$('select').formSelect();
-
-					//  $('.datepicker').datepicker();
-					//  $('.timepicker').timepicker();
-					 //Author Dheeraj Joshi
-						//User profile Drop down
-						$(".dropdown-trigger").dropdown();
-						//Time picker
-						$(document).ready(function(){
-							$('.timepicker').timepicker();
-						});
-						//Date picker
-						$(document).ready(function(){
-							$('.datepicker').datepicker();
-						});
-								}
-							);
 		</script>
+
+
+
+
+
 	</body>
 </html>
