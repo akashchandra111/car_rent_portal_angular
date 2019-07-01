@@ -14,8 +14,7 @@ export class UserProfileComponent implements OnInit {
   userEmail : String = "bhavana111@gmail.com" ;
   id : number = 1;
   userWallet : number = 100;
-  constructor(private data: FetchJSONService) {
-	  console.log(data.getData().subscribe(data=> console.log(data)));
+  constructor() {
   }
 
   ngOnInit() {

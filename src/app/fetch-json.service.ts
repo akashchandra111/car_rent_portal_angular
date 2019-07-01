@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Car } from './Interfaces/Car';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,6 @@ export class FetchJSONService {
 
 	// This will return the JSON object that we have to subscribe in the using class in ngOnInit
   getData()	{
-	  return this.http.get('https://api.github.com/users/petrgazarov');
+	  return this.http.get<Car>('../assets/Car.json', {observe: 'response'});
   }
 }

@@ -11,17 +11,18 @@ import { FooterComponent } from './footer/footer.component';
 
 import { FetchJSONService } from './fetch-json.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    RouterComponents,
     HeaderComponent,
     FooterComponent,
     RouterComponents
-  ],
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
+	HttpClientModule,
     FormsModule
   ],
   providers: [

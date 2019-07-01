@@ -1,0 +1,10 @@
+{
+  "carId": "1001",
+  "carType": "mini",
+  "mileage": "20",
+  "seaters": "4",
+  "description": "good car, for testing",
+  "carName": "testing car",
+  "imgPath": "/assets/images/mycar.jpg",
+  "cost": 1000
+}

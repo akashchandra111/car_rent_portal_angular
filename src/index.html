@@ -303,11 +303,66 @@
 
 
 			}
-			
+
 
 		</script>
 		<!-- Initializing all the materialize elements -->
 		<script type="text/javascript">
+			$(document).ready(
+				() => {
+					// Sidenav initialization
+					$('.sidenav').sidenav();
+
+					// Slider initialization and params setting
+					$('.slider').slider({
+						indicators: false,
+						height: 450,
+						interval: 3000
+					});
+
+					// Modal initialization
+					$('.modal').modal();
+
+					// Form initialization
+					$('select').formSelect();
+
+					//  $('.datepicker').datepicker();
+					//  $('.timepicker').timepicker();
+					 //Author Dheeraj Joshi
+						//User profile Drop down
+						$(".dropdown-trigger").dropdown();
+						//Time picker
+						$(document).ready(function(){
+							$('.timepicker').timepicker();
+						});
+						//Date picker
+						$(document).ready(function(){
+							$('.datepicker').datepicker();
+						});
+								}
+			);
+
+			$("#loginbutton").click(function(e){
+          e.preventDefault();
+          $('#login').show();
+        $.ajax({type: "POST",
+                url: "login",
+                data: { username: $("#username").val(), password: $("#password").val() },
+                success:function(result){
+         if(result=="failure"){
+        	 $('#logindiv').show();
+        	 $('#login').modal('open');
+         }
+          else if(result=="admin_success")	{
+        	  $('#logindiv').hide();
+        	  window.location.href = "AdminPanel.jsp";
+         }
+         else if(result=="user_success"){
+        	 $('#logindiv').hide();
+        	 window.location.href = "User.jsp";
+         }
+        }});
+	  });
 
 		</script>
 
