@@ -22,6 +22,7 @@ import { FetchJSONService } from './fetch-json.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+	HttpClientModule,
     FormsModule
   ],
   providers: [
