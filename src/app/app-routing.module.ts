@@ -4,12 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { BodyComponent } from './body/body.component';
 import { BookingComponent } from './booking/booking.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
 	{
-		path:'',
+		path:'body',
 		component: BodyComponent,
-		pathMatch: 'full'
+	},
+	{
+		path: 'index',
+		component: IndexComponent
 	},
 	{
 		path: 'booking',
@@ -27,6 +31,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const RouterComponents = [
+	BodyComponent,
+	IndexComponent,
 	BookingComponent,
 	UserProfileComponent
 ];

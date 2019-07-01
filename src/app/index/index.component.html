@@ -1,0 +1,192 @@
+<!-- [Author: Akash Chandra] -->
+   
+      <!-- Slider to show car types -->
+      <div style="margin-top: 10px; padding-left: 10px; padding-right: 10px;">
+         <div class="slider">
+            <ul class="slides">
+               <li>
+                  <img src="assets/images/mini_car.jpg">
+                  <div class="caption center-align">
+                     <h3>Mini Cars</h3>
+                     <h5 class="light grey-text text-lighten-3">Cheap and affordable</h5>
+                  </div>
+               </li>
+               <li>
+                  <img src="assets/images/micro_car.jpg">
+                  <div class="caption left-align">
+                     <h3>Micro Cars</h3>
+                     <h5 class="light grey-text text-lighten-3">Cheap, affordable and space you can get</h5>
+                  </div>
+               </li>
+               <li>
+                  <img src="assets/images/deluxe_car.jpg">
+                  <div class="caption right-align">
+                     <h3>Deluxe Cars</h3>
+                     <h5 class="light grey-text text-lighten-3">Expensive but comfortable</h5>
+                  </div>
+               </li>
+               <li>
+                  <img src="assets/images/suv_car.jpg">
+                  <div class="caption center-align">
+                     <h3>SUV Cars</h3>
+                     <h5 class="light grey-text text-lighten-3">Faster, expensive ,comfortable and for those who care for looks</h5>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <!-- Login modal -->
+      <div class="modal one" id="login">
+         <form class="form" action="login" method="post">
+            <div class="modal-content">
+               <div class="">
+                  <h4>Login</h4>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="username" id="username" class="validate">
+                  <label for="username">Username/ Email/ Phone</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="password" id="password" class="validate">
+                  <label for="password">Password</label>
+               </div>
+               <div id="logindiv" style="color:red;display:none">
+               Login Failed
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit">
+               Login
+               <i class="material-icons right">send</i>
+               </button>
+            </div>
+         </form>
+      </div>
+      <!-- Register modal -->
+      <div class="modal" id="register">
+         <form class="form" action="register" method="post">
+            <div class="modal-content">
+               <div class="">
+                  <h4>Register with Us</h4>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="firstname" id="firstname" class="validate">
+                  <label for="firstname">First name</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="lastname" id="lastname" class="validate">
+                  <label for="lastname">Last name</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="mobileno" id="mobileno" class="validate">
+                  <label for="mobileno">Mobile number</label>
+               </div>
+               <div class="row">
+                  <div class="input-field col s4">
+                     <select class="input-field" name="idtype">
+                        <option value="" selected disabled>Verify with</option>
+                        <option value="aadhar">Aadhar</option>
+                        <option value="pan">PAN</option>
+                        <option value="passport">Passport</option>
+                     </select>
+                  </div>
+                  <div class="input-field col s8">
+                     <input type="text" name="verification_id" id="verification_id" class="validate">
+                     <label for="verification_id">UID number</label>
+                  </div>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="driving_id" id="driving_id" class="validate">
+                  <label for="username">Driving License Number</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="username" id="username" class="validate">
+                  <label for="username">Username</label>
+               </div>
+               <div class="input-field">
+                  <input type="text" name="email" id="email" class="validate">
+                  <label for="username">Email</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="password" id="password" class="validate">
+                  <label for="password">Password</label>
+               </div>
+               <div class="input-field">
+                  <input type="password" name="cpassword" id="cpassword" class="validate">
+                  <label for="cpassword">Confirm Password</label>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" name="submit">
+               Register
+               <i class="material-icons right">send</i>
+               </button>
+            </div>
+         </form>
+      </div>
+      <!-- Cards [Author: Dheeraj Joshi]-->
+      <div class="row">
+         <div class="col s12 m6 l3">
+            <div class="card amber lighten-5 z-depth-3 card-style">
+               <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="assets/images/mini_car.jpg">
+               </div>
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Mini Cars<i class="material-icons right">more_vert</i></span>
+                  <p><a href="#">See all Mini cars</a></p>
+               </div>
+               <div class="card-reveal indigo lighten-3">
+                  <span class="card-title grey-text text-darken-4">Mini Cars<i class="material-icons right">close</i></span>
+                  <p>Affordable, distance and power in a mini package. Good for long distance travel purposes.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col s12 m6 l3">
+            <div class="card amber lighten-5 z-depth-3">
+               <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="assets/images/micro_car.jpg">
+               </div>
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Micro Cars<i class="material-icons right">more_vert</i></span>
+                  <p><a href="#">See all Micro cars</a></p>
+               </div>
+               <div class="card-reveal indigo lighten-3">
+                  <span class="card-title grey-text text-darken-4">Micro Cars<i class="material-icons right">close</i></span>
+                  <p>Affordable, distance with more power and more seats. Good for long distance travel purpose and extra comfortable.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col s12 m6 l3">
+            <div class="card amber lighten-5 z-depth-3">
+               <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="assets/images/deluxe_car.jpg">
+               </div>
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Deluxe Cars<i class="material-icons right">more_vert</i></span>
+                  <p><a href="#">See all Deluxe cars</a></p>
+               </div>
+               <div class="card-reveal indigo lighten-3">
+                  <span class="card-title grey-text text-darken-4">Deluxe Cars<i class="material-icons right">close</i></span>
+                  <p>Expensive, classy cars for those who prefer on looks. Good for short distance rides.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col s12 m6 l3">
+            <div class="card amber lighten-5 z-depth-3">
+               <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="assets/images/suv_car.jpg">
+               </div>
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">SUV Cars<i class="material-icons right">more_vert</i></span>
+                  <p><a href="#">See all SUV cars</a></p>
+               </div>
+               <div class="card-reveal indigo lighten-3">
+                  <span class="card-title grey-text text-darken-4">SUV Cars<i class="material-icons right">close</i></span>
+                  <p>For those who likes to ride power. When you need space, power and comfort at one place.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      
+   

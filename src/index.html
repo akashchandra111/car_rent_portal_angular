@@ -55,7 +55,30 @@
 							$('.datepicker').datepicker();
 						});
 								}
-							);
+			);
+
+			$("#loginbutton").click(function(e){
+          e.preventDefault();
+          $('#login').show();
+        $.ajax({type: "POST",
+                url: "login",
+                data: { username: $("#username").val(), password: $("#password").val() },
+                success:function(result){
+         if(result=="failure"){
+        	 $('#logindiv').show();
+        	 $('#login').modal('open');
+         }
+          else if(result=="admin_success")	{
+        	  $('#logindiv').hide();
+        	  window.location.href = "AdminPanel.jsp";
+         }
+         else if(result=="user_success"){
+        	 $('#logindiv').hide();
+        	 window.location.href = "User.jsp";
+         }
+        }});
+	  });
+   
 		</script>
 	</body>
 </html>
