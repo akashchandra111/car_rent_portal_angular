@@ -4,14 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, RouterComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import  { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { FetchJSONService } from './fetch-json.service';
-import { IndexComponent } from './index/index.component';
-
 
 @NgModule({
   declarations: [
