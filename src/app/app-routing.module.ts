@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ChooseCarComponent } from './choose-car/choose-car.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
  
 const routes: Routes = [
     {
@@ -31,9 +32,13 @@ const routes: Routes = [
         component: ChooseCarComponent
     },
     {
+        path: 'history',
+        component: UserHistoryComponent
+    },
+    {
         path: '**',
         component: PageNotFoundComponent
-    },
+    }
 ];
  
 @NgModule({
@@ -47,5 +52,6 @@ export const RouterComponents = [
     UserProfileComponent,
     HomepageComponent,
     AdminPanelComponent,
-    ChooseCarComponent
+    ChooseCarComponent,
+    UserHistoryComponent
 ];
