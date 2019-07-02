@@ -10,7 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { FetchJSONService } from './fetch-json.service';
-import { IndexComponent } from './index/index.component';
+
 
 
 @NgModule({
