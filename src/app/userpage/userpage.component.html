@@ -1,95 +1,3 @@
-<div class="navbar-fixed">
-  <nav class="nav-wrapper indigo darken-3">
-    <div class="container">
-      <a class="sidenav-trigger" href="#" data-target="menu-link"> <i
-        class="material-icons">menu</i>
-      </a>
-      <div class="brand-logo">
-        <a href="#"> RentoCar </a>
-      </div>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#modalwallet"
-          class="waves-effect waves-light modal-trigger">Wallet</a></li>
-        <li><a href="#booking"
-          class="waves-effect waves-dark dropdown-trigger"
-          data-target="booking_dropdown">Booking</a></li>
-        <!-- Booking Dropdown -->
-        <ul id="booking_dropdown" class="dropdown-content">
-          <li><a href="ChooseCar.jsp" class="indigo-text">Rent a car</a></li>
-<!-- 						<li><a href="CurrentBooking.jsp" class="indigo-text">Current -->
-<!-- 								Booking</a></li> -->
-          <li><a href="History.jsp" class="indigo-text">History</a></li>
-        </ul>
-        <li><a href="#username"
-          class="waves-effect waves-dark dropdown-trigger"
-          data-target="account_dropdown"> <i class="material-icons">person_outline</i>
-        </a></li>
-        <!-- Account Dropdown -->
-        <ul id="account_dropdown" class="dropdown-content">
-          <li><a class="indigo-text">Hi {{ userFirstName }}</a></li>
-          <li><a href="user_profile" class="indigo-text">Profile</a></li>
-          <li><a href="logout" class="indigo-text">Logout</a></li>
-        </ul>
-      </ul>
-    </div>
-  </nav>
-</div>
-
-<!-- Side Navigation for mobile devices -->
-<ul class="sidenav" id="menu-link">
-  <li>
-    <div class="user-view">
-      <div class="background indigo accent-4"></div>
-      <a href="#user"> <img src="assets/images/user_profile.png"
-        class="circle">
-      </a> <a href="#name"><span class="name white-text">{{ userFirstName }}</span></a>
-      <a href="#email"><span class="email white-text">{{ userEmail }}</span></a>
-    </div>
-  </li>
-  <li><a href="#modalwallet"
-    class="waves-effect waves-light modal-trigger">Wallet</a></li>
-  <li>
-    <ul class="collapsible" id="collapsibleBooking"
-      style="margin-left: 5%;">
-      <li>
-        <div class="collapsible-header">Booking</div>
-        <div class="collapsible-body">
-          <a href="ChooseCar.jsp"
-            class="waves-effect waves-light modal-trigger"
-            style="margin-left: 5%;">Rent a Car</a>
-        </div>
-<!-- 					<div class="collapsible-body"> -->
-<!-- 						<a href="CurrentBooking.jsp" -->
-<!-- 							class="waves-effect waves-light modal-trigger" -->
-<!-- 							style="margin-left: 5%;">Current Booking</a> -->
-<!-- 					</div> -->
-        <div class="collapsible-body">
-          <a href="History.jsp"
-            class="waves-effect waves-light modal-trigger"
-            style="margin-left: 5%;">History</a>
-        </div>
-      </li>
-      <!--             <a href="#booking" class="waves-effect waves-dark"></a> -->
-    </ul>
-  </li>
-  <li>
-    <ul class="collapsible" id="collapsibleAccount"
-      style="margin-left: 5%;">
-      <li>
-        <div class="collapsible-header">Account</div>
-        <div class="collapsible-body">
-          <a href="user_profile" class="waves-effect "
-            style="margin-left: 5%;">Profile</a>
-        </div>
-        <div class="collapsible-body">
-          <a href="logout" class="waves-effect " style="margin-left: 5%;">Logout</a>
-        </div> <!-- 					  <li><a href="logout" class="indigo-text">Logout</a></li> -->
-      </li>
-    </ul>
-  </li>
-</ul>
-
-
 
 <!-- Card Panel [Author: Akash Chandra]-->
 <div class="row">
@@ -159,14 +67,16 @@
       <div class="row">
         <div class="col s3">
           <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">local_offer</i>
+            style="margin-top: 30%">history</i>
         </div>
         <div class="col s9">
           <div class="card-content white-text">
-            <h4>Offer</h4>
+            <h4>History</h4>
             <p>
-              Refer a friend to get <b>70% off</b> on a booking <b>use
-                GET70OFF</b>
+              Your Bookings: 
+            </p>
+            <p>
+              You have booked a car from <b>White field, Bangalore</b>to<b>Tirupathi</b> at <b>30-06-2019, 6:30</b>
             </p>
           </div>
         </div>
@@ -178,13 +88,13 @@
       <div class="row">
         <div class="col s3">
           <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">people</i>
+            style="margin-top: 30%">volume_up</i>
         </div>
         <div class="col s9">
           <div class="card-content white-text">
-            <h4>Refer</h4>
+            <h4>Promotion</h4>
             <p>
-              Refer your friend to get <b>70%</b> discount
+              Have you enjoyed? Please promote our page.
             </p>
           </div>
         </div>
