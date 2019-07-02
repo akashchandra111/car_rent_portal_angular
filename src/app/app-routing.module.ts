@@ -7,7 +7,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ChooseCarComponent } from './choose-car/choose-car.component';
-
+import { UserpageComponent } from './userpage/userpage.component';
+ 
 const routes: Routes = [
     {
         path:'',
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: ChooseCarComponent
     },
     {
+        path: 'dashboard',
+        component: UserpageComponent
+    },
+    {
         path: '**',
         component: PageNotFoundComponent
     },
@@ -47,5 +52,6 @@ export const RouterComponents = [
     UserProfileComponent,
     HomepageComponent,
     AdminPanelComponent,
-    ChooseCarComponent
+    ChooseCarComponent,
+    UserpageComponent
 ];
