@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   getCar()	{
-	  this.carData.getCar('mini').subscribe(
+	  this.carData.getCarByType('mini').subscribe(
 		  (data) =>	{
 			  this.car = data['body'];
 			  console.log(this.car);
