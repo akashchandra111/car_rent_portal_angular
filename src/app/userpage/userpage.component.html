@@ -11,23 +11,21 @@
         <div class="col s9">
           <div class="card-content white-text">
             <h4>Wallet</h4>
-            <!-- <%
-              if (Integer.parseInt(userWallet) >= 1000) {
-            %> -->
-            <p>
-              You have <b>{{ userWallet }} Rs</b> remaining in your wallet
-              balance
-            </p>
-            <!-- <%
-              } else {
-            %>
-            <p>
-              You have <b>{{ userWallet }} Rs</b> remaining, please recharge
-              your account
-            </p>
-            <%
-              }
-            %> -->
+
+            <ng-template [ngIf]="userWallet >= 1000" [ngIfElse]="isLessthan">
+              <p>
+                You have <b>{{ userWallet }} Rs</b> remaining in your wallet
+                balance
+              </p>
+            </ng-template>
+            
+            <ng-template #isLessthan>
+              <p>
+                You have <b>{{ userWallet }} Rs</b> remaining, please recharge
+                your account
+              </p>
+            </ng-template>
+            
           </div>
         </div>
       </div>
@@ -43,20 +41,18 @@
         <div class="col s9">
           <div class="card-content white-text">
             <h4>Recent Booking</h4>
-            <!-- <%
-              if (userLog.isUserIdPresent(id)  ) {
-            %> -->
-            <p>
-              Pick up your car from <b>{{ carPickupLocation }}</b> at <b>{{ carPickupTime }}</b>
-              Use this secret key: <b>{{ carSecretKey }}</b>
-            </p>
-            <!-- <%
-              } else {
-            %>
-            <p>No current booking</p>
-            <%
-              }
-            %> -->
+
+            <ng-template [ngIf]="userLog.isUserIdPresent(id)" [ngIfElse]="isNotEquals">
+              <p>
+                Pick up your car from <b>{{ carPickupLocation }}</b> at <b>{{ carPickupTime }}</b>
+                Use this secret key: <b>{{ carSecretKey }}</b>
+              </p>
+            </ng-template>
+            
+            <ng-template #isNotEquals>
+              <p>No current booking</p>
+            </ng-template>
+
           </div>
         </div>
       </div>
