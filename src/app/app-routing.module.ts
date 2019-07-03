@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+ 
 import { HomepageComponent } from './homepage/homepage.component';
 import { BookingComponent } from './booking/booking.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -40,7 +40,7 @@ const routes: Routes = [
         component: PageNotFoundComponent
     }
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
@@ -53,6 +53,5 @@ export const RouterComponents = [
     HomepageComponent,
     AdminPanelComponent,
     ChooseCarComponent,
-    UserpageComponent
     UserHistoryComponent
 ];

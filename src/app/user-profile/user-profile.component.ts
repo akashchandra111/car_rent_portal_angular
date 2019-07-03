@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchJSONService } from '../fetch-json.service';
+import {User} from 'src/app/Interfaces/User';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,11 +15,38 @@ export class UserProfileComponent implements OnInit {
   userEmail : String = "bhavana111@gmail.com" ;
   id : number = 1;
   userWallet : number = 100;
+  model: User = {  
+    userId: '',
+    firstName:'',
+    lastName: '',
+    mobileNo: '',
+    govtIdType: '',
+    govtIdNum: '',
+    userName: '',
+    password: '',
+    email: '',
+    wallet: 1000
+      
+  };  
+  
+
   constructor() {
   }
 
   ngOnInit() {
 
   }
+  onFormSubmit() {  
+    
+    alert("updated"+ "   "+this.model.mobileNo+"   "+this.model.email+"   "+this.model.govtIdNum+"  "+this.model.govtIdType); 
+      
+  } 
+  changeUserName(){
+    alert(this.model.userName);
+  }
+  changeUserpassword(){
+    alert(this.model.password);
+  }
+ 
 
 }
