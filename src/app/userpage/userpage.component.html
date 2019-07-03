@@ -42,7 +42,7 @@
           <div class="card-content white-text">
             <h4>Recent Booking</h4>
 
-            <ng-template [ngIf]="userLog.isUserIdPresent(id)" [ngIfElse]="isNotEquals">
+            <ng-template [ngIf]="userId == 1234" [ngIfElse]="isNotEquals">
               <p>
                 Pick up your car from <b>{{ carPickupLocation }}</b> at <b>{{ carPickupTime }}</b>
                 Use this secret key: <b>{{ carSecretKey }}</b>
@@ -50,7 +50,7 @@
             </ng-template>
             
             <ng-template #isNotEquals>
-              <p>No current booking</p>
+              <p>No current bookings</p>
             </ng-template>
 
           </div>
@@ -69,10 +69,8 @@
           <div class="card-content white-text">
             <h4>History</h4>
             <p>
-              Your Bookings: 
-            </p>
-            <p>
-              You have booked a car from <b>White field, Bangalore</b>to<b>Tirupathi</b> at <b>30-06-2019, 6:30</b>
+              Past Bookings: 
+              You have booked a car from <b>White field, Bangalore</b>  to <b>Tirupathi</b> at <b>30-06-2019, 6:30</b>
             </p>
           </div>
         </div>
