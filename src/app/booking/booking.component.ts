@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { FetchJSONService } from '../fetch-json.service';
+import { Car } from '../Interfaces/Car';
+import { User } from '../Interfaces/User';
+import { UserLog } from '../Interfaces/UserLog';
 
 @Component({
   selector: 'app-booking',
@@ -6,14 +11,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  carId: string;
+  user: User;
+  car: Car;
+  userBooking: UserLog;
 
-  carName: string = "Redi-Go";
+  startLocation: string;
+  dropLocation: string;
+  startTime: string;
+  endTime: string;
+  secretKey: string;
+  paidAmount: string;
+  calculatedBookingCost: number;
 
-  carDesc: string = "It packs a Bluetooth-enabled audio system that offers hands-free calling and music streaming, central locking, manual AC, LED daytime running lights and more. For safety, it gets only ABS with EBD as standard since the driver airbag is limited to the top-spec S variant only. It is white in colour and 4seater.";
-
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
+  }
 
   ngOnInit() {
+	  this.carId = this.route.snapshot.paramMap.get('carId');
+
+	  // Getting car from carId name
+	  this.http.getCarById(this.carId).subscribe(
+		  (data) =>	{
+			  this.car = data['body'];
+		  }
+	  );
+  }
+
+  bookCar()	{
+	  this.userBooking = {
+		  userLogId: 'random id',
+		  userId: this.user,
+		  startTime: this.startTime,
+		  endTime: this.endTime,
+		  currentLocation: this.startLocation,
+		  dropLocation: this.dropLocation,
+		  secretKey: 'calculated randomly',
+		  totalAmount: this.calculatedBookingCost,
+		  paidAmount: this.calculatedBookingCost
+	  }
   }
 
 }
