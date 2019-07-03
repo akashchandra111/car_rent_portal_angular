@@ -27,13 +27,14 @@
           <div class="col s8 l10">
           <div class="input-field">
             <i class="material-icons indigo-text prefix">contacts</i>
-             <input   type="text" name="changeprofilename" class="updatedusername">
+             <input   type="text" name="userName" [(ngModel)]="model.userName" class="updatedusername">
              <label for="changeprofilename">Change User Name</label>
              
            </div>
           </div>
           <div class="col s4 m6 l2">
-           <a class="waves-effect waves-light btn indigo changeusername"   style="margin-top:10%;">Change</a>
+           <!-- <a class="waves-effect waves-light btn indigo changeusername"   style="margin-top:10%;">Change</a> -->
+           <button type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeUserName()">Change</button>
           </div>
           </div>
           
@@ -41,13 +42,14 @@
           <div class="col s8 m6 l10">
           <div class="input-field">
             <i class="material-icons indigo-text prefix">security</i>
-             <input   type="text" name="ChangeUserPassword">
+             <input   type="text" name="password" [(ngModel)]="model.password">
              <label for="ChangeUserName">Change Password</label>
              
            </div>
           </div>
           <div class="col s4 l2">
-           <a class="waves-effect waves-light btn indigo " id="changepassword" style="margin-top:10%;">Change</a>
+           <!-- <a class="waves-effect waves-light btn indigo " id="changepassword" style="margin-top:10%;">Change</a> -->
+           <button type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeUserpassword()">Change</button>
           </div>
           </div>
           
@@ -77,31 +79,31 @@
       <div class="card-content">
 
         <span class="card-title">Update Account Details</span>
-        <form id="updateform" action="" method="post">
+        <form id="updateform" action="" method="post" #f="ngForm" (ngSubmit)="f.onFormSubmit()">
         <div class="row">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">contact_mail</i>
-             <input  id="email" type="text" name="">
+             <input  id="email" type="text" name="email" [(ngModel)]="model.email">
              <label for="updateEmail">Update Email</label>
            </div>
         </div>
         <div class="row">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">call</i>
-             <input  id="updateMobile" type="text" name="">
+             <input  id="updateMobile" type="text" name="mobileNo" [(ngModel)]="model.mobileNo">
              <label for="updateMobile">Update Telephone</label>
            </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">create</i>
-             <input  id="" type="text" name="">
+             <input  id="" type="text" name="changeUidno">
              <label for="changeUidno">Change Uid No</label>
            </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="input-field col s4">
-               <select class="input-field" name="idtype">
+               <select class="input-field" name="govtIdType" [(ngModel)]="model.govtIdType">
                   <option value="" selected disabled>Verify with</option>
                   <option value="aadhar">Aadhar</option>
                   <option value="pan">PAN</option>
@@ -109,12 +111,14 @@
                </select>
             </div>
             <div class="input-field col s8">
-               <input type="text" name="verification_id" id="verification_id" class="validate">
+               <input type="text" name="govtIdNum" [(ngModel)]="model.govtIdNum" id="verification_id" class="validate">
                <label for="verification_id">UID number</label>
             </div>
          </div>
         <div class="row">
-          <a class="waves-effect waves-light btn indigo ">Submit</a>
+          <!-- <a class="waves-effect waves-light btn indigo ">Submit</a> -->
+          <button type="submit"  class="btn btn-default " (click) = "onFormSubmit()" >Update</button>
+        
         </div>
       </form>
        </div>
