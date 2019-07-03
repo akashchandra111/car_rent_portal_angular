@@ -36,16 +36,18 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
 
   }
-  onFormSubmit() {  
-    
-    alert("updated"+ "   "+this.model.mobileNo+"   "+this.model.email+"   "+this.model.govtIdNum+"  "+this.model.govtIdType); 
-      
-  } 
+ 
   changeUserName(){
     alert(this.model.userName);
   }
   changeUserpassword(){
     alert(this.model.password);
+  }
+  changeMobileNo(){
+    alert(this.model.mobileNo);
+  }
+  changeEmail(){
+    alert(this.model.email);
   }
  
 
