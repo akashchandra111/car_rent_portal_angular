@@ -7,17 +7,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ChooseCarComponent } from './choose-car/choose-car.component';
-import { UserHistoryComponent } from './user-history/user-history.component';
 import { UserpageComponent } from './userpage/userpage.component';
- 
+import { UserHistoryComponent } from './user-history/user-history.component';
+
 const routes: Routes = [
     {
-        path:'',
-        component: HomepageComponent,
-        pathMatch: 'full'
-    },
-    {
-        path: 'booking',
+        path: 'booking/:carId',
         component: BookingComponent
     },
     {
@@ -40,6 +35,15 @@ const routes: Routes = [
         path: 'history',
         component: UserHistoryComponent
     },
+	{
+		path: 'dashboard',
+		component: UserpageComponent
+	},
+	{
+	        path:'',
+	        component: HomepageComponent,
+	        pathMatch: 'full'
+	},
     {
         path: '**',
         component: PageNotFoundComponent
