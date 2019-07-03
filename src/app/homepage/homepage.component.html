@@ -45,7 +45,7 @@
                </div>
                <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Mini Cars<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">See all Mini cars</a></p>
+                  <p><a (click)="getCarByTypeOnClick('mini')">See all Mini cars</a></p>
                </div>
                <div class="card-reveal indigo lighten-3">
                   <span class="card-title grey-text text-darken-4">Mini Cars<i class="material-icons right">close</i></span>
@@ -60,7 +60,7 @@
                </div>
                <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Micro Cars<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">See all Micro cars</a></p>
+                  <p><a (click)="getCarByTypeOnClick('micro')">See all Micro cars</a></p>
                </div>
                <div class="card-reveal indigo lighten-3">
                   <span class="card-title grey-text text-darken-4">Micro Cars<i class="material-icons right">close</i></span>
@@ -75,7 +75,7 @@
                </div>
                <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">Deluxe Cars<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">See all Deluxe cars</a></p>
+                  <p><a (click)="getCarByTypeOnClick('deluxe')">See all Deluxe cars</a></p>
                </div>
                <div class="card-reveal indigo lighten-3">
                   <span class="card-title grey-text text-darken-4">Deluxe Cars<i class="material-icons right">close</i></span>
@@ -90,7 +90,7 @@
                </div>
                <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4">SUV Cars<i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">See all SUV cars</a></p>
+                  <p><a (click)="getCarByTypeOnClick('suv')">See all SUV cars</a></p>
                </div>
                <div class="card-reveal indigo lighten-3">
                   <span class="card-title grey-text text-darken-4">SUV Cars<i class="material-icons right">close</i></span>
@@ -99,3 +99,27 @@
             </div>
          </div>
       </div>
+
+<!-- User selected cars would be shown here -->
+<div class="row" style="width:99.5%">
+	<div class="col s12 m6 l3" *ngFor="let car of cars;">
+	     <div class="card amber lighten-5 z-depth-3">
+	        <div class="card-image waves-effect waves-block waves-light">
+	           <img class="activator" [src]="car.imgPath">
+	        </div>
+	        <div class="card-content">
+	           <span class="card-title activator grey-text text-darken-4">{{ car.carName }}<i class="material-icons right">more_vert</i></span>
+	        </div>
+	        <div class="card-reveal indigo lighten-3">
+	           <span class="card-title grey-text text-darken-4 "><b>{{ car.carName }}</b><i class="material-icons right">close</i></span>
+	           <p>
+				  <b>Type:</b> {{ car.carType }}<br>
+				  <b>Cost:</b> {{ car.cost }}/hr<br>
+				  <b>Mileage:</b> {{ car.mileage }}<br>
+				  <b>Seaters:</b> {{ car.seaters }}<br>
+				  <b>Desciption:</b> {{ car.description }}<br>
+			   </p>
+	        </div>
+	     </div>
+	</div>
+</div>

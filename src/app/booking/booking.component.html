@@ -3,32 +3,34 @@
   <h3 class="indigo-text darken-3">Book Car</h3>
 
   <div class="row">
-    
 
-    <div class="card col s12 m7 l4">
-      <div class="card-image waves-effect waves-block waves-light small">
-        <img class="activator" src="assets/images/car.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{ carName }}<i
-          class="material-icons right">more_vert</i></span>
-          
-          
-          
-      </div>
-      <a href="#" class="btn indigo" style="margin-top:0;margin-bottom:2%;margin-left:0;">Choose Another Car</a>
+	<div class="col s12 m6 l3">
+	     <div class="card amber lighten-5 z-depth-3">
+	        <div class="card-image waves-effect waves-block waves-light">
+	           <img [src]="car.imgPath" alt="No image present">
+	        </div>
+	        <div class="card-content">
+	           <span class="card-title activator grey-text text-darken-4">{{ car.carName }}<i class="material-icons right">more_vert</i></span>
+			   <a [routerLink]="'/choose_car'">Choose another</a>
+	        </div>
+	        <div class="card-reveal indigo lighten-3">
+	           <span class="card-title grey-text text-darken-4 "><b>{{ car.carName }}</b><i class="material-icons right">close</i></span>
+	           <p>
+				  <b>Type:</b> {{ car.carType }}<br>
+				  <b>Cost:</b> {{ car.cost }}/hr<br>
+				  <b>Mileage:</b> {{ car.mileage }}<br>
+				  <b>Seaters:</b> {{ car.seaters }}<br>
+				  <b>Desciption:</b> {{ car.description }}<br>
+			   </p>
+	        </div>
+	     </div>
+	</div>
 
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{ carName }}<i
-          class="material-icons right">close</i></span>
-        <p>{{ carDesc }}</p>
-      </div>
-    </div>
      <!-- <img class="activator" src="assets/images/back.jpg">  -->
-     <span class="card-title activator white-text text-darken-4"><i class="material-icons right">more_vert</i></span> 
-    
+     <span class="card-title activator white-text text-darken-4"><i class="material-icons right">more_vert</i></span>
 
-    <div class="col s12 m5 l8 ">				
+
+    <div class="col s12 m5 l8 ">
       <div class="booking-form" style="margin-left:4%;">
         <div class="input-field">
           <input type="text" id="autocomplete-input" class="autocomplete">
@@ -77,6 +79,6 @@
 
       </div>
     </div>
-    
+
   </div>
 </div>
