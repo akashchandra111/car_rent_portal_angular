@@ -9,6 +9,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ChooseCarComponent } from './choose-car/choose-car.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
+import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
     {
@@ -36,6 +38,14 @@ const routes: Routes = [
 		component: UserpageComponent
 	},
 	{
+		path: 'about',
+		component: AboutComponent
+	},
+	{
+		path: 'contact',
+		component: UserpageComponent
+	},
+	{
 	        path:'',
 	        component: HomepageComponent,
 	        pathMatch: 'full'
@@ -59,5 +69,7 @@ export const RouterComponents = [
     AdminPanelComponent,
     ChooseCarComponent,
     UserpageComponent,
-    UserHistoryComponent
+    UserHistoryComponent,
+	AboutComponent,
+	ContactUsComponent
 ];
