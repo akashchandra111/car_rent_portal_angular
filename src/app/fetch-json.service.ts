@@ -28,12 +28,14 @@ export class FetchJSONService {
   //************************** User APIs ***********************************
   // User login
   login(login: Login)	{
-	  return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
+	  return this.http.post<User>('http://9.202.17.174:8080/user/login', login, this.httpOptions);
+	  //return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
   }
 
   // User logout
   logout()	{
-	  return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
+	  return this.http.post<Message>('http://9.202.17.174:8080/user/logout', {}, this.httpOptions);
+	  //return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
   }
 
   // User deregister
@@ -48,7 +50,8 @@ export class FetchJSONService {
 
   // User register
   register(register: User)	{
-	  return this.http.post<Message>(this.baseUrl + '/user/register', register, this.httpOptions);
+	  return this.http.post<Message>('http://9.202.17.174:8080/user/register', register, this.httpOptions);
+	  //return this.http.post<Message>(this.baseUrl + '/user/register', register, this.httpOptions);
   }
 
   // Get user_profile

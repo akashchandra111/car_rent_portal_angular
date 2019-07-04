@@ -8,7 +8,7 @@ import {User} from 'src/app/Interfaces/User';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-	response: any;
+  response: any;
   userFirstName : String = "V";
   userLastName : String = "Bhavana";
   userMobile :number = 123;
@@ -16,6 +16,16 @@ export class UserProfileComponent implements OnInit {
   id : number = 1;
   userWallet : number = 100;
   model: User = {
+  response: any;
+  firstName: String = this.firstName;
+  lastName: String = this.lastName;
+  mobileNo: String = this.mobileNo;
+  userName: String = this.userName;
+  email: String = this.email
+  wallet: number = this.wallet;
+  userId: String = this.userId;
+  
+  model: User = {  
     userId: '',
     firstName:'',
     lastName: '',
