@@ -39,28 +39,6 @@ wallet:string;
   		password: this.password
   	};
 
-  	this.http.get(login).subscribe(
-  		(data: User)=>	{
-  			this.user =	data;
-  		  //console.log(this.user);
-  		  if(this.user.userId == null)	{
-  		  	console.log(this.user);
-  		  	console.log("user not present");
-  			this.ifLogged=true;
-  			this.ifAlert=true;
-  			this.iftrue=true;
-
-  		  }
-  		  else 	{
-  		  	console.log(this.user);
-  		  	console.log("user is present");
-  this.ifLogged=false;
-  this.loginEvent.emit(this.user);
-  this.iftrue=false;
-  		  }
-  		}
-  	);
-
 	  // this.user =	{
 		//   userId: '',
 		//   firstName: '',
@@ -118,7 +96,7 @@ register(){
 		mobileNo: this.mobileNo,
 		govtIdType: this.idType,
 	govtIdNum: this.verification_id,
-		driving_id: this.driving_id,
+		drivingLicenseNum: this.driving_id,
 		userName: this.userName,
 password: this.passwordregister,
 		email: this.email,

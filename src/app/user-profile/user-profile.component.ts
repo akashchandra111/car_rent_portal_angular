@@ -15,47 +15,25 @@ export class UserProfileComponent implements OnInit {
   userEmail : String = "bhavana111@gmail.com" ;
   id : number = 1;
   userWallet : number = 100;
+
   model: User = {
-  response: any;
-  firstName: String = this.firstName;
-  lastName: String = this.lastName;
-  mobileNo: String = this.mobileNo;
-  userName: String = this.userName;
-  email: String = this.email
-  wallet: number = this.wallet;
-  userId: String = this.userId;
-  
-  model: User = {  
     userId: '',
     firstName:'',
     lastName: '',
     mobileNo: '',
     govtIdType: '',
     govtIdNum: '',
+	drivingLicenseNum: '',
     userName: '',
     password: '',
     email: '',
-    wallet: 1000  
+    wallet: 1000
   };
 
-
   constructor() {
-  }
 
+  }
   ngOnInit() {
 
-  }
-
-  changeUserName(){
-    alert(this.model.userName);
-  }
-  changeUserpassword(){
-    alert(this.model.password);
-  }
-  changeMobileNo(){
-    alert(this.model.mobileNo);
-  }
-  changeEmail(){
-    alert(this.model.email);
   }
 }
