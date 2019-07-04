@@ -8,14 +8,7 @@ import {User} from 'src/app/Interfaces/User';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  response: any;
-  userFirstName : String = "V";
-  userLastName : String = "Bhavana";
-  userMobile :number = 123;
-  userEmail : String = "bhavana111@gmail.com" ;
-  id : number = 1;
-  userWallet : number = 100;
-  model: User = {
+ 
   response: any;
   firstName: String = this.firstName;
   lastName: String = this.lastName;
@@ -25,18 +18,18 @@ export class UserProfileComponent implements OnInit {
   wallet: number = this.wallet;
   userId: String = this.userId;
   
-  model: User = {  
-    userId: '',
-    firstName:'',
-    lastName: '',
-    mobileNo: '',
-    govtIdType: '',
-    govtIdNum: '',
-    userName: '',
-    password: '',
-    email: '',
-    wallet: 1000  
-  };
+  // model: User = {  
+  //   userId: '',
+  //   firstName:'',
+  //   lastName: '',
+  //   mobileNo: '',
+  //   govtIdType: '',
+  //   govtIdNum: '',
+  //   userName: '',
+  //   password: '',
+  //   email: '',
+  //   wallet: 1000  
+  // };
 
 
   constructor() {
@@ -47,15 +40,15 @@ export class UserProfileComponent implements OnInit {
   }
 
   changeUserName(){
-    alert(this.model.userName);
+    alert(this.userName);
   }
-  changeUserpassword(){
-    alert(this.model.password);
-  }
+  // changeUserpassword(){
+  //   alert(this.);
+  // }
   changeMobileNo(){
-    alert(this.model.mobileNo);
+    alert(this.mobileNo);
   }
   changeEmail(){
-    alert(this.model.email);
+    alert(this.email);
   }
 }
