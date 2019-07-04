@@ -21,7 +21,7 @@ export class FetchJSONService {
   httpOptions = {
 	headers: new HttpHeaders(
 		{
-			'Content-Type': 'application/json',
+			'Content-Type': 'application/json'
 		}
 	)
   };
@@ -32,15 +32,15 @@ export class FetchJSONService {
   }
 
   login(login: Login)	{
-	  return this.http.post<Message>('http://localhost:8080/user/login', login, this.httpOptions);
+	  return this.http.post<User>('http://9.202.17.174:8080/user/login', login, this.httpOptions);
   }
 
   logout()	{
-	  return this.http.post<Message>('http://localhost:8080/user/logout', {}, this.httpOptions);
+	  return this.http.post<Message>('http://9.202.17.174:8080/user/logout', {}, this.httpOptions);
   }
 
   register(register: User)	{
-	  return this.http.post<Message>('http://localhost:8080/user/register', register, this.httpOptions);
+	  return this.http.post<Message>('http://9.202.17.174:8080/user/register', register, this.httpOptions);
   }
 
   getCar(carType: string)	{

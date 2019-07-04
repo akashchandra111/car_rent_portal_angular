@@ -5,6 +5,7 @@ export interface User	{
 	mobileNo: string;
 	govtIdType: string;
 	govtIdNum: string;
+	driving_id:string;
 	userName: string;
 	password: string;
 	email: string;
