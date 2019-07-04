@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   userEmail : String = "bhavana111@gmail.com" ;
   id : number = 1;
   userWallet : number = 100;
-  model: User = {  
+  model: User = {
     userId: '',
     firstName:'',
     lastName: '',
@@ -25,10 +25,9 @@ export class UserProfileComponent implements OnInit {
     userName: '',
     password: '',
     email: '',
-    wallet: 1000
-      
-  };  
-  
+    wallet: 1000  
+  };
+
 
   constructor() {
   }
@@ -36,7 +35,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
 
   }
- 
+
   changeUserName(){
     alert(this.model.userName);
   }
@@ -49,6 +48,4 @@ export class UserProfileComponent implements OnInit {
   changeEmail(){
     alert(this.model.email);
   }
- 
-
 }

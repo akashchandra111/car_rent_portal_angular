@@ -20,6 +20,8 @@ export class BookingComponent implements OnInit {
   dropLocation: string;
   startTime: string;
   endTime: string;
+  startDate: string;
+  endDate: string;
   secretKey: string;
   paidAmount: string;
   calculatedBookingCost: number;
@@ -42,14 +44,16 @@ export class BookingComponent implements OnInit {
 	  this.userBooking = {
 		  userLogId: 'random id',
 		  userId: this.user,
-		  startTime: this.startTime,
-		  endTime: this.endTime,
+		  startTime: new Date(this.startTime + ' ' +this.startDate).toDateString(),
+		  endTime: new Date(this.endTime + ' ' + this.endDate).toDateString(),
 		  currentLocation: this.startLocation,
 		  dropLocation: this.dropLocation,
 		  secretKey: 'calculated randomly',
 		  totalAmount: this.calculatedBookingCost,
 		  paidAmount: this.calculatedBookingCost
 	  }
+
+	  console.log(this.userBooking);
   }
 
 }

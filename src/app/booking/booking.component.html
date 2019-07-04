@@ -3,7 +3,6 @@
   <h3 class="indigo-text darken-3">Book Car</h3>
 
   <div class="row">
-
 	<div class="col s12 m6 l3">
 	     <div class="card amber lighten-5 z-depth-3">
 	        <div class="card-image waves-effect waves-block waves-light">
@@ -27,42 +26,42 @@
 	</div>
 
      <!-- <img class="activator" src="assets/images/back.jpg">  -->
-     <span class="card-title activator white-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+     <!-- <span class="card-title activator white-text text-darken-4"><i class="material-icons right">more_vert</i></span> -->
 
 
     <div class="col s12 m5 l8 ">
       <div class="booking-form" style="margin-left:4%;">
         <div class="input-field">
-          <input type="text" id="autocomplete-input" class="autocomplete">
+          <input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
           <label for="autocomplete-input black-text darken-3">Origin
             City</label>
         </div>
 
         <div class="input-field">
-          <input type="text" id="autocomplete-input" class="autocomplete">
+          <input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="dropLocation">
           <label for="autocomplete-input">Delivery City</label>
         </div>
 
         <div>
           <div class="input-field col s6">
-            <input type="text" id="date-picker1" class="validate datepicker">
+            <input type="text" id="date-picker1" class="validate datepicker" [(ngModel)]="startDate">
             <label for="date-picker1">Start Date</label>
           </div>
 
           <div class="input-field col s6">
-            <input type="text" id="time-picker1" class="validate timepicker">
+            <input type="text" id="time-picker1" class="validate timepicker" [(ngModel)]="startTime">
             <label for="time-picker1">Start Time</label>
           </div>
         </div>
 
         <div>
           <div class="input-field col s6">
-            <input type="text" id="date-picker2" class="validate datepicker">
+            <input type="text" id="date-picker2" class="validate datepicker" [(ngModel)]="endDate">
             <label for="date-picker2">End Date</label>
           </div>
 
           <div class="input-field col s6">
-            <input type="text" id="time-picker2" class="validate timepicker">
+            <input type="text" id="time-picker2" class="validate timepicker" [(ngModel)]="endTime">
             <label for="time-picker2">End Time</label>
           </div>
         </div>
@@ -72,13 +71,9 @@
               Cost: <label for="Get-Price">Rs </label>
             </p>
           </h4>
-          <a class="waves-effect waves-light btn indigo darken-3">Proceed
-            to pay</a>
-
+          <a class="waves-effect waves-light btn indigo darken-3" (click)="bookCar()">Proceed to pay</a>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>
