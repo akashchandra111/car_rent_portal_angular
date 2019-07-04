@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { FetchJSONService } from './fetch-json.service';
-import { CarStatus } from './Interfaces/CarStatus';
-import { Car } from './Interfaces/Car';
-import { User } from './Interfaces/User';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +8,10 @@ import { User } from './Interfaces/User';
 })
 export class AppComponent {
   title = 'RentOCar';
-  car: Car[];
 
   constructor(private carData: FetchJSONService)	{
   }
 
   ngOnInit()	{
-	  this.getCar();
-  }
-
-  getCar()	{
-	  this.carData.getCar('mini').subscribe(
-		  (data) =>	{
-			  this.car = data['body'];
-			  console.log(this.car);
-		  }
-	  );
   }
 }

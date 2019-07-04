@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchJSONService } from '../fetch-json.service';
+import { Car } from '../Interfaces/Car';
 
 @Component({
   selector: 'app-choose-car',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./choose-car.component.css']
 })
 export class ChooseCarComponent implements OnInit {
+	cars: Car[];
 
-  constructor() { }
+  constructor(private http: FetchJSONService) { }
 
   ngOnInit() {
+
   }
 
+	getCarByTypeOnClick(carType: string)	{
+		this.http.getCarByType(carType).subscribe(
+			(data)=>	{
+				this.cars = data['body'];
+			}
+		);
+	}
 }

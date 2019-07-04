@@ -1,56 +1,83 @@
 
+
 <div class="row">
-
   <div class="col s12 m6">
-   
-   <div class="card">
-     <span class="card-title">My Account</span>
-     <div class="row">
-      <div class="col s6 m7 l6">
-         <img src="assets/images/profile.jpg">
-      </div>
-      <div class="col s6 m8 l6">
-         <h5>{{userFirstName}} {{userLastName}}</h5>
-          <p>Mobile No:   <span>{{userMobile }}</span></p>
-          <p>Email Id :   <span>{{userEmail }}</span></p>
-          <p>UID Number:  <span>{{id }}</span></p>
-          <p>Wallet Amount:  <span>{{userWallet}}</span></p>
-      </div>
-       
-     </div>
-   </div>
-     <div class="card"><!--change user name and password -->
-        <span class="card-title brown-text">Customize Credentials</span>
-          <form #userprofile ="ngForm" (ngSubmit) = "onClickSubmit(userprofile.value)" >
-            
-            <div class="input-field">
-            <i class="material-icons indigo-text prefix">contacts</i>
-             <input   type="text" name="ChangeUserName" ng-Model>
-             <label for="ChangeUserName">User Name</label>
-           
-            </div>
-           
-            <div class="input-field">
-            <i class="material-icons indigo-text prefix">clear</i>
-             <input   type="text" name="ChangePassword" id="ChangePassword" ng-Model>
-             <label for="ChangePassword">Old Password</label>
+       <div class="card">
+        <span class="card-title">My Account</span>
+        <div class="row">
+          <div class="col s6 m7 l6">
+        <img src="/assets/images/profile.jpg">
+        </div>
+        <div class="col s6 m8 l6">
+          <h5>{{firstName}} {{lastName}}</h5>
+          <p>Mobile No:   <span>{{mobileNo}}</span></p>
+          <p class="usernameuser">Username:   <span>{{userName}}</span></p>
+          <p>Email Id :   <span>{{email}}</span></p>
+          <p>UID Number:  <span>{{userId}}</span></p>
+          <p>Wallet Amount:  <span>{{wallet}}</span></p>
           
-            </div>
-             <div class="input-field">
-            <i class="material-icons indigo-text prefix">clear</i>
-             <input   type="text" name="ChangePassword" id="ChangePassword" >
-             <label for="ChangePassword">New Password</label>
-          
-            </div>
 
-         <input type = "Submit" class="waves-effect waves-light btn indigo" value="Update">
-         <br>
-
-
-          </form>
-        
+        </div>
+        </div>
        </div>
-    
+       <div class="card"><!--change user name and password -->
+        <span class="card-title brown-text">Customize Credentials</span>
+          
+          <div class="row">
+          <div class="col s8 l10">
+          <div class="input-field">
+            <i class="material-icons indigo-text prefix">contacts</i>
+             <input   type="text" name="userName" [(ngModel)]="model.userName" #userName= ngModel pattern="[(a-z)(A-Z)]{4,15}">
+             <label for="changeprofilename">Change User Name</label>
+             
+           </div>
+           <div *ngIf =userName.errors>
+             <span class="red-text">User Name Contains atleast four characters </span>
+
+           </div>
+          </div>
+          <div class="col s4 m6 l2">
+           <!-- <a class="waves-effect waves-light btn indigo changeusername"   style="margin-top:10%;">Change</a> -->
+           <button type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeUserName()">Change</button>
+          </div>
+          </div>
+          
+           <div class="row">
+          <div class="col s8 m6 l10">
+          <div class="input-field">
+            <i class="material-icons indigo-text prefix">security</i>
+             <input   type="password" name="password" [(ngModel)]="model.password" #password=ngModel   minlength="5" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}">
+              <label for="ChangeUserName">Change Password</label>
+           </div>
+           <div *ngIf="password.errors">
+            <span class="red-text"> "Must contain at least one number and one uppercase and lowercase letter, and at least 3 or more characters"</span>
+           </div>
+          </div>
+          <div class="col s4 l2">
+           <!-- <a class="waves-effect waves-light btn indigo " id="changepassword" style="margin-top:10%;">Change</a> -->
+           <button type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;" (click)="changeUserpassword()">Change</button>
+          </div>
+          </div>
+          
+<div class="status" style="color:green;"></div>                
+          
+          
+          
+          
+          
+          
+          
+
+        
+        <br>
+
+          
+
+       </div>
+
+
+
+
   </div>
 
   <div class="col s12 m6">
@@ -58,50 +85,81 @@
       <div class="card-content">
 
         <span class="card-title">Update Account Details</span>
-        <form id="updateform" action="" method="post">
-      
+        
+            
+          <div class="row">
+              <div class="col s8 m6 l10">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">contact_mail</i>
-             <input  type="text" name="emailid"  >
-             <label for="updateEmail">Update Email</label>
+            
+           <input  id="email" type="email" name="email" [(ngModel)]="model.email" #email = ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+           
+           <label for="updateEmail">Update Email</label>
            </div>
-       
+           <div *ngIf = email.errors>
+            <span class="red-text">Email is invalid</span>
+           </div>
+           </div>
+           <div class="col s4 m6 l2">
+              <a class="waves-effect waves-light btn indigo " (click)="changeEmail()"  style="margin-top:10%;">Change</a>
+              <!-- <button type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeUserName()">Change</button> -->
+             </div>
+        </div>
+        <div class="row">
+            <div class="col s8 m6 l10">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">call</i>
-             <input  id="updateMobile" type="text" name="">
+             <input  id="updateMobile" type="text" name="mobileNo"  [(ngModel)]="model.mobileNo" #mobileNo=ngModel pattern="[0-9]{10}">
              <label for="updateMobile">Update Telephone</label>
            </div>
-       
+           <div *ngIf = "mobileNo.errors">
+             <span class="red-text"> Enter Valid Phone Number</span>
+
+           </div>
+           </div>
+           <div class="col s4 m6 l2">
+              <a class="waves-effect waves-light btn indigo " (click)="changeMobileNo()"  style="margin-top:10%;">Change</a>
+              <!-- <button type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeUserName()">Change</button> -->
+             </div>
+        </div>
+        <!-- <div class="row">
           <div class="input-field">
            <i class="material-icons indigo-text prefix">create</i>
-             <input  id="" type="text" name="">
+             <input  id="" type="text" name="changeUidno">
              <label for="changeUidno">Change Uid No</label>
            </div>
-       
-          <div class="input-field file-field">
-            <div class="btn indigo">
-              <input type="file" name="" id="">
-              Change gov id
+        </div> -->
+        <div class="row">
+            <div class="input-field col s4">
+               <select class="input-field" name="govtIdType" [(ngModel)]="model.govtIdType">
+                  <option value="" selected disabled>Verify with</option>
+                  <option value="aadhar">Aadhar</option>
+                  <option value="pan">PAN</option>
+                  <option value="passport">Passport</option>
+               </select>
             </div>
-            <div class="file-path-wrapper">
-              <input type="text" class="file-path" >
+            <div class="input-field col s8">
+               <input type="text" name="govtIdNum" [(ngModel)]="model.govtIdNum" id="verification_id" class="validate">
+               <label for="verification_id">UID number</label>
+                
             </div>
-          </div>
+         </div>
+        <div class="row">
+          <a class="waves-effect waves-light btn indigo ">change</a>
+          
         
-        <input type = "Submit" class="waves-effect waves-light btn indigo" value="Update">
-       
-      </form>
+        </div>
+      
        </div>
         <div class="card-action">
-      <div class="btn indigo lighten-5 ">
-        
-           <i class="material-icons red-text prefix">delete</i>
-          <a href="#" class="right black-text">Delete Account</a>
-         
+      <div class="btn red">
+
+           <i class="material-icons white-text prefix">delete</i>
+          <a href="#" class="right white-text">Delete Account</a>
+
         </div>
      </div>
      </div>
-    
+
    </div>
   </div>
-  
