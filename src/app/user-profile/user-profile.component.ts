@@ -31,24 +31,10 @@ export class UserProfileComponent implements OnInit {
   //   wallet: 1000  
   // };
 
-
   constructor() {
-  }
 
+  }
   ngOnInit() {
 
-  }
-
-  changeUserName(){
-    alert(this.userName);
-  }
-  // changeUserpassword(){
-  //   alert(this.);
-  // }
-  changeMobileNo(){
-    alert(this.mobileNo);
-  }
-  changeEmail(){
-    alert(this.email);
   }
 }
