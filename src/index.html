@@ -17,17 +17,60 @@
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 	</head>
 	<body>
   		<app-root></app-root>
 
 
 		<script type="text/javascript">
+
+
+
+// function inintalizedropdown(){
+// 	$(".dropdown-trigger").dropdown();
+// 	console.log("QQQ");
+// }
+
+
 		$(document).ready(
 			() => {
+// $('.navbar-fixed').bind("DOMSubtreeModified",inintalizedropdown());
+$("#loginbutton").on( "click", function() {
+	setTimeout( function(){
+$(".dropdown-trigger").dropdown();
+		$('.sidenav').sidenav();
+		console.log("Asd");
+		$('.modal').modal();
+		$('#login').modal('open');
+	    // Do something after 1 second
+	}  , 1000 );
+
+});
+
+$("#registerclicked").on( "click", function() {
+	setTimeout( function(){
+$(".dropdown-trigger").dropdown();
+		$('.sidenav').sidenav();
+		console.log("Asd");
+	    // Do something after 1 second
+	}  , 1000 );
+
+});
+
+
+$("#clicklogoutme").click(function() {
+
+		$('.sidenav').sidenav();
+$('.modal').modal();
+console.log("Asdsadass");
+});
+function logmeout(){
+	console.log("log me out");
+}
+
+
 				// Sidenav initialization
 				$('.sidenav').sidenav();
 
@@ -48,17 +91,59 @@
 				//  $('.timepicker').timepicker();
 				//Author Dheeraj Joshi
 				//User profile Drop down
+				console.log("Asdsa");
 				$(".dropdown-trigger").dropdown();
+
 				//Time picker
 				$(document).ready(function(){
 					$('.timepicker').timepicker();
 				});
 				//Date picker
+
+				// User login drop down
+				// Sidenav initialization
+				$('.sidenav').sidenav();
+
+				// Slider initialization and params
+				$('.slider').slider({
+						indicators: false,
+						height: 450,
+						interval: 3000
+					}
+				);
+
+
+
+				// Modal initialization
+				$('.modal').modal();
+
+				// Form initialization
+				$('select').formSelect();
+
+				// $('.datepicker').datepicker();
+				// $('.timepicker').timepicker();
+				$('.modal').modal();
+
+				//sidenav collapsible initialization
+
+				$('#collapsibleBooking').collapsible();
+				$('#collapsibleAccount').collapsible();
+
+
+
 				$(document).ready(function(){
 					$('.datepicker').datepicker();
 				});
 			}
 		);
+
+
+
+
+
+
+
+
 
 
 		$(document).ready(
@@ -306,67 +391,6 @@
 
 
 		</script>
-		<!-- Initializing all the materialize elements -->
-		<script type="text/javascript">
-			$(document).ready(
-				() => {
-					// Sidenav initialization
-					$('.sidenav').sidenav();
-
-					// Slider initialization and params setting
-					$('.slider').slider({
-						indicators: false,
-						height: 450,
-						interval: 3000
-					});
-
-					// Modal initialization
-					$('.modal').modal();
-
-					// Form initialization
-					$('select').formSelect();
-
-					//  $('.datepicker').datepicker();
-					//  $('.timepicker').timepicker();
-					 //Author Dheeraj Joshi
-						//User profile Drop down
-						$(".dropdown-trigger").dropdown();
-						//Time picker
-						$(document).ready(function(){
-							$('.timepicker').timepicker();
-						});
-						//Date picker
-						$(document).ready(function(){
-							$('.datepicker').datepicker();
-						});
-								}
-			);
-
-			$("#loginbutton").click(function(e){
-          e.preventDefault();
-          $('#login').show();
-        $.ajax({type: "POST",
-                url: "login",
-                data: { username: $("#username").val(), password: $("#password").val() },
-                success:function(result){
-         if(result=="failure"){
-        	 $('#logindiv').show();
-        	 $('#login').modal('open');
-         }
-          else if(result=="admin_success")	{
-        	  $('#logindiv').hide();
-        	  window.location.href = "AdminPanel.jsp";
-         }
-         else if(result=="user_success"){
-        	 $('#logindiv').hide();
-        	 window.location.href = "User.jsp";
-         }
-        }});
-	  });
-
-		</script>
-
-
 
 
 
