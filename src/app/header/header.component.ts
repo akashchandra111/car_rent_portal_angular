@@ -51,9 +51,29 @@ wallet:string;
 		//   userName: '',
 		//   wallet: 0
 	  // }
+	  this.http.getUser().subscribe(
+		  (data)=>	{
+			  this.user = data;
+			//console.log(this.user);
+			if(this.user.userId == null)	{
+			  console.log(this.user);
+			  console.log("user not present");
+			  this.ifLogged=true;
+			  this.iftrue=true;
+			}
+			else 	{
+			  console.log(this.user);
+			  console.log("user is present");
+	this.ifLogged=false;
+	this.loginEvent.emit(this.user);
+	this.iftrue=false;
+			}
+		  }
+	  );
   }
 
   ngOnInit() {
+
   }
 
 checkLogin(){
@@ -88,9 +108,9 @@ this.iftrue=false;
 }
 
 register(){
-	let ranno=Math.floor(100000000 + Math.random() * 900000000).toString();
+	let ranNo=Math.floor(100000000 + Math.random() * 900000000).toString();
 	let userregister: User={
-		userId:ranno,
+		userId:ranNo,
 		firstName : this.firstName,
 		lastName: this.lastName,
 		mobileNo: this.mobileNo,
@@ -161,7 +181,7 @@ logout(){
 
 		if(this.message.status == null)	{
 
-console.log("asdddddddddddddd");
+
 		  this.ifLogged=false;
 
 		}
