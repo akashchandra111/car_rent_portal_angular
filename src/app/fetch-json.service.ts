@@ -26,37 +26,38 @@ export class FetchJSONService {
   };
 
   //************************** User APIs ***********************************
-  // User login
-  login(login: Login)	{
-	  return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
-	  //return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
-  }
-
-  // User logout
-  logout()	{
-	  return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
-	  //return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
-  }
+  // // User login
+  // login(login: Login)	{
+	//   return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
+  // }
+  //
+  // // User logout
+  // logout()	{
+	//   return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
+  // }
 
   // User deregister
   deRegister(login: Login)	{
+	  // Send the login object and it would automatically delete user from db
 	  return this.http.post<Message>(this.baseUrl + '/user/deregister', login, this.httpOptions);
   }
 
   // Update user properties
   updateUser(user: User)	{
+	  // Updates the user by passing the user object [don't change userId in any case]
 	  return this.http.put<Message>(this.baseUrl + '/user/update', user, this.httpOptions);
   }
 
   // User register
   register(register: User)	{
+	  // Construct the user object by giving random userId and all other fields
 	  return this.http.post<Message>(this.baseUrl + '/user/register', register, this.httpOptions);
-	  //return this.http.post<Message>(this.baseUrl + '/user/register', register, this.httpOptions);
   }
 
   // Get user_profile
-  getUser()	{
-	  return this.http.get<User>(this.baseUrl + '/user/get_user', {observe: 'response'});
+  getUser(login: Login)	{
+	  // As login functionality is removed you have to send login object
+	  return this.http.post<User>(this.baseUrl + '/user/get_user', login, {observe: 'response'});
   }
 
   // User wallet add money
@@ -73,7 +74,7 @@ export class FetchJSONService {
 
   // Get car by type
   getCarByType(carType: string)	{
-	  return this.http.get<Car[]>(this.baseUrl + '/car/get_by_type/' + carType, {observe: 'response'});
+	  return this.http.get<Car[]>(this.baseUrl + '/car/type/' + carType, {observe: 'response'});
   }
 
   // Get car by id
@@ -82,8 +83,8 @@ export class FetchJSONService {
   }
 
   // Update car
-  updateCar(car: Car)	{
-	  return this.http.put<Message>(this.baseUrl + '/car/update/' + car.carId, car, this.httpOptions);
+  updateCar(carId: string, car: Car)	{
+	  return this.http.put<Message>(this.baseUrl + '/car/update/' + carId + car.carId, car, this.httpOptions);
   }
 
   // Delete car
@@ -98,13 +99,15 @@ export class FetchJSONService {
   }
 
   // Get latest history
-  getLatestUserHistory()	{
-	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest', {observe: 'response'});
+  getLatestUserHistory(userId: string)	{
+	  // Send the userId from the user object to get its history
+	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest' + userId, {observe: 'response'});
   }
 
   // Get complete history
-  getCompleteHistory()	{
-	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history', {observe: 'response'});
+  getCompleteHistory(userId: string)	{
+	  // Send the userId from the user object to get its history
+	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history' + userId, {observe: 'response'});
   }
 
   // Cancel booking or delete history value

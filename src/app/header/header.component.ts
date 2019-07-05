@@ -36,10 +36,10 @@ wallet:string;
 
   constructor(private http: FetchJSONService,private router:Router)	{
 
-
-
-
-
+	  let login: Login = {
+  		id: this.username,
+  		password: this.password
+  	};
 
 	  // this.user =	{
 		//   userId: '',
