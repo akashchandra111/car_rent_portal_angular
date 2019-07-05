@@ -34,10 +34,10 @@ wallet:string;
 
   constructor(private http: FetchJSONService)	{
 
-
-
-
-
+	  let login: Login = {
+  		id: this.username,
+  		password: this.password
+  	};
 
 	  // this.user =	{
 		//   userId: '',
@@ -116,7 +116,7 @@ register(){
 		mobileNo: this.mobileNo,
 		govtIdType: this.idType,
 	govtIdNum: this.verification_id,
-		driving_id: this.driving_id,
+		drivingLicenseNum: this.driving_id,
 		userName: this.userName,
 password: this.passwordregister,
 		email: this.email,
