@@ -42,9 +42,14 @@ $("#loginbutton").on( "click", function() {
 $(".dropdown-trigger").dropdown();
 		$('.sidenav').sidenav();
 		console.log("Asd");
-		$('.modal').modal();
+	var pathname = window.location.pathname;
+console.log(pathname);
+		if(pathname=="/"){
+			console.log("Wrong pass");
+$('.modal').modal();
 		$('#login').modal('open');
-	    // Do something after 1 second
+}
+		// Do something after 1 second
 	}  , 1000 );
 
 });
@@ -66,9 +71,7 @@ $("#clicklogoutme").click(function() {
 $('.modal').modal();
 console.log("Asdsadass");
 });
-function logmeout(){
-	console.log("log me out");
-}
+
 
 
 				// Sidenav initialization

@@ -131,7 +131,7 @@ console.log("asd");
 			  <ul id="account_dropdown1" class="dropdown-content">
 				  <li><a class="indigo-text">Hi {{this.user.firstName}}</a></li>
 				  <li><a href="user_profile" class="indigo-text">Profile</a></li>
-				  <li><button  (click)="logout()" onclick="logmeout()" class="indigo-text">Logout</button></li>
+				  <li><button  (click)="logout()"  class="indigo-text">Logout</button></li>
 			  </ul>
 		  </ul>
 		  </ul>
@@ -169,7 +169,7 @@ console.log("asd");
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="checkLogin()" onclick="loginClicked()">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="checkLogin()" onclick="loginClicked();">
                Login
                <i class="material-icons right">send</i>
                </button>
