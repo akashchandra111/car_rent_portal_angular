@@ -8,7 +8,7 @@ import {User} from 'src/app/Interfaces/User';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
- 
+
   response: any;
   firstName: String = this.firstName;
   lastName: String = this.lastName;
@@ -17,8 +17,8 @@ export class UserProfileComponent implements OnInit {
   email: String = this.email
   wallet: number = this.wallet;
   userId: String = this.userId;
-  
-  // model: User = {  
+
+  // model: User = {
   //   userId: '',
   //   firstName:'',
   //   lastName: '',
@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
   //   userName: '',
   //   password: '',
   //   email: '',
-  //   wallet: 1000  
+  //   wallet: 1000
   // };
 
   constructor() {
