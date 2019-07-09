@@ -10,6 +10,7 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+	  // console.log("this is footer"+JSON.parse(localStorage.getItem('user')).userId);
   }
 
 }
