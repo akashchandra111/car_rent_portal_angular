@@ -11,6 +11,7 @@ import { UserpageComponent } from './userpage/userpage.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,10 @@ const routes: Routes = [
 		component: UserpageComponent
 	},
 	{
+		path: 'wallet'
+		component: WalletComponent
+	},
+	{
 	        path:'',
 	        component: HomepageComponent,
 	        pathMatch: 'full'
@@ -71,5 +76,6 @@ export const RouterComponents = [
     UserpageComponent,
     UserHistoryComponent,
 	AboutComponent,
-	ContactUsComponent
+	ContactUsComponent,
+	WalletComponent
 ];
