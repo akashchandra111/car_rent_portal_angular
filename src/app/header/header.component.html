@@ -57,13 +57,13 @@ console.log("asd");
 						   class="waves-effect waves-light modal-trigger">Wallet</a></li>
 					   <li><a href="#booking"
 						   class="waves-effect waves-dark dropdown-trigger"
-						   data-target="booking_dropdown">Booking</a></li>
+						   data-target="booking_dropdown" >Booking</a></li>
 					   <!-- Booking Dropdown -->
 					   <ul id="booking_dropdown" class="dropdown-content">
-						   <li><a href="/booking" class="indigo-text">Rent a car</a></li>
+						   <li><a href="choose_car" class="indigo-text" (click)="booking()">Rent a car</a></li>
 	 <!-- 						<li><a href="CurrentBooking.jsp" class="indigo-text">Current -->
 	 <!-- 								Booking</a></li> -->
-						   <li><a href="History.jsp" class="indigo-text">History</a></li>
+						   <li><a href="history" class="indigo-text" (click)="history()">History</a></li>
 					   </ul>
 					   <li><a href="#username"
 						   class="waves-effect waves-dark dropdown-trigger"
@@ -71,7 +71,7 @@ console.log("asd");
 					   </a></li>
 					   <!-- Account Dropdown -->
 					   <ul id="account_dropdown" class="dropdown-content">
-						   <li><a class="indigo-text">Hi {{this.user.firstName}}</a></li>
+						   <li><a class="indigo-text">Hi {{usershow}}</a></li>
 						   <li><a href="user_profile" class="indigo-text">Profile</a></li>
 						   <li><a href="#" (click)="logout()" id="clicklogoutme" class="indigo-text">Logout</a></li>
 					   </ul>
@@ -129,7 +129,7 @@ console.log("asd");
 			  </a></li>
 			  <!-- Account Dropdown -->
 			  <ul id="account_dropdown1" class="dropdown-content">
-				  <li><a class="indigo-text">Hi {{this.user.firstName}}</a></li>
+				  <li><a class="indigo-text">Hi {{this.firstName}}</a></li>
 				  <li><a href="user_profile" class="indigo-text">Profile</a></li>
 				  <li><button  (click)="logout()"  class="indigo-text">Logout</button></li>
 			  </ul>
@@ -169,7 +169,7 @@ console.log("asd");
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="checkLogin()" onclick="loginClicked();">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
                Login
                <i class="material-icons right">send</i>
                </button>
