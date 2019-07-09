@@ -12,7 +12,8 @@ import { Login } from './Interfaces/Login';
   providedIn: 'root'
 })
 export class FetchJSONService {
-	baseUrl: string = 'http://9.202.17.174:8080';
+	//baseUrl: string = 'http://9.202.17.174:8080';
+	baseUrl: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }

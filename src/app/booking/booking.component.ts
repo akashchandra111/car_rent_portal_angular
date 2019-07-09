@@ -78,54 +78,76 @@ export class BookingComponent implements OnInit {
 		  wallet: 0
 	  }
 
-	  // User booking object would be added to user_log table and car_status would be updated
-	  this.userLog = {
-		  userLogId: parseInt(Math.random() * 10e7).toString(),
-		  userId: this.user,
-		  startTime: parseInt(new Date(this.startDate + ' ' + this.startTime).getTime()).toString(),
-		  endTime: parseInt(new Date(this.endDate + ' ' + this.endTime).getTime()).toString(),
-		  currentLocation: this.startLocation,
-		  dropLocation: this.dropLocation,
-		  secretKey: parseInt(Math.random() * 10e7).toString(),
-		  totalAmount: this.calculatedBookingCost,
-		  paidAmount: this.calculatedBookingCost
-	  }
+
+	// User booking object would be added to user_log table and car_status would be updated
+	this.userLog = {
+		userLogId: parseInt(Math.random() * 10e7).toString(),
+		userId: this.user,
+		startTime: parseInt(new Date(this.startDate + ' ' + this.startTime).getTime()).toString(),
+		endTime: parseInt(new Date(this.endDate + ' ' + this.endTime).getTime()).toString(),
+		currentLocation: this.startLocation,
+		dropLocation: this.dropLocation,
+		secretKey: parseInt(Math.random() * 10e7).toString(),
+		totalAmount: this.calculatedBookingCost,
+		paidAmount: this.calculatedBookingCost
+	}
 
 	  // Getting free car from the car_status
 	  this.http.getCarStatusByCarId(this.car.carId).subscribe(
 		    (data)=>	{
 				this.carStatus = data['body'];
 
+				if(this.carStatus.carNo == null)	{
+					// That means either car doesn't exist or is already booked
+					this.toastMessage = "All the cars have been booked, please choose another or come after sometime";
+					return;
+				}
 				// Altering the car_status object
 				this.carStatus.userId = this.user;
 				this.carStatus.status = 'booked';
 
 				// Changing the car_status
-				this.http.updateCarStatus(this.carStatus).subscribe(
-					(updatedData)=>	{
-						this.message = updatedData;
-						if(this.message.status == "success")	{
-							 // Adding entry to user_log
-							this.http.addUserLog(this.userLog).subscribe(
-					  		  (data)=>	{
-					  			  this.message == data;
-								  if(this.message.status == "success")	{
-									  this.toastMessage = "Booking success";
-									  console.log(this.toastMessage)
-								  }
-								  else 	{
-									  this.toastMessage = "Booking failure, please report and check after sometime.";
-									  console.log(this.toastMessage);
-								  }
-					  		  }
-					  	  );
+				if(this.user.wallet >= this.calculatedBookingCost)	{
+					this.http.updateCarStatus(this.carStatus).subscribe(
+						(updatedData)=>	{
+							this.message = updatedData;
+							if(this.message.status == "success")	{
+
+								 // Adding entry to user_log
+								this.http.addUserLog(this.userLog).subscribe(
+						  		  (data)=>	{
+						  			  this.message = data;
+									  if(this.message.status == "success")	{
+										  this.user.wallet = this.user.wallet - this.calculatedBookingCost;
+										  //console.log(this.toastMessage);
+										  this.http.updateUser(this.user).subscribe(
+											  (data)=>	{
+												  this.message = data;
+												  if(this.message.status == "success")	{
+													  this.toastMessage = "Booking success";
+													  return;
+												  }
+											  }
+										  );
+									  }
+									  else 	{
+										  this.toastMessage = "Booking failure, please report and check after sometime.";
+										  //console.log(this.toastMessage);
+									  }
+						  		  }
+						  	  );
+							}
+							else 	{
+								this.toastMessage = "Booking failure, please report and check after sometime.";
+								//console.log(this.toastMessage);
+							}
 						}
-						else 	{
-							this.toastMessage = "Booking failure, please report and check after sometime.";
-							console.log(this.toastMessage);
-						}
-					}
-				);
+					);
+				}
+				else	{
+					this.toastMessage = "You balance is low, please recharge your wallet first";
+					//console.log(this.message);
+				}
 			}
 	  );
   }
