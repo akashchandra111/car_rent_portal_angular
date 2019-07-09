@@ -16,8 +16,7 @@ import { FetchJSONService } from './fetch-json.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    RouterComponents,
-    WalletComponent
+    RouterComponents
 ],
   imports: [
     BrowserModule,

@@ -47,7 +47,7 @@ const routes: Routes = [
 		component: UserpageComponent
 	},
 	{
-		path: 'wallet'
+		path: 'wallet',
 		component: WalletComponent
 	},
 	{
