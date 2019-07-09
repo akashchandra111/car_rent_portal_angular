@@ -12,7 +12,7 @@ import { Login } from './Interfaces/Login';
   providedIn: 'root'
 })
 export class FetchJSONService {
-	baseUrl: string = 'http://9.202.17.174:8080';
+	baseUrl: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
@@ -26,15 +26,15 @@ export class FetchJSONService {
   };
 
   //************************** User APIs ***********************************
-  // // User login
-  // login(login: Login)	{
-	//   return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
-  // }
-  //
-  // // User logout
-  // logout()	{
-	//   return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
-  // }
+  // User login
+  login(login: Login)	{
+	  return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
+  }
+  
+  // User logout
+  logout()	{
+	  return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
+  }
 
   // User deregister
   deRegister(login: Login)	{
@@ -107,7 +107,7 @@ export class FetchJSONService {
   // Get complete history
   getCompleteHistory(userId: string)	{
 	  // Send the userId from the user object to get its history
-	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history' + userId, {observe: 'response'});
+	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history/' + userId, {observe: 'response'});
   }
 
   // Cancel booking or delete history value
