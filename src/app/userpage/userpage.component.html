@@ -2,7 +2,7 @@
 <!-- Card Panel [Author: Akash Chandra]-->
 <div class="row">
   <div class="col s12 m6 l3">
-    <div class="card-panel blue darken-3 z-depth-2">
+    <div class="card-panel card-style blue darken-3 z-depth-3">
       <div class="row">
         <div class="col s3">
           <i class="material-icons medium right blue-text text-lighten-2"
@@ -12,16 +12,16 @@
           <div class="card-content white-text">
             <h4>Wallet</h4>
 
-            <ng-template [ngIf]="userWallet >= 1000" [ngIfElse]="isLessthan">
+            <ng-template [ngIf]="user.wallet >= 1000" [ngIfElse]="isLessthan">
               <p>
-                You have <b>{{ userWallet }} Rs</b> remaining in your wallet
+                You have <b>{{ user.wallet }} Rs</b> remaining in your wallet
                 balance
               </p>
             </ng-template>
             
             <ng-template #isLessthan>
               <p>
-                You have <b>{{ userWallet }} Rs</b> remaining, please recharge
+                You have <b>{{ user.wallet }} Rs</b> remaining, please recharge
                 your account
               </p>
             </ng-template>
@@ -40,17 +40,17 @@
         </div>
         <div class="col s9">
           <div class="card-content white-text">
-            <h4>Recent Booking</h4>
-
-            <ng-template [ngIf]="userLog.isUserIdPresent(id)" [ngIfElse]="isNotEquals">
-              <p>
-                Pick up your car from <b>{{ carPickupLocation }}</b> at <b>{{ carPickupTime }}</b>
-                Use this secret key: <b>{{ carSecretKey }}</b>
+            <h4>Upcoming Bookings</h4>
+           
+            <ng-template [ngIf]="unixStartTime > currentUnixTime" [ngIfElse]="isLesser">
+              <p ng-if="userlog != null">
+                Pick up your car from <b>{{ userlog.currentLocation }}</b> to <b>{{ userlog.dropLocation }}</b> at <b>{{ userlog.startTime }}</b>
+                Use this secret key: <b>{{ userlog.secretKey }}</b>
               </p>
             </ng-template>
             
-            <ng-template #isNotEquals>
-              <p>No current booking</p>
+            <ng-template #isLesser>
+              <p>No Upcoming Bookings</p>
             </ng-template>
 
           </div>
@@ -68,12 +68,18 @@
         <div class="col s9">
           <div class="card-content white-text">
             <h4>History</h4>
-            <p>
-              Your Bookings: 
+
+            <ng-template [ngIf]= "unixStartTime < currentUnixTime" [ngIfElse]="isGreater">
+            <p ng-if="userlog != null"> 
+              You have booked a car from <b>{{ userlog.currentLocation }}</b>  to <b>{{ userlog.dropLocation }}</b> at <b>{{ userlog.startTime }}</b>
+              Secret Key <b>{{ userlog.secretKey }}</b>
             </p>
-            <p>
-              You have booked a car from <b>White field, Bangalore</b>to<b>Tirupathi</b> at <b>30-06-2019, 6:30</b>
-            </p>
+            </ng-template>
+
+            <ng-template #isGreater>
+              <p>No Past Bookings</p>
+            </ng-template>
+
           </div>
         </div>
       </div>
@@ -122,7 +128,7 @@
             <button type="submit"
               class="modal-close waves-effect waves-indigo btn left indigo "
               onclick="M.toast({html: 'Money added!'})"
-              style="margin-left: 2%;">Add Money</button>
+              style="margin-left: 2%;" [(ngModel)] = "addMoney">Add Money</button>
           </div>
         </div>
       </div>

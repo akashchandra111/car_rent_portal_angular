@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Router,NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
 
+
+	  constructor(private router:Router) {
+
+		  if(JSON.parse(localStorage.getItem('user'))== null)	{
+	console.log("choooooose");
+			  this.router.navigateByUrl([''], {
+	  			queryParams: {}
+	  		});
+
+
+		  }
+	  }
   ngOnInit() {
   }
-
 }

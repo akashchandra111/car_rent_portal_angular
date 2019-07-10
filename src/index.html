@@ -41,10 +41,16 @@ $("#loginbutton").on( "click", function() {
 	setTimeout( function(){
 $(".dropdown-trigger").dropdown();
 		$('.sidenav').sidenav();
-		console.log("Asd");
-		$('.modal').modal();
+
+	var pathname = window.location.pathname;
+console.log(pathname);
+		if(pathname=="/"){
+
+$('.modal').modal();
+
 		$('#login').modal('open');
-	    // Do something after 1 second
+}
+		// Do something after 1 second
 	}  , 1000 );
 
 });
@@ -53,7 +59,7 @@ $("#registerclicked").on( "click", function() {
 	setTimeout( function(){
 $(".dropdown-trigger").dropdown();
 		$('.sidenav').sidenav();
-		console.log("Asd");
+
 	    // Do something after 1 second
 	}  , 1000 );
 
@@ -64,11 +70,9 @@ $("#clicklogoutme").click(function() {
 
 		$('.sidenav').sidenav();
 $('.modal').modal();
-console.log("Asdsadass");
+
 });
-function logmeout(){
-	console.log("log me out");
-}
+
 
 
 				// Sidenav initialization
@@ -87,18 +91,16 @@ function logmeout(){
 				// Form initialization
 				$('select').formSelect();
 
-				//  $('.datepicker').datepicker();
-				//  $('.timepicker').timepicker();
 				//Author Dheeraj Joshi
 				//User profile Drop down
 				console.log("Asdsa");
 				$(".dropdown-trigger").dropdown();
 
 				//Time picker
-				$(document).ready(function(){
-					$('.timepicker').timepicker();
-				});
+				$('.timepicker').timepicker();
+
 				//Date picker
+				$('.datepicker').datepicker();
 
 				// User login drop down
 				// Sidenav initialization
@@ -120,8 +122,6 @@ function logmeout(){
 				// Form initialization
 				$('select').formSelect();
 
-				// $('.datepicker').datepicker();
-				// $('.timepicker').timepicker();
 				$('.modal').modal();
 
 				//sidenav collapsible initialization
@@ -134,6 +134,10 @@ function logmeout(){
 				$(document).ready(function(){
 					$('.datepicker').datepicker();
 				});
+
+				$(document).ready(function(){
+    			$('.modal').modal();
+  				});
 			}
 		);
 
@@ -285,14 +289,6 @@ function logmeout(){
 
 				// Form initialization
 				$('select').formSelect();
-
-				// $('.datepicker').datepicker();
-				// $('.timepicker').timepicker();
-
-
-
-
-
 
 				// 	$('.addbuttondeleteform').on('click',function(){
 				// 		var inputfield = $('<div class="row"><div class="col s10 m10 l10 input-field"><i class="material-icons prefix ">directions_car</i><input id="car_no" type="text" class="validate"><label for="car_no">Enter Car Number</label></div><div class="col s2 l2 m2"><a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform"><i class="material-icons ">add</i></a><a class="btn-floating btn-small waves-effect waves-light red addbuttondeleteform"><i class="material-icons addbuttondeleteform">delete</i></a></div></div>');

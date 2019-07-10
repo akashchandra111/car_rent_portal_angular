@@ -12,8 +12,8 @@ import { Login } from './Interfaces/Login';
   providedIn: 'root'
 })
 export class FetchJSONService {
-  // baseUrl: string = 'http://9.202.17.174:8080';
-  baseUrl : string = 'http://localhost:8080';
+	//baseUrl: string = 'http://9.202.17.174:8080';
+	baseUrl: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
@@ -31,7 +31,6 @@ export class FetchJSONService {
   login(login: Login)	{
 	  return this.http.post<User>(this.baseUrl + '/user/login', login, this.httpOptions);
   }
-  
   // User logout
   logout()	{
 	  return this.http.post<Message>(this.baseUrl + '/user/logout', {}, this.httpOptions);
@@ -84,8 +83,8 @@ export class FetchJSONService {
   }
 
   // Update car
-  updateCar(carId: string, car: Car)	{
-	  return this.http.put<Message>(this.baseUrl + '/car/update/' + carId + car.carId, car, this.httpOptions);
+  updateCar(car: Car)	{
+	  return this.http.put<Message>(this.baseUrl + '/car/update/' + car.carId, car, this.httpOptions);
   }
 
   // Delete car
@@ -108,7 +107,7 @@ export class FetchJSONService {
   // Get complete history
   getCompleteHistory(userId: string)	{
 	  // Send the userId from the user object to get its history
-	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history' + userId, {observe: 'response'});
+	  return this.http.get<UserLog[]>(this.baseUrl + '/user_log/history/' + userId, {observe: 'response'});
   }
 
   // Cancel booking or delete history value
@@ -121,7 +120,7 @@ export class FetchJSONService {
 	  return this.http.put<Message>(this.baseUrl + '/user_log/update/' + bookingId, userLog, this.httpOptions);
   }
 
-  //************************** user log APIs ***********************************
+  //************************** carStatus log APIs ***********************************
   // Add CarStatus
   addCarStatus(carStatus: CarStatus)	{
 	  return this.http.post<Message>(this.baseUrl + '/car_status/add', carStatus, this.httpOptions);
