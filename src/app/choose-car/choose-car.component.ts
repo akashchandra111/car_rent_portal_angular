@@ -12,18 +12,23 @@ import {HeaderComponent} from '../header/header.component';
 export class ChooseCarComponent implements OnInit {
 	cars: Car[];
 
-  constructor(private http: FetchJSONService,router:Router) {
+  constructor(private http: FetchJSONService,private router:Router) {
 
 	  if(JSON.parse(localStorage.getItem('user'))== null)	{
+console.log("choooooose");
+		  this.router.navigateByUrl([''], {
+  			queryParams: {}
+  		});
 
-	  console.log("user not present");
 
-	  window.location="/index.html";
-	}
-
+	  }
+	  else{
+	    console.log("i am choose");
+	  }
   }
 
   ngOnInit() {
+
 
   }
 
