@@ -47,13 +47,8 @@ export class HeaderComponent implements OnInit {
 
         } else {
 			this.iftrue = false;
-            if (JSON.parse(localStorage.getItem('user')).userId == 0) {
-                this.router.navigate(['/admin'], {
-                    queryParams: {}
-                }).then(() => {
-
-
-                });
+if(JSON.parse(localStorage.getItem('user')).userId == 0) {
+                this.router.navigate(['/admin']);
             } else {
 
                 this.iftrue = false;
@@ -184,8 +179,12 @@ export class HeaderComponent implements OnInit {
                     this.ifAlert = false;
                     localStorage.setItem('user', JSON.stringify(this.user));
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
-                    window.location = "/dashboard";
+this.router.navigate(['/dashboard'], {
+	queryParams: {}
+}).then(() => {
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 
+});
                     this.iftrue = false;
                     this.ifLogged = false;
 
@@ -292,6 +291,15 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 	}
 	walletroute(){
 		this.router.navigate(['/wallet'], {
+			queryParams: {}
+		}).then(() => {
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
+		});
+	}
+
+	profile(){
+		this.router.navigate(['/user_profile'], {
 			queryParams: {}
 		}).then(() => {
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
