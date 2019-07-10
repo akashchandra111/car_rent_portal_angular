@@ -71,22 +71,45 @@ export class UserProfileComponent implements OnInit {
     }
  
   changeUserpassword(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+
   
  
   }
   changeMobileNo(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
   
    
   }
 
   changeEmail(){
-     console.log(this.user.email);
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
     
   }
 
   changeGovId(){
    
-   console.log(this.user.govtIdNum);
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
   
   }
   deleteAccount()
