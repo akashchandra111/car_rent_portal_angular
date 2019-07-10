@@ -68,7 +68,7 @@ export class BookingComponent implements OnInit {
 		  userId: 'bb22',
 		  firstName: 'string',
 		  lastName: 'string',
-		  mobileNo: 'string',
+		  mobileNum: 'string',
 		  govtIdType: 'string',
 		  govtIdNum: 'string',
 		  drivingLicenseNum: 'string',
