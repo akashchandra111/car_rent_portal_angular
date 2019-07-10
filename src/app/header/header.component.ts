@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
 
                             console.log("user is present");
                             this.ifLogged = false;
-                            
+
                             this.iftrue = false;
 
 
@@ -201,7 +201,7 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
             userId: ranNo,
             firstName: this.firstName,
             lastName: this.lastName,
-            mobileNum: this.mobileNo,
+            mobileNum: this.mobileNum,
             govtIdType: this.idType,
             govtIdNum: this.verification_id,
             drivingLicenseNum: this.drivingLicenseNum,
