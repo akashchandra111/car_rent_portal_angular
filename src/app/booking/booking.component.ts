@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FetchJSONService } from '../fetch-json.service';
 import { Car } from '../Interfaces/Car';
+import { Login } from '../Interfaces/Login';
 import { CarStatus } from '../Interfaces/CarStatus';
 import { User } from '../Interfaces/User';
 import { UserLog } from '../Interfaces/UserLog';
@@ -48,6 +49,18 @@ export class BookingComponent implements OnInit {
 			  this.car = data['body'];
 		  }
 	  );
+
+	  // For testing purpose otherwise we will use object from session
+	  let login: Login = {
+		  id: JSON.parse(localStorage.getItem('user')).userId,
+		  password: JSON.parse(localStorage.getItem('user')).password
+	  }
+
+	  this.http.getUser(login).subscribe(
+		(data)=>	{
+			this.user = data['body'];
+		}
+	  );
   }
 
   checkCost()	{
@@ -62,22 +75,6 @@ export class BookingComponent implements OnInit {
   bookCar()	{
 	  // Would calculate price and use it for sending in the userLog
 	  this.checkCost();
-
-	  // For testing purpose otherwise we will use object from session
-	  this.user = {
-		  userId: 'bb22',
-		  firstName: 'string',
-		  lastName: 'string',
-		  mobileNum: 'string',
-		  govtIdType: 'string',
-		  govtIdNum: 'string',
-		  drivingLicenseNum: 'string',
-		  userName: 'string',
-		  password: 'string',
-		  email: 'string',
-		  wallet: 0
-	  }
-
 
 	// User booking object would be added to user_log table and car_status would be updated
 	this.userLog = {
@@ -124,6 +121,7 @@ export class BookingComponent implements OnInit {
 											  (data)=>	{
 												  this.message = data;
 												  if(this.message.status == "success")	{
+													  console.log(this.userLog);
 													  this.toastMessage = "Booking success";
 													  return;
 												  }
@@ -139,7 +137,7 @@ export class BookingComponent implements OnInit {
 							}
 							else 	{
 								this.toastMessage = "Booking failure, please report and check after sometime.";
-								//console.log(this.toastMessage);
+								console.log(this.user);
 							}
 						}
 					);
