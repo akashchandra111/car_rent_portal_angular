@@ -50,7 +50,7 @@
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Delete Car</h4>
-                       <p>There are currently  <b>4000</b>  </p>
+                       <p>There are currently {{me}} <b>4000</b>  </p>
                     </div>
                  </div>
               </div>
@@ -66,74 +66,30 @@
                     <h3 class="indigo-text">ADD Car</h3>
                     <div class="row">
                        <div class="col s12">
-                          <div class="row">
-                             <div class="col s12 input-field">
-                                <i class="material-icons prefix">mode_edit</i>
-                                <input id="car_name" type="text" class="validate" [(ngModel)]="carName" >
-                                <label for="car_name">Car Name</label>
-                             </div>
-                          </div>
+						   <div class="row">
+						      <div class="col s12 input-field">
+						   	  <i class="material-icons prefix">mode_edit</i>
+						   	  <input id="car_id" type="text" class="validate" [(ngModel)]="carId" >
+						   	  <label for="car_id">Car Id</label>
+						      </div>
+						   </div>
+
+
+
                           <div class="row">
                              <div class="col s12 input-field">
                                 <i class="material-icons prefix">directions_car</i>
                                 <input id="car_no" type="text" class="validate" [(ngModel)]="carNumber">
-                                <label for="car_no">Enter Car Number</label>
-                             </div>
-                          </div>
-                          <div class="row">
-                             <div class="col s12 input-field">
-                                <i class="material-icons prefix">ev_station</i>
-                                <input id="mileage" type="text" class="validate" [(ngModel)]="mileage">
-                                <label for="mileage">Mileage</label>
+                                <label for="car_no">Enter Car Number </label>
                              </div>
                           </div>
 
-						  <div class="row">
-						     <div class="col s12 input-field">
-						  	  <i class="material-icons prefix">accessibility</i>
-						  	  <input id="mileage" type="text" class="validate" [(ngModel)]="seats">
-						  	  <label for="mileage">Seats</label>
-						     </div>
+
+                          <div class="row">
+                             <a class="waves-effect waves-light btn indigo" (click)="addCar()">Add Car </a>
+{{addstatus}}
 						  </div>
 
-						  <div class="row">
-						     <div class="col s12 input-field">
-						  	<i class="material-icons prefix">mode_edit</i>
-						  	<input id="mileage" type="text" class="validate" [(ngModel)]="description">
-						  	<label for="mileage">Description</label>
-						     </div>
-						  </div>
-
-
-                          <div class="row">
-                             <div class="input-field col s12">
-                                <select>
-                                   <option value="" disabled selected [(ngModel)]="carType">Choose your option</option>
-                                   <option value="1">Micro</option>
-                                   <option value="2">Mini</option>
-                                   <option value="3">SUV</option>
-                                   <option value="4">Deluxe</option>
-                                </select>
-                                <label>Select Car Type</label>
-                             </div>
-                          </div>
-                          <div class="row">
-                             <div class="col s12 input-field" style="margin-left:1%;">
-                                <!-- Dropdown Trigger -->
-                                <div class="file-field input-field">
-                                   <div class="btn indigo">
-                                      <span class="">File</span>
-                                      <input type="file">
-                                   </div>
-                                   <div class="file-path-wrapper">
-                                      <input class="file-path validate" type="text">
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                          <div class="row">
-                             <a class="waves-effect waves-light btn indigo">Add Car</a>
-                          </div>
                        </div>
                     </div>
                  </div>
