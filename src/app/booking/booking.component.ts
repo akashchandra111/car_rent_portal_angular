@@ -56,7 +56,7 @@ export class BookingComponent implements OnInit {
 
 	  let dateDiffInHours = (endDateTime - startDateTime) / 36e5;
 
-	  this.calculatedBookingCost = parseInt(dateDiffInHours * this.car.cost);
+	  this.calculatedBookingCost = Math.floor(dateDiffInHours * this.car.cost);
   }
 
   bookCar()	{
@@ -81,13 +81,13 @@ export class BookingComponent implements OnInit {
 
 	// User booking object would be added to user_log table and car_status would be updated
 	this.userLog = {
-		userLogId: parseInt(Math.random() * 10e7).toString(),
+		userLogId: Math.floor(Math.random() * 10e7).toString(),
 		userId: this.user,
-		startTime: parseInt(new Date(this.startDate + ' ' + this.startTime).getTime()).toString(),
-		endTime: parseInt(new Date(this.endDate + ' ' + this.endTime).getTime()).toString(),
+		startTime: Math.floor(new Date(this.startDate + ' ' + this.startTime).getTime()).toString(),
+		endTime: Math.floor(new Date(this.endDate + ' ' + this.endTime).getTime()).toString(),
 		currentLocation: this.startLocation,
 		dropLocation: this.dropLocation,
-		secretKey: parseInt(Math.random() * 10e7).toString(),
+		secretKey: Math.floor(Math.random() * 10e7).toString(),
 		totalAmount: this.calculatedBookingCost,
 		paidAmount: this.calculatedBookingCost
 	}

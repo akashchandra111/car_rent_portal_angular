@@ -14,7 +14,7 @@ import { CarStatus } from '../Interfaces/CarStatus';
 export class AdminPanelComponent implements OnInit {
 
 	 carNumber: string;
-	carId: string;	
+	carId: string;
 addstatus:string;
 
 
