@@ -50,7 +50,11 @@ export class UserHistoryComponent implements OnInit {
             log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
             log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
           }
-        }); 
+      });
+      this.http.cancelBooking(this.bookingId).subscribe(data => {
+        this.userlog = data['body'];
+        console.log("welcome");
+      }); 
     });
       // console.log(this.normalTimeFormat);
       
@@ -59,9 +63,12 @@ export class UserHistoryComponent implements OnInit {
   ngOnInit() {
    
   }
-  onDelete(userLogId) {
-      this.http.cancelBooking(this.bookingId).subscribe(data => {
-        this.userlog = data['body'];
-      });
+  onDelete() {
+    console.log("checking");
+    
+    this.http.cancelBooking(this.bookingId).subscribe(data => {
+      this.userlog = data['body'];
+      console.log("welcome");
+    });
   }
 }

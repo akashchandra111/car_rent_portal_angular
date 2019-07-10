@@ -1,7 +1,7 @@
 
 <!-- Card Panel [Author: Akash Chandra]-->
 <div class="row">
-  <div class="col s12 m6 l3">
+  <div class="col s12 m4 14">
     <div class="card-panel card-style blue darken-3 z-depth-3">
       <div class="row">
         <div class="col s3">
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m6 l3">
+  <div class="col s12 m4 14">
     <div class="card-panel card-style blue darken-3 z-depth-3">
       <div class="row">
         <div class="col s3">
@@ -43,9 +43,9 @@
             <h4>Upcoming Bookings</h4>
            
             <ng-template [ngIf]="unixStartTime > currentUnixTime" [ngIfElse]="isLesser">
-              <p ng-if="userlog != null">
-                Pick up your car from <b>{{ userlog.currentLocation }}</b> to <b>{{ userlog.dropLocation }}</b> at <b>{{ userlog.startTime }}</b>
-                Use this secret key: <b>{{ userlog.secretKey }}</b>
+              <p *ngFor="let userHistory of userlog">
+                Pick up your car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
+                Use this secret key: <b>{{ userHistory.secretKey }}</b>
               </p>
             </ng-template>
             
@@ -58,34 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m6 l3">
-    <div class="card-panel card-style blue darken-3 z-depth-3">
-      <div class="row">
-        <div class="col s3">
-          <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">history</i>
-        </div>
-        <div class="col s9">
-          <div class="card-content white-text">
-            <h4>History</h4>
-
-            <ng-template [ngIf]= "unixStartTime < currentUnixTime" [ngIfElse]="isGreater">
-            <p ng-if="userlog != null"> 
-              You have booked a car from <b>{{ userlog.currentLocation }}</b>  to <b>{{ userlog.dropLocation }}</b> at <b>{{ userlog.startTime }}</b>
-              Secret Key <b>{{ userlog.secretKey }}</b>
-            </p>
-            </ng-template>
-
-            <ng-template #isGreater>
-              <p>No Past Bookings</p>
-            </ng-template>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m6 l3">
+  <div class="col s12 m4 14">
     <div class="card-panel blue darken-3 z-depth-3">
       <div class="row">
         <div class="col s3">

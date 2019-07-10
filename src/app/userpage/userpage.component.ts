@@ -42,26 +42,22 @@ export class UserpageComponent implements OnInit {
           this.http.getCompleteHistory(this.user.userId).subscribe(
             (data)=>  {
               this.userlog = data['body'];
-               for(let log of this.userlog)  {
-                 this.unixStartTime = parseInt(log.startTime);
-                 this.unixEndTime = parseInt(log.endTime);
-                 console.log(this.unixStartTime);
-               }
-               console.log(this.currentUnixTime);
-               
-               
-               
-            });
+                for(let log of this.userlog)  {
+                  this.unixStartTime = parseInt(log.startTime);
+                  this.unixEndTime = parseInt(log.endTime);
+                } 
+                for(let log of this.userlog)  {
+                  log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
+                  log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
+                }             
+          });
+
           this.http.getUser(this.login).subscribe(
               (data)=>  {
                 this.user = data['body'];
-            });    
-          this.http.addMoney(this.user, this.money).subscribe(
-            (data)=> {
-                this.user = data['body'];
-            });    
-      }); 
-               
+          });    
+           
+      });   
          
   }
 
