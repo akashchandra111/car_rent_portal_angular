@@ -16,9 +16,7 @@ export class ChooseCarComponent implements OnInit {
 
 	  if(JSON.parse(localStorage.getItem('user'))== null)	{
 console.log("choooooose");
-		  this.router.navigateByUrl([''], {
-  			queryParams: {}
-  		});
+		  this.router.navigate(['']);
 
 
 	  }
