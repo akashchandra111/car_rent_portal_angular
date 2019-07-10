@@ -1,12 +1,12 @@
 <!-- [Author : Vyshnavi] -->
 
-<div ng-app="myApp" 
+<div class="container">
+    <div ng-app="myApp" 
         ng-controller="myController">
         <h4 align = "center "><b>User History</b></h4>
         <table class = "responsive-table">
             <thead>
               <tr>
-                  <th>User LogId</th>
                   <th>User Id</th>
                   <th>Start Location</th>
                   <th>Drop Location</th>
@@ -21,29 +21,16 @@
                   <ng-template [ngIf]="userlog != null" [ngIfElse]="isNull">
                     <tr *ngFor="let userHistory of userlog">
                       <td>{{ userHistory.userLogId }}</td>
-                      <td>{{ userHistory.userId.userId }}</td>
                         <td>{{ userHistory.currentLocation }}</td>
                           <td>{{ userHistory.dropLocation }}</td>
                             <td>{{ userHistory.startTime }}</td>
                               <td>{{ userHistory.endTime }}</td>
                                 <td>{{ userHistory.secretKey }}</td>
-                                <td>{{ userHistory.totalAmount }}</td>
-                                <td>       
-                                          <a class="waves-effect waves-light btn indigo darken-3 modal-trigger" (click)="onDelete()" href="#modal1">
-                                            <i class="material-icons left">delete</i>Delete</a></a>
-
-                                          <!-- <div id="modal1" class="modal">
-                                            <div class="modal-content">
-                                              <h4><b>Delete History</b></h4>
-                                              <p>Are you sure want to delete this row</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a class=" modal-action modal-close waves-effect waves-indigo btn-flat">No</a>
-                                                <a class=" modal-action modal-close waves-effect waves-indigo btn-flat" ng-click="onDelete()">Yes</a>
-                                            </div>
-                                          </div> -->
-        
-                                  </td>
+                                  <td>{{ userHistory.totalAmount }}</td>
+                                    <td>       
+                                        <a class="waves-effect waves-light btn-floating red" (click)="onDelete(userHistory.userLogId)">
+                                        <i class="material-icons left">delete</i></a>       
+                                    </td>
                     </tr>
                   </ng-template>  
                 
@@ -52,4 +39,5 @@
                   </ng-template>  
             </tbody>
         </table>
-</div>
+    </div>
+</div>    

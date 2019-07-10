@@ -3,6 +3,7 @@ import { UserLog } from 'src/app/Interfaces/UserLog';
 import { Login } from 'src/app/Interfaces/Login';
 import { User } from 'src/app/Interfaces/User';
 import { FetchJSONService } from '../fetch-json.service';
+import { Message } from '../Interfaces/Message';
 
 @Component({
   selector: 'app-user-history',
@@ -27,16 +28,16 @@ export class UserHistoryComponent implements OnInit {
     bookingId : string;
 
   // get the objects from [session] userId & password
-    userId : string = "1467"; //
-    password : string = "vyshu"; //
+    userId : string; //
+    password : string; //
 
     
     // normalTimeFormat = this.unixTime.toLocaleString();
     
   constructor(private http: FetchJSONService) {
     this.login = {
-      id: this.userId,
-      password: this.password
+      id: JSON.parse(localStorage.getItem('user')).userId,
+      password: JSON.parse(localStorage.getItem('user')).password
     }
 
     this.http.getUser(this.login).subscribe(
@@ -51,11 +52,7 @@ export class UserHistoryComponent implements OnInit {
             log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
           }
       });
-      this.http.cancelBooking(this.bookingId).subscribe(data => {
-        this.userlog = data['body'];
-        console.log("welcome");
-      }); 
-    });
+      });
       // console.log(this.normalTimeFormat);
       
    }
@@ -63,12 +60,10 @@ export class UserHistoryComponent implements OnInit {
   ngOnInit() {
    
   }
-  onDelete() {
-    console.log("checking");
-    
-    this.http.cancelBooking(this.bookingId).subscribe(data => {
-      this.userlog = data['body'];
-      console.log("welcome");
+  onDelete(userLogId: string) {
+    console.log(userLogId);
+    this.http.cancelBooking(userLogId).subscribe(
+      (data : Message)=> {
     });
   }
 }
