@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchJSONService } from '../fetch-json.service';
-import {User} from 'src/app/Interfaces/User';
+import { User } from 'src/app/Interfaces/User';
+import { Login } from 'src/app/Interfaces/Login'
+import { Message } from 'src/app/Interfaces/Message';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,33 +10,113 @@ import {User} from 'src/app/Interfaces/User';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  
+   user: User = {  
+    userId: '',
+    firstName:'',
+    lastName: '',
+    mobileNum: '',
+    govtIdType: '',
+    govtIdNum: '',
+    drivingLicenseNum: '',
+    userName: '',
+    password: '',
+    email: '',
+    wallet: 0
+  };
 
+  message: Message;
+ 
+  userId: string  = "2001"; 
+  password: string = "bhavana";
+  
+  // userNew : User[];
+
+  login: Login;
   response: any;
-  firstName: String = this.firstName;
-  lastName: String = this.lastName;
-  mobileNo: String = this.mobileNo;
-  userName: String = this.userName;
-  email: String = this.email
-  wallet: number = this.wallet;
-  userId: String = this.userId;
 
-  // model: User = {
-  //   userId: '',
-  //   firstName:'',
-  //   lastName: '',
-  //   mobileNo: '',
-  //   govtIdType: '',
-  //   govtIdNum: '',
-  //   userName: '',
-  //   password: '',
-  //   email: '',
-  //   wallet: 1000
-  // };
+  constructor(private http: FetchJSONService) 
+  {
+      this.login =
+       {
+      id: this.userId,
+      password: this.password 
+       }
 
-  constructor() {
-
-  }
+    this.http.getUser(this.login).subscribe(
+      (data) => {
+        this.user = data['body'];
+        console.log(data);
+        // this.http.updateUser(this.user).subscribe(
+        //   (data) => this.user.userName
+          
+        //  );
+      });
+        
+   }
+  
   ngOnInit() {
 
   }
+ 
+  
+  changeUserName()
+   {
+     console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+    }
+ 
+  changeUserpassword(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+
+  
+ 
+  }
+  changeMobileNo(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+  
+   
+  }
+
+  changeEmail(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+    
+  }
+
+  changeGovId(){
+   
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+  
+  }
+  deleteAccount()
+{
+  
+
+}  
+  
+ 
 }

@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     usershow: string = "";
     firstName: string;
     lastName: string;
-    mobileNo: string;
+    mobileNum: string;
     idType: string;
     verification_id: string;
     drivingLicenseNum: string;
@@ -201,7 +201,7 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
             userId: ranNo,
             firstName: this.firstName,
             lastName: this.lastName,
-            mobileNo: this.mobileNo,
+            mobileNum: this.mobileNum,
             govtIdType: this.idType,
             govtIdNum: this.verification_id,
             drivingLicenseNum: this.drivingLicenseNum,

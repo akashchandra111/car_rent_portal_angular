@@ -19,6 +19,10 @@ const routes: Routes = [
         component: BookingComponent
     },
     {
+        path: 'dashboard',
+        component: UserpageComponent
+    },
+    {
         path: 'user_profile',
         component: UserProfileComponent
     },
