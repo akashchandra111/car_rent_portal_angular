@@ -7,6 +7,7 @@ import { User } from './Interfaces/User';
 import { UserLog } from './Interfaces/UserLog';
 import { Message } from './Interfaces/Message';
 import { Login } from './Interfaces/Login';
+import { CarsBookStat } from './Interfaces/CarsBookStat';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ import { Login } from './Interfaces/Login';
 export class FetchJSONService {
 	//baseUrl: string = 'http://9.202.17.174:8080';
 	baseUrl: string = 'http://localhost:8080';
+	adminBaseUrl: string = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {
   }
@@ -144,5 +146,14 @@ export class FetchJSONService {
   // Delete car status
   deleteCarStatus(carNo: string)	{
 	  return this.http.delete<Message>(this.baseUrl + '/car_status/delete/' + carNo, this.httpOptions);
+  }
+
+  //************************** admin method APIs ***********************************
+  getTotalUser()	{
+	  return this.http.get<number>(this.adminBaseUrl + '/total_users', {observe: 'response'});
+  }
+
+  getCarStats()	{
+	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
   }
 }
