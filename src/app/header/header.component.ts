@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
 
                             console.log("user is present");
                             this.ifLogged = false;
-                            this.loginEvent.emit(this.user);
+                            
                             this.iftrue = false;
 
 
@@ -276,12 +276,26 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 	booking(){
 		this.router.navigate(['/choose_car'], {
 			queryParams: {}
+		}).then(() => {
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
 		});
 	}
 
 	history(){
 		this.router.navigate(['/history'], {
 			queryParams: {}
+		}).then(() => {
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
+		});
+	}
+	walletroute(){
+		this.router.navigate(['/wallet'], {
+			queryParams: {}
+		}).then(() => {
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
 		});
 	}
 }
