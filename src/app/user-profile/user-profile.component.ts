@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchJSONService } from '../fetch-json.service';
 import { User } from 'src/app/Interfaces/User';
 import { Login } from 'src/app/Interfaces/Login'
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from 'src/app/Interfaces/Message';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
     userId: '',
     firstName:'',
     lastName: '',
-    mobileNo: '',
+    mobileNum: '',
     govtIdType: '',
     govtIdNum: '',
     drivingLicenseNum: '',
@@ -24,6 +24,8 @@ export class UserProfileComponent implements OnInit {
     email: '',
     wallet: 0
   };
+
+  message: Message;
  
   userId: string  = "2001"; 
   password: string = "bhavana";
@@ -31,9 +33,8 @@ export class UserProfileComponent implements OnInit {
   // userNew : User[];
 
   login: Login;
-  response:any;
- 
- message : string;
+  response: any;
+
   constructor(private http: FetchJSONService) 
   {
       this.login =
@@ -45,7 +46,7 @@ export class UserProfileComponent implements OnInit {
     this.http.getUser(this.login).subscribe(
       (data) => {
         this.user = data['body'];
-
+        console.log(data);
         // this.http.updateUser(this.user).subscribe(
         //   (data) => this.user.userName
           
@@ -61,11 +62,12 @@ export class UserProfileComponent implements OnInit {
   
   changeUserName()
    {
-    
+     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
-      (data) => this.user.userName
-
-     );
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
     }
  
   changeUserpassword(){

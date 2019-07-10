@@ -8,7 +8,7 @@
           </div>
           <div class="col s6 m8 l6">
             <h5> Name : {{ user.firstName }} {{ user.lastName }}</h5>
-            <!-- <p>Mobile No:   <span> {{ user.mobileNo }}</span></p> -->
+            <p>Mobile No:   <span> {{ user.mobileNum }}</span></p>
            
             <p>Username:   <span> {{ user.userName }}</span></p>
             <p>Email Id :   <span> {{ user.email }}</span></p>
@@ -139,17 +139,17 @@
               <div class="col s8 m6 l10">
             <div class="input-field">
              <i class="material-icons indigo-text prefix">call</i>
-               <input  id="updateMobile" type="text" name="mobileNo"  [(ngModel)]="user.mobileNo" #mobileNo=ngModel pattern="[0-9]{10}" required>
+               <input  id="updateMobile" type="text" name="mobileNum"  [(ngModel)]="user.mobileNum" #mobileNo=ngModel pattern="[0-9]{10}" required>
                <!-- <label for="updateMobile">Update Telephone</label> -->
              </div>
              <!-- <div *ngIf = "showMsgMobile">
                <b class="green-text"> Update Sucess !!</b>
              </div> -->
-             <div *ngIf ="mobileNo?.touched">
-                <div *ngIf = "mobileNo.errors?.pattern">
+             <div *ngIf ="mobileNum?.touched">
+                <div *ngIf = "mobileNum.errors?.pattern">
                  <span class="red-text">Enter valid Mobile Number </span>
                 </div>
-                <div *ngIf = "mobileNo.errors?.required">
+                <div *ngIf = "mobileNum.errors?.required">
                  <span class="red-text">Enter the Mobile Number </span>
                 </div>
                 
@@ -158,7 +158,7 @@
              </div>
              <div class="col s4 m6 l2">
                 <!-- <a class="waves-effect waves-light btn indigo " (click)="changeMobileNo()"  style="margin-top:10%;">Change</a> -->
-                <button onclick="M.toast({html: 'Update Sucess',classes: 'rounded'})" type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" [disabled]="mobileNo.errors" (click)="changeMobileNo()">Change</button>
+                <button onclick="M.toast({html: 'Update Sucess',classes: 'rounded'})" type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" [disabled]="mobileNum.errors" (click)="changeMobileNo()">Change</button>
                </div>
           </div>
           <!-- <div class="row">
