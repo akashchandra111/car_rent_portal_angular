@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchJSONService } from '../fetch-json.service';
 import { Car } from '../Interfaces/Car';
-import { Router,NavigationEnd } from '@angular/router';
-import {HeaderComponent} from '../header/header.component';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-choose-car',
@@ -12,22 +11,13 @@ import {HeaderComponent} from '../header/header.component';
 export class ChooseCarComponent implements OnInit {
 	cars: Car[];
 
-  constructor(private http: FetchJSONService,private router:Router) {
-
+  constructor(private http: FetchJSONService, private router: Router) {
 	  if(JSON.parse(localStorage.getItem('user'))== null)	{
-console.log("choooooose");
 		  this.router.navigate(['']);
-
-
-	  }
-	  else{
-	    console.log("i am choose");
 	  }
   }
 
   ngOnInit() {
-
-
   }
 
 	getCarByTypeOnClick(carType: string)	{
