@@ -157,4 +157,8 @@ export class FetchJSONService {
   getCarStats()	{
 	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
   }
+
+  sendMail(email: Email)	{
+	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+  }
 }
