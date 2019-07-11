@@ -10,8 +10,8 @@ import { Message } from 'src/app/Interfaces/Message';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  
-   user: User = {  
+
+   user: User = {
     userId: '',
     firstName:'',
     lastName: '',
@@ -26,40 +26,34 @@ export class UserProfileComponent implements OnInit {
   };
 
   message: Message;
- 
-  userId: string  = "2001"; 
-  password: string = "bhavana";
-  
-  // userNew : User[];
 
+  userId: string  ;
+  password: string ;
   login: Login;
   response: any;
 
-  constructor(private http: FetchJSONService) 
+  constructor(private http: FetchJSONService)
   {
       this.login =
        {
-      id: this.userId,
-      password: this.password 
+      id: JSON.parse(localStorage.getItem('user')).userId,
+      password: JSON.parse(localStorage.getItem('user')).password
+      // id : this.userId,
+      // password : this.password
        }
 
     this.http.getUser(this.login).subscribe(
       (data) => {
         this.user = data['body'];
         console.log(data);
-        // this.http.updateUser(this.user).subscribe(
-        //   (data) => this.user.userName
-          
-        //  );
-      });
-        
+       });
    }
-  
+
   ngOnInit() {
 
   }
- 
-  
+
+
   changeUserName()
    {
      console.log(this.user);
@@ -69,7 +63,7 @@ export class UserProfileComponent implements OnInit {
       }
     );
     }
- 
+
   changeUserpassword(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
@@ -77,10 +71,8 @@ export class UserProfileComponent implements OnInit {
        console.log(data);
       }
     );
+   }
 
-  
- 
-  }
   changeMobileNo(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
@@ -88,8 +80,6 @@ export class UserProfileComponent implements OnInit {
        console.log(data);
       }
     );
-  
-   
   }
 
   changeEmail(){
@@ -99,24 +89,37 @@ export class UserProfileComponent implements OnInit {
        console.log(data);
       }
     );
-    
-  }
+   }
 
   changeGovId(){
-   
+
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
        console.log(data);
       }
     );
-  
+
+  }
+  changeGovType(){
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message)=>  {
+       console.log(data);
+      }
+    );
+
   }
   deleteAccount()
 {
-  
+  console.log(this.user);
+  this.http.deRegister(this.user.userId).subscribe(
+    (data : Message) => {
+      console.log(data);
+    }
+  );
 
-}  
-  
- 
+}
+
+
 }

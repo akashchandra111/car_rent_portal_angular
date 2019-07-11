@@ -40,9 +40,9 @@ export class FetchJSONService {
   }
 
   // User deregister
-  deRegister(login: Login)	{
+  deRegister(userId: string)	{
 	  // Send the login object and it would automatically delete user from db
-	  return this.http.post<Message>(this.baseUrl + '/user/deregister', login, this.httpOptions);
+	  return this.http.delete<Message>(this.baseUrl + '/user/deregister/' + userId, this.httpOptions);
   }
 
   // Update user properties
@@ -156,5 +156,9 @@ export class FetchJSONService {
 
   getCarStats()	{
 	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
+  }
+
+  sendMail(email: Email)	{
+	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
   }
 }
