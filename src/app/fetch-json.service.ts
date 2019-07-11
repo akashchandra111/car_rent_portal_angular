@@ -8,6 +8,7 @@ import { UserLog } from './Interfaces/UserLog';
 import { Message } from './Interfaces/Message';
 import { Login } from './Interfaces/Login';
 import { CarsBookStat } from './Interfaces/CarsBookStat';
+import { Email } from './Interfaces/Email';
 
 @Injectable({
   providedIn: 'root'
