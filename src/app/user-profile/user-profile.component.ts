@@ -31,6 +31,7 @@ export class UserProfileComponent implements OnInit {
   password: string ;
   login: Login;
   response: any;
+  toastMessageUname; toastMessagePassword ; toastMessageEmail; toastMessageMobile; toastMessage: string;
 
   constructor(private http: FetchJSONService) 
   {
@@ -59,6 +60,12 @@ export class UserProfileComponent implements OnInit {
      console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageUname = "Update Sucess";
+        }else{
+          this.toastMessageUname = "Update Failure";
+        }
        console.log(data);
       }
     );
@@ -68,6 +75,12 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessagePassword = "Update Sucess !!";
+        }else{
+          this.toastMessagePassword = "Update Failure";
+        }
        console.log(data);
       }
     );
@@ -77,6 +90,12 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageMobile = "Update Sucess !!";
+        }else{
+          this.toastMessageMobile = "Update Failure";
+        }
        console.log(data);
       }
     );  
@@ -86,6 +105,12 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageEmail = "Update Sucess !!";
+        }else{
+          this.toastMessageEmail = "Update Failure";
+        }
        console.log(data);
       }
     );
@@ -96,6 +121,12 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        // this.message = data;
+        // if(this.message.status == "success"){
+        //   this.toastMessage = "Update Sucess !!";
+        // }else{
+        //   this.toastMessage = "Update Failure";
+        // }
        console.log(data);
       }
     );
@@ -105,6 +136,12 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        // this.message = data;
+        // if(this.message.status == "success"){
+        //   this.toastMessage = "Update Sucess !!";
+        // }else{
+        //   this.toastMessage = "Update Failure";
+        // }
        console.log(data);
       }
     );
@@ -112,10 +149,18 @@ export class UserProfileComponent implements OnInit {
   }
   deleteAccount()
 {
-  console.log(this.user);
+ 
+  console.log(this.login);
   this.http.deRegister(this.login).subscribe(
     (data : Message) => {
+     this.message = data;
+     if(this.message.status == "success"){    
+          this.toastMessage = "Delete Sucess";
+        }else{
+          this.toastMessage = "Delete Failure "
+        }
       console.log(data);
+
     }
   );
 
