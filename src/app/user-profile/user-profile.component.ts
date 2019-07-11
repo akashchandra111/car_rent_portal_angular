@@ -10,8 +10,8 @@ import { Message } from 'src/app/Interfaces/Message';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  
-   user: User = {  
+
+   user: User = {
     userId: '',
     firstName:'',
     lastName: '',
@@ -26,14 +26,14 @@ export class UserProfileComponent implements OnInit {
   };
 
   message: Message;
- 
-  userId: string  ; 
+
+  userId: string  ;
   password: string ;
   login: Login;
   response: any;
   toastMessageUname; toastMessagePassword ; toastMessageEmail; toastMessageMobile; toastMessage: string;
 
-  constructor(private http: FetchJSONService) 
+  constructor(private http: FetchJSONService)
   {
       this.login =
        {
@@ -47,14 +47,14 @@ export class UserProfileComponent implements OnInit {
       (data) => {
         this.user = data['body'];
         console.log(data);
-       }); 
+       });
    }
-  
+
   ngOnInit() {
 
   }
- 
-  
+
+
   changeUserName()
    {
      console.log(this.user);
@@ -70,7 +70,7 @@ export class UserProfileComponent implements OnInit {
       }
     );
     }
- 
+
   changeUserpassword(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
@@ -98,7 +98,7 @@ export class UserProfileComponent implements OnInit {
         }
        console.log(data);
       }
-    );  
+    );
   }
 
   changeEmail(){
@@ -117,7 +117,7 @@ export class UserProfileComponent implements OnInit {
    }
 
   changeGovId(){
-   
+
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
@@ -130,7 +130,7 @@ export class UserProfileComponent implements OnInit {
        console.log(data);
       }
     );
-  
+
   }
   changeGovType(){
     console.log(this.user);
@@ -149,9 +149,8 @@ export class UserProfileComponent implements OnInit {
   }
   deleteAccount()
 {
- 
-  console.log(this.login);
-  this.http.deRegister(this.login).subscribe(
+  console.log(this.user);
+  this.http.deRegister(this.user.userId).subscribe(
     (data : Message) => {
      this.message = data;
      if(this.message.status == "success"){    
@@ -164,7 +163,7 @@ export class UserProfileComponent implements OnInit {
     }
   );
 
-}  
-  
- 
+}
+
+
 }

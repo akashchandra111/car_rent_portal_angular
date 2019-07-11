@@ -12,12 +12,13 @@ import { FetchJSONService } from '../fetch-json.service';
 export class UserpageComponent implements OnInit {
 
   user : User;
-  userlog : UserLog[];
+  userlog : any;
+  userTemplog : UserLog[];
   money : number;
   response : any;
   login: Login;
-  userId: string = "1467"; //
-  password: string = "vyshu";
+  userId: string; //
+  password: string;
   startTime: string;
   endTime: string;
   currentLocation: string;
@@ -26,14 +27,15 @@ export class UserpageComponent implements OnInit {
   wallet: number;
   unixStartTime: number;
   unixEndTime: number;
+  userObject: any;
 
   currentDate: any = new Date().getTime(); 
   currentUnixTime : any = parseInt(this.currentDate);  
-  
+
   constructor( private http: FetchJSONService) {
         this.login = {
-        id: this.userId,
-        password: this.password
+        id: JSON.parse(localStorage.getItem('user')).userId,
+        password: JSON.parse(localStorage.getItem('user')).password
       }
 
       this.http.getUser(this.login).subscribe(
@@ -42,26 +44,40 @@ export class UserpageComponent implements OnInit {
           this.http.getCompleteHistory(this.user.userId).subscribe(
             (data)=>  {
               this.userlog = data['body'];
-               for(let log of this.userlog)  {
-                 this.unixStartTime = parseInt(log.startTime);
-                 this.unixEndTime = parseInt(log.endTime);
-                 console.log(this.unixStartTime);
-               }
-               console.log(this.currentUnixTime);
-               
-               
-               
-            });
+              this.userTemplog = this.userObject;
+              var index = 0;
+              console.log(this.userlog.startTime);
+              console.log(parseInt(this.userlog.startTime));
+              console.log(this.currentUnixTime);
+
+                for(var log = 0; log < this.userTemplog.length; log++) 
+                {
+                    if(parseInt(this.userObject.startTime) >  this.currentUnixTime)
+                    {
+                      console.log("user"+this.userlog);
+                      this.userlog[index] = this.userTemplog[log];
+                      index++;
+                    }
+                  
+                } 
+                console.log("userlog is "+this.userlog);
+
+                for(let log of this.userlog)  {
+                  
+                  log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
+                  log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
+                  
+                }  
+                        
+          });
+
           this.http.getUser(this.login).subscribe(
               (data)=>  {
                 this.user = data['body'];
-            });    
-          this.http.addMoney(this.user, this.money).subscribe(
-            (data)=> {
-                this.user = data['body'];
-            });    
-      }); 
-               
+          });    
+           
+      });   
+      
          
   }
 
