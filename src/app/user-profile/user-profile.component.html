@@ -1,176 +1,135 @@
 <div class="row">
-    <div class="col s12 m6 l6">
+    <div class="col s12 m6">
          <div class="card">
-          <span class="card-title" style="font :bolder">My Account</span>
-          <div class="row">
-            <div class="col s6 m6 ">
-          <img src="/assets/images/profile.jpg">
-          </div>
-          <div class="col s6 m6 ">
-            <h5> Name : {{ user.firstName }} {{ user.lastName }}</h5>
-            <p>Mobile No:   <span> {{ user.mobileNum }}</span></p>
-            <p>Email Id :   <span> {{ user.email }}</span></p>
-            <p>Username:   <span> {{ user.userName }}</span></p>
-            <p>UID Number:  <span> {{ user.govtIdNum }}</span></p>
-            <p>Wallet Amount:  <span> {{ user.wallet }}</span></p>
+          <span class="card-title"><b style="color:indigo ">  My Account</b> </span>
+           <div class="row">
+            <div class="col s6">
+                   <img src="/assets/images/profile.jpg">
+            </div>
+            <div class="col s6">
+                 <h5> Name : {{ user.firstName }} {{ user.lastName }}</h5>
+                 <p>Mobile No:   <span> {{ user.mobileNum }}</span></p>
+                 <p>Email Id :   <span> {{ user.email }}</span></p>
+                 <p>Username:   <span> {{ user.userName }}</span></p>
+                 <p>UID Number:  <span> {{ user.govtIdNum }}</span></p>
+                <p>Wallet Amount:  <span> {{ user.wallet }}</span></p>
            </div>
           </div>
          </div>
          <div class="card"> <!--change user name and password -->
-          <span class="card-title brown-text">Customize Credentials</span>
-            
-            <div class="row">
-            <div class="col s8 l10">
-            <div class="input-field">
-              <i class="material-icons indigo-text prefix">contacts</i>
-               <input   type="text" name="userName" [(ngModel)]="user.userName" #userName= ngModel pattern="[(a-z)(A-Z)]{4,15}" required>
-             </div>
-  
-            
-             <div *ngIf ="userName?.touched">
-               <div *ngIf = "userName.errors?.required">
-                <span class="red-text"> Name is required </span>
+             <span class="card-title brown-text"><b>Customize Credentials</b></span>
+               <div class="row">
+                 <div class="col s8">
+                  
+                   <div class="input-field">
+                     <i class="material-icons indigo-text prefix">contacts</i>
+                     <input   type="text" name="userName" [(ngModel)]="user.userName" #userName= ngModel pattern="[(a-z)(A-Z)]{4,15}" required>
+                  </div>
+               <div *ngIf ="userName?.touched">
+                 <div *ngIf = "userName.errors?.required">
+                     <span class="red-text"> Name is required </span>
+                 </div>
+                 <div *ngIf = "userName.errors?.pattern">
+                     <span class="red-text">User Name Contains atleast four characters </span>
+                </div>
                </div>
-               <div *ngIf = "userName.errors?.pattern">
-                <span class="red-text">User Name Contains atleast four characters </span>
-               </div>
+               <div><b class="green-text"> {{toastMessageUname}} </b></div>
                
-  
-             </div>
             </div>
-            <div class="col s4 m6 l2">
-             <!-- <a class="waves-effect waves-light btn indigo changeusername"   style="margin-top:10%;">Change</a> -->
-             <button  onclick="M.toast({html: 'Update Sucess !',  classes: 'rounded'})" id= "toast" type="submit" class="waves-effect waves-light btn indigo changeusername" [disabled]="userName.invalid" style="margin-top:10%;" (click)="changeUserName()">Change</button>
-            </div>
+               <div class="col s4">
+                   <button  type="submit" class="waves-effect waves-light btn indigo changeusername" [disabled]="userName.invalid" style="margin-top:10%;" (click)="changeUserName()">Change</button>
+               </div>
             </div>
             
-             <div class="row">
-            <div class="col s8 m6 l10">
-            <div class="input-field">
-              <i class="material-icons indigo-text prefix">security</i>
-               <input   type="password" name="password" [(ngModel)]="user.password" #password=ngModel   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}" required>
-                <!-- <label for="ChangeUserName">Change Password</label> -->
-             </div>
-             <!-- <div  *ngIf = "showMsgPassword" >
-                <b class="green-text">Update Sucess !</b>
-               </div> -->
-             
-             <div *ngIf ="password?.touched">
-                <div *ngIf = "password.errors?.pattern">
-                 <span class="red-text">Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters </span>
-                </div>
-                <div *ngIf = "password.errors?.required">
-                 <span class="red-text">Enter the Password </span>
-                </div>
-                
-   
-              </div>
+               <div class="row">
+                   <div class="col s8">
+                     <div class="input-field">
+                         <i class="material-icons indigo-text prefix">security</i>
+                         <input   type="password" name="password" [(ngModel)]="user.password" #password=ngModel   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}" required>
+                     </div>
+                 <div *ngIf ="password?.touched">
+                 <div *ngIf = "password.errors?.pattern">
+                      <span class="red-text">Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters </span>
+                  </div>
+                  <div *ngIf = "password.errors?.required">
+                       <span class="red-text">Enter the Password </span>
+                  </div>
+               </div>
+               <div><b class="green-text"> {{toastMessagePassword}} </b></div>
             </div>
-            <div class="col s4 l2">
+            <div class="col s4">
+               <button  type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;" [disabled]="password.errors" (click)="changeUserpassword()">Change</button>
+            </div>
+          </div>
             
-             <button  onclick="M.toast({html: 'Update Sucess', classes: 'rounded'})" type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;" [disabled]="password.errors" (click)="changeUserpassword()">Change</button>
-            </div>
-            </div>
-            
-  <div class="status" style="color:green;"></div>                
-    <br>
-       </div>
+         </div>
       </div>
   
-    <div class="col s12 m6 l6">
-      <div class="card">
-        <div class="card-content">
-  
-          <span class="card-title">Update Account Details</span>
+    <div class="col s12 m6">
+       <div class="card">
+         <div class="card-content">
+             <span class="card-title"><b>Update Account Details</b></span>
+                 <div class="row">
+                     <div class="col s8">
+                         <div class="input-field">
+                         <i class="material-icons indigo-text prefix">mail</i>
+                         <input  id="email" type="email" name="email" [(ngModel)]="user.email" #email = ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                         </div>
+                         <div *ngIf ="email?.touched">
+                             <div *ngIf = "email.errors?.pattern">
+                                <span class="red-text">Enter the Valid Email Id </span>
+                             </div>
+                         <div *ngIf = "email.errors?.required">
+                                 <span class="red-text">Enter the Email Id </span>
+                         </div>
+                         </div>
+                         <div><b class="green-text"> {{toastMessageEmail}} </b></div>
+                     </div>
+                 <div class="col s4">
+                  <button  type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeEmail()" [disabled]="email.errors ">Change</button>
+                 </div>
+          </div>
+          <div class="row">
+                 <div class="col s8">
+                  <div class="input-field">
+                         <i class="material-icons indigo-text prefix">call</i>
+                         <input  id="updateMobile" type="text" name="mobileNum"  [(ngModel)]="user.mobileNum" #mobileNum=ngModel pattern="[0-9]{10}" required>
+                   </div>
+                     <div *ngIf ="mobileNum?.touched">
+                     <div *ngIf = "mobileNum.errors?.pattern">
+                             <span class="red-text">Enter valid Mobile Number </span>
+                     </div>
+                     <div *ngIf = "mobileNum.errors?.required">
+                             <span class="red-text">Enter the Mobile Number </span>
+                     </div>
+                    </div>
+                    <div><b class="green-text"> {{toastMessageMobile}} </b></div>
+             </div>
+             <div class="col s4">
+                <button  type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;" [disabled]="mobileNum.errors" (click)="changeMobileNo()">Change</button>
+             </div>
+          </div>
           
-              
-            <div class="row">
-                <div class="col s8 m6 l10">
-            <div class="input-field">
-             <i class="material-icons indigo-text prefix">contact_mail</i>
-              
-             <input  id="email" type="email" name="email" [(ngModel)]="user.email" #email = ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-             
-            
-             </div>
-            
-             <div *ngIf ="email?.touched">
-                <div *ngIf = "email.errors?.pattern">
-                 <span class="red-text">Enter the Valid Email Id </span>
-                </div>
-                <div *ngIf = "email.errors?.required">
-                 <span class="red-text">Enter the Email Id </span>
-                </div>
-                
-   
-              </div>
-             </div>
-             <div class="col s4 m6 l2">
-               
-                <button onclick="M.toast({html: 'Update Sucess', classes: 'rounded'})" type="submit" class="waves-effect waves-light btn indigo changeusername"  style="margin-top:10%;" (click)="changeEmail()" [disabled]="email.errors ">Change</button>
-               </div>
-          </div>
           <div class="row">
-              <div class="col s8 m6 l10">
-            <div class="input-field">
-             <i class="material-icons indigo-text prefix">call</i>
-               <input  id="updateMobile" type="text" name="mobileNum"  [(ngModel)]="user.mobileNum" #mobileNo=ngModel pattern="[0-9]{10}" required>
-              
-             </div>
-            
-             <div *ngIf ="mobileNum?.touched">
-                <div *ngIf = "mobileNum.errors?.pattern">
-                 <span class="red-text">Enter valid Mobile Number </span>
-                </div>
-                <div *ngIf = "mobileNum.errors?.required">
-                 <span class="red-text">Enter the Mobile Number </span>
-                </div>
-                
-   
-              </div>
-             </div>
-             <div class="col s4 m6 l2">
-                <!-- <a class="waves-effect waves-light btn indigo " (click)="changeMobileNo()"  style="margin-top:10%;">Change</a> -->
-                <button onclick="M.toast({html: 'Update Sucess',classes: 'rounded'})" type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;" [disabled]="mobileNum.errors" (click)="changeMobileNo()">Change</button>
-               </div>
-          </div>
-         
-          <div class="row">
-              <div class="col s8 m6 l10">
-                 <select class="input-field" name="govtIdType" [(ngModel)]="user.govtIdType" >
-                    <option value="" selected disabled>Verify with</option>
-                    <option value="aadhar">Aadhar</option>
-                    <option value="pan">PAN</option>
-                    <option value="passport">Passport</option>
-                 </select>
-                 
-              </div>
-              <div class="col s4 m6 l2">
-                  <button type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;"  (click)="changeGovType()">Change</button>
-
-              </div>
-              <div class="col s8 m6 l10">
+              <div class="col s8">
+                <div class="input-field">
+                  <i class="material-icons indigo-text prefix">edit</i>
                  <input type="text" name="govtIdNum" [(ngModel)]="user.govtIdNum"  #govtIdNum=ngModel id="verification_id" class="validate" required>
-                 <!-- <label for="verification_id">UID number</label> -->
-                  
-              </div>
-              <div class="col s4 m6 l2">
+                </div>
+                </div>
+              <div class="col s4">
                   <button type="submit" class="waves-effect waves-light btn indigo "  style="margin-top:10%;"  (click)="changeGovId()">Change</button>
-
-              </div>
+             </div>
            </div>
-           
-        
          </div>
         
           <div class="card-action">
-        <div >
-  
-             <!-- <i class="material-icons white-text prefix">delete</i> -->
-            <!-- <a  class="right white-text"  ng-click="deleteAcc()" >Delete Account</a> -->
-            <button  class="waves-effect waves-light btn indigo" (click)="deleteAccount()" > DeleteAccount</button>  
+             <div >
+               
+               <button  class="waves-effect waves-light btn indigo" (click)="deleteAccount()" > DeleteAccount</button>  
+              {{toastMessage}}
+              </div>
           </div>
-       </div>
        </div>
   
      </div>
