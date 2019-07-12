@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchJSONService } from '../fetch-json.service';
 import { Car } from '../Interfaces/Car';
+import { CarStatus } from '../Interfaces/CarStatus';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -10,6 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class ChooseCarComponent implements OnInit {
 	cars: Car[];
+	carStatus: CarStatus;
 
   constructor(private http: FetchJSONService, private router: Router) {
 	  if(JSON.parse(localStorage.getItem('user'))== null)	{

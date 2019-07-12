@@ -17,6 +17,7 @@ import { Message } from '../Interfaces/Message';
 export class BookingComponent implements OnInit {
   carId: string;
   carNo: string;
+  checkCurrentCarStatus: boolean = true;
 
   toastMessage: string;
 
@@ -60,6 +61,18 @@ export class BookingComponent implements OnInit {
 		(data)=>	{
 			this.user = data['body'];
 		}
+	  );
+
+	  this.http.getCarStatusByCarId(this.carId).subscribe(
+		  (data)=>	{
+			  this.carStatus = data['body'];
+			  if(this.carStatus.carNo == null)	{
+				  this.checkCurrentCarStatus = false;
+			  }
+			  else	{
+				  this.checkCurrentCarStatus = true;
+			  }
+		  }
 	  );
   }
 

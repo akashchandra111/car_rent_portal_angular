@@ -1,59 +1,67 @@
-<div class="container indigo-text"><h3>Book Car</h3></div>
-<div class="row">
-	<div class="col s12 m6">
-		<div class="card">
-			<div class="card-image">
-				<img [src]="car.imgPath" alt="No Image found">
-			</div>
-			<div class="card-content">
-				<span class="card-title">{{ car.carName }}</span>
-				<b>Type:</b> {{ car.carType }}<br>
-				<b>Cost:</b> {{ car.cost }}/hr<br>
-				<b>Mileage:</b> {{ car.mileage }}<br>
-				<b>Seaters:</b> {{ car.seaters }}<br>
-				<b>Desciption:</b> {{ car.description }}<br>
-			</div>
-		</div>
-	</div>
-	<div class="col s12 m6">
-		<div class="input-field">
-			<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
-			<label for="autocomplete-input black-text darken-3">Start Location</label>
-        </div>
-	</div>
-	<div class="col s12 m6">
-		<div class="input-field">
-			<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="dropLocation">
-			<label for="autocomplete-input black-text darken-3">Drop Location</label>
-        </div>
-		<div class="row">
-			<div class="input-field col s6">
-				<!-- <input type="date" class="datepicker" id="start-date" [(ngModel)]="startDate"> -->
-				<input type="date" id="start-date" [(ngModel)]="startDate">
-				<label for="start-date">Start Date</label>
-			</div>
-			<div class="input-field col s6">
-				<input type="time" id="start-time" [(ngModel)]="startTime">
-				<label for="start-time">Start Time</label>
+<div *ngIf="checkCurrentCarStatus; else messageBlock">
+	<div class="container indigo-text"><h3>Book Car</h3></div>
+	<div class="row">
+		<div class="col s12 m6">
+			<div class="card">
+				<div class="card-image">
+					<img [src]="car.imgPath" alt="No Image found">
+				</div>
+				<div class="card-content">
+					<span class="card-title">{{ car.carName }}</span>
+					<b>Type:</b> {{ car.carType }}<br>
+					<b>Cost:</b> {{ car.cost }}/hr<br>
+					<b>Mileage:</b> {{ car.mileage }}<br>
+					<b>Seaters:</b> {{ car.seaters }}<br>
+					<b>Desciption:</b> {{ car.description }}<br>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="input-field col s6">
-				<input type="date" id="end-date" [(ngModel)]="endDate">
-				<label for="start-date">End Date</label>
-			</div>
-			<div class="input-field col s6">
-				<input type="time" id="end-time" [(ngModel)]="endTime">
-				<label for="start-time">End Time</label>
-			</div>
+		<div class="col s12 m6">
+			<div class="input-field">
+				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
+				<label for="autocomplete-input black-text darken-3">Start Location</label>
+	        </div>
 		</div>
-		<div>
-			<h5>Cost: {{ calculatedBookingCost }}</h5>
-			<a class="btn indigo waves-effect waves-light darken-3" (click)="checkCost()" onclick="M.toast({html: this.toastMessage})">Check Cost</a>
-		</div>
-		<div>
-			<a class="btn indigo waves-effect waves-light darken-3" (click)="bookCar()">Book Car</a>
-			{{ toastMessage }}
+		<div class="col s12 m6">
+			<div class="input-field">
+				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="dropLocation">
+				<label for="autocomplete-input black-text darken-3">Drop Location</label>
+	        </div>
+			<div class="row">
+				<div class="input-field col s6">
+					<!-- <input type="date" class="datepicker" id="start-date" [(ngModel)]="startDate"> -->
+					<input type="date" id="start-date" [(ngModel)]="startDate">
+					<label for="start-date">Start Date</label>
+				</div>
+				<div class="input-field col s6">
+					<input type="time" id="start-time" [(ngModel)]="startTime">
+					<label for="start-time">Start Time</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="date" id="end-date" [(ngModel)]="endDate">
+					<label for="start-date">End Date</label>
+				</div>
+				<div class="input-field col s6">
+					<input type="time" id="end-time" [(ngModel)]="endTime">
+					<label for="start-time">End Time</label>
+				</div>
+			</div>
+			<div>
+				<span><h5>Cost: {{ calculatedBookingCost }}</h5><a class="btn-small indigo waves-light darken-3 right"(click)="checkCost()">Check Cost</a></span>
+			</div>
+			<div>
+				<button class="btn indigo waves-effect waves-light darken-3" (click)="bookCar()">Book Car</button>
+				{{ toastMessage }}
+			</div>
 		</div>
 	</div>
 </div>
+<ng-template #messageBlock>
+	<div class="jumbotron card-panel hoverable red lighten-1 white-text text-darken-2">
+		<i class="material-icons large">blur_off</i>
+		<h3>Sorry all the car of this model have been booked choose another model or come after sometime.</h3>
+		<a [routerLink]="['/choose_car']">Go Back</a>
+	</div>
+</ng-template>
