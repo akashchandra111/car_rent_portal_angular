@@ -44,26 +44,18 @@ export class UserpageComponent implements OnInit {
     this.http.getUser(this.login).subscribe(
       (data)=>  {
         this.user = data['body'];
-        this.http.getLatestUserHistory(this.user.userId).subscribe(
+        this.http.getCompleteHistory(this.user.userId).subscribe(
           (data)=>  {
            
             this.userlog = data['body'];
-            var tempUser = this.userlog;
+            this.userlog = this.userlog.slice(0, 3);
 
-            console.log(this.userlog.startTime);
-            // var index = 0;
-             
-            //   for(var log = 0; log < 4; log++) 
-            //     {
-            //       for(let log of tempUser) {
-            //           if(parseInt(tempUser.startTime) >  this.currentUnixTime)
-            //         {
-            //           log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
-            //           log.endTime = new Date(parseInt(log.endTime)).toLocaleString()                     
-            //           index++;
-            //         }     
-            //       }             
-            //     }                         
+            
+            for(let i = 0; i < this.userlog.length; i++){
+              this.userlog[i].startTime = new Date(parseInt(this.userlog[i].startTime)).toLocaleString();
+              this.userlog[i].endTime = new Date(parseInt(this.userlog[i].endTime)).toLocaleString();
+            }
+            
         });
         this.http.getUser(this.login).subscribe(
           (data)=>  {
@@ -89,9 +81,11 @@ export class UserpageComponent implements OnInit {
     this.router.navigate(['/choose_car'])); 
   }
 
-  upcomingHistory(){
+  bookedCar(){
+    console.log("working");
+    
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/**'])); 
+    this.router.navigate(['/history'])); 
   }
 
   addMoneyToWallet(){

@@ -9,23 +9,23 @@
             <div class="col s9">
               <div class="card-content white-text">
                 <h4><i class="small material-icons white-text lighten-4">book</i>  Upcoming Bookings</h4> 
-                <ng-template [ngIf]="userlog.startTime > currentUnixTime" [ngIfElse]="isLesser">
-                  <p>
+                <!-- <ng-template [ngIf]="userlog.startTime > currentUnixTime" [ngIfElse]="isLesser"> -->
+                  <p *ngFor="let userHistory of userlog">
                     Pick up your car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
                     Use this secret key: <b>{{ userHistory.secretKey }}</b>       
-                      <a class="waves-effect waves-light btn-floating red modal-trigger" href="#delete" (click)="onDelete(userHistory.userLogId)">
-                      <i class="material-icons left">delete</i></a>
+                      <!-- <a class="waves-effect waves-light btn-floating red modal-trigger" href="#delete" (click)="onDelete(userHistory.userLogId)">
+                      <i class="material-icons left">delete</i></a> -->
                   </p>
-                </ng-template>
+                <!-- </ng-template> -->
                 
-                <ng-template #isLesser>
-                  <p>No Upcoming Bookings</p>
-                </ng-template>
+                <!-- <ng-template #isLesser> -->
+                  <!-- <p>No Upcoming Bookings</p> -->
+                <!-- </ng-template> -->
     
               </div>
             </div>
           </div>
-          <a class = "btn waves-effect waves-light white red-text darken-3 right-align " (click) = "upcomingHistory()"><b>For More Details >></b></a>
+          <a class = "btn waves-effect waves-light white red-text darken-3" id="bookedcar" name="bookedcar" (click) = "bookedCar()"><b>For More Details >></b></a>
         </div>
       </div>
     
