@@ -105,7 +105,7 @@ export class FetchJSONService {
   // Get latest history
   getLatestUserHistory(userId: string)	{
 	  // Send the userId from the user object to get its history
-	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest' + userId, {observe: 'response'});
+	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest/' + userId, {observe: 'response'});
   }
 
   // Get complete history
