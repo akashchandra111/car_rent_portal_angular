@@ -26,6 +26,7 @@ export class UserHistoryComponent implements OnInit {
     totalAmount : string;
     paidAmount : string;
     bookingId : string;
+    
 
   // get the objects from [session] userId & password
     userId : string; //
@@ -61,9 +62,8 @@ export class UserHistoryComponent implements OnInit {
    
   }
   onDelete(userLogId: string) {
-    console.log(userLogId);
     this.http.cancelBooking(userLogId).subscribe(
-      (data : Message)=> {
+      (data : Message)=> {        
     });
   }
 }

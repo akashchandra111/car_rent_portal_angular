@@ -33,34 +33,31 @@ export class UserpageComponent implements OnInit {
   currentUnixTime : any = parseInt(this.currentDate);  
 
   constructor( private http: FetchJSONService) {
-        this.login = {
-        id: JSON.parse(localStorage.getItem('user')).userId,
-        password: JSON.parse(localStorage.getItem('user')).password
-      }
+    this.login = {
+      id: JSON.parse(localStorage.getItem('user')).userId,
+      password: JSON.parse(localStorage.getItem('user')).password
+    }
 
-      this.http.getUser(this.login).subscribe(
-        (data)=>  {
-          this.user = data['body'];
-          this.http.getCompleteHistory(this.user.userId).subscribe(
-            (data)=>  {
-              this.userlog = data['body'];
-              this.userTemplog = this.userObject;
-              var index = 0;
-              console.log(this.userlog.startTime);
-              console.log(parseInt(this.userlog.startTime));
-              console.log(this.currentUnixTime);
-
-                for(var log = 0; log < this.userTemplog.length; log++) 
-                {
-                    if(parseInt(this.userObject.startTime) >  this.currentUnixTime)
-                    {
-                      console.log("user"+this.userlog);
-                      this.userlog[index] = this.userTemplog[log];
-                      index++;
-                    }
-                  
-                } 
-                console.log("userlog is "+this.userlog);
+    this.http.getUser(this.login).subscribe(
+      (data)=>  {
+        this.user = data['body'];
+        this.http.getCompleteHistory(this.user.userId).subscribe(
+          (data)=>  {
+            this.userlog = data['body'];
+            this.userTemplog = this.userObject;
+            var index = 0;
+            console.log(this.userlog.startTime);
+            console.log(parseInt(this.userlog.startTime));
+                // for(var log = 0; log < this.userTemplog.length; log++) 
+                // {
+                //   if(parseInt(this.userObject.startTime) >  this.currentUnixTime)
+                //   {
+                //     console.log("user"+this.userlog);
+                //     this.userlog[index] = this.userTemplog[log];
+                //     index++;
+                //   }            
+                // } 
+            console.log("userlog is "+this.userlog);
 
                 for(let log of this.userlog)  {
                   
@@ -71,18 +68,18 @@ export class UserpageComponent implements OnInit {
                         
           });
 
-          this.http.getUser(this.login).subscribe(
-              (data)=>  {
-                this.user = data['body'];
-          });    
-           
-      });   
-      
-         
+    this.http.getUser(this.login).subscribe(
+      (data)=>  {
+        this.user = data['body'];
+      });           
+    });          
   }
 
   ngOnInit() {
     
   }
-  
+  postQuery(){
+     
+      
+  }
 }
