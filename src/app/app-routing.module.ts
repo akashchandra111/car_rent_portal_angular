@@ -48,7 +48,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'contact',
-		component: UserpageComponent
+		component: ContactUsComponent
 	},
 	{
 		path: 'wallet',

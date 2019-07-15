@@ -7,7 +7,7 @@
                <i class="material-icons">menu</i>
                </a>
                <div class="brand-logo">
-                  <a href="#">
+                  <a  (click)="titleclick()">
                   RentoCar
                   </a>
                </div>
@@ -50,7 +50,7 @@ console.log("asd");
 					   class="material-icons">menu</i>
 				   </a>
 				   <div class="brand-logo">
-					   <a href="#"> RentoCar </a>
+					   <a (click)="titleclick()"> RentoCar </a>
 				   </div>
 				   <ul class="right hide-on-med-and-down">
 					   <li><a
@@ -65,15 +65,14 @@ console.log("asd");
 	 <!-- 								Booking</a></li> -->
 						   <li><a  class="indigo-text" (click)="history()">History</a></li>
 					   </ul>
-					   <li><a href="#username"
-						   class="waves-effect waves-dark dropdown-trigger"
+					   <li><a class="waves-effect waves-dark dropdown-trigger"
 						   data-target="account_dropdown"><i class="material-icons">person_outline</i>
 					   </a></li>
 					   <!-- Account Dropdown -->
 					   <ul id="account_dropdown" class="dropdown-content">
 						   <li><a class="indigo-text">Hi {{usershow}}</a></li>
 						   <li><a class="indigo-text" (click)="profile()">Profile</a></li>
-						   <li><a href="#" (click)="logout()" id="clicklogoutme" class="indigo-text">Logout</a></li>
+						   <li><a href="#" (click)="logout()" id="clicklogoutme" class="indigo-text insidenav">Logout</a></li>
 					   </ul>
 				   </ul>
 			   </div>
@@ -110,18 +109,18 @@ console.log("asd");
 
 	  <div *ngIf="!ifLogged" id="clicklogoutme">
 		  <ul class="sidenav" id="menu-link">
-		  <ul class=" ">
+		  <ul class="row">
 			  <li><a href="#modalwallet"
-				  class="waves-effect waves-light modal-trigger">Wallet</a></li>
+				  class="waves-effect waves-light modal-trigger" (click)="walletroute()">Wallet</a></li>
 			  <li><a href="#booking"
 				  class="waves-effect waves-dark dropdown-trigger"
 				  data-target="booking_dropdown1" >Booking</a></li>
 			  <!-- Booking Dropdown -->
 			  <ul id="booking_dropdown1" class="dropdown-content">
-				  <li><a href="/booking" class="indigo-text">Rent a car</a></li>
+				  <li><a (click)="booking()" class="indigo-text">Rent a car</a></li>
 <!-- 						<li><a href="CurrentBooking.jsp" class="indigo-text">Current -->
 <!-- 								Booking</a></li> -->
-				  <li><a href="History.jsp" class="indigo-text">History</a></li>
+				  <li><a (click)="history()" class="indigo-text">History</a></li>
 			  </ul>
 			  <li><a href="#username"
 				  class="waves-effect waves-dark dropdown-trigger"
@@ -129,9 +128,9 @@ console.log("asd");
 			  </a></li>
 			  <!-- Account Dropdown -->
 			  <ul id="account_dropdown1" class="dropdown-content">
-				  <li><a class="indigo-text">Hi {{this.firstName}}</a></li>
-				  <li><a href="user_profile" class="indigo-text">Profile</a></li>
-				  <li><button  (click)="logout()"  class="indigo-text">Logout</button></li>
+				  <li><a class="indigo-text">Hi {{usershow}}</a></li>
+				  <li><a (click)="profile()" class="indigo-text">Profile</a></li>
+				  <li><a (click)="logout()"  class="indigo-text insidenav">Logout</a></li>
 			  </ul>
 		  </ul>
 		  </ul>
@@ -169,7 +168,7 @@ console.log("asd");
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
+               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close insidenav" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
                Login
                <i class="material-icons right">send</i>
                </button>
@@ -215,7 +214,7 @@ console.log("asd");
                   <label for="username">Driving License Number</label>
                </div>
                <div class="input-field">
-                  <input type="text" name="username" id="username" [(ngModel)]="userName" class="validate" required>
+                  <input type="text" name="username" id="username" [(ngModel)]="userNameregister" class="validate" required>
                   <label for="username">Username</label>
                </div>
                <div class="input-field">
