@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserLog } from 'src/app/Interfaces/UserLog';
 import { Login } from 'src/app/Interfaces/Login';
 import { User } from 'src/app/Interfaces/User';
@@ -26,6 +27,7 @@ export class UserHistoryComponent implements OnInit {
     totalAmount : string;
     paidAmount : string;
     bookingId : string;
+    
 
   // get the objects from [session] userId & password
     userId : string; //
@@ -34,7 +36,7 @@ export class UserHistoryComponent implements OnInit {
     
     // normalTimeFormat = this.unixTime.toLocaleString();
     
-  constructor(private http: FetchJSONService) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login = {
       id: JSON.parse(localStorage.getItem('user')).userId,
       password: JSON.parse(localStorage.getItem('user')).password
@@ -50,7 +52,7 @@ export class UserHistoryComponent implements OnInit {
           for(let log of this.userlog)  {
             log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
             log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
-          }
+      }
       });
       });
       // console.log(this.normalTimeFormat);
@@ -61,9 +63,10 @@ export class UserHistoryComponent implements OnInit {
    
   }
   onDelete(userLogId: string) {
-    console.log(userLogId);
     this.http.cancelBooking(userLogId).subscribe(
-      (data : Message)=> {
+      (data : Message)=> {  
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate(['/history']));     
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,16 +8,8 @@ import { Router,NavigationEnd } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor( private router: Router) {
-
-   }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-	  // console.log("this is footer"+JSON.parse(localStorage.getItem('user')).userId);
   }
-  footer(){
-	  this.router.navigate(['/contact']);
-	  
-  }
-
 }

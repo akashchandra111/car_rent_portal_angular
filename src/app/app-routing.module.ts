@@ -12,6 +12,7 @@ import { UserHistoryComponent } from './user-history/user-history.component';
 import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { BookedCarComponent } from './booked-car/booked-car.component';
 
 const routes: Routes = [
     {
@@ -55,6 +56,10 @@ const routes: Routes = [
 		component: WalletComponent
 	},
 	{
+		path: 'booked_car/:carNo',
+		component: BookedCarComponent
+	},
+	{
 	        path:'',
 	        component: HomepageComponent,
 	        pathMatch: 'full'
@@ -81,5 +86,6 @@ export const RouterComponents = [
     UserHistoryComponent,
 	AboutComponent,
 	ContactUsComponent,
-	WalletComponent
+	WalletComponent,
+	BookedCarComponent
 ];

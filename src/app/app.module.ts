@@ -11,11 +11,14 @@ import { FooterComponent } from './footer/footer.component';
 
 import { FetchJSONService } from './fetch-json.service';
 
+import { FileSelectDirective } from 'ng2-file-upload';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+	FileSelectDirective,
     RouterComponents
 ],
   imports: [

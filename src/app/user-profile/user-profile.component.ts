@@ -10,8 +10,8 @@ import { Message } from 'src/app/Interfaces/Message';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  
-   user: User = {  
+
+   user: User = {
     userId: '',
     firstName:'',
     lastName: '',
@@ -26,13 +26,14 @@ export class UserProfileComponent implements OnInit {
   };
 
   message: Message;
- 
-  userId: string  ; 
+
+  userId: string  ;
   password: string ;
   login: Login;
   response: any;
+  toastMessageUname; toastMessagePassword ; toastMessageEmail; toastMessageMobile; toastMessage: string;
 
-  constructor(private http: FetchJSONService) 
+  constructor(private http: FetchJSONService)
   {
       this.login =
        {
@@ -46,28 +47,40 @@ export class UserProfileComponent implements OnInit {
       (data) => {
         this.user = data['body'];
         console.log(data);
-       }); 
+       });
    }
-  
+
   ngOnInit() {
 
   }
- 
-  
+
+
   changeUserName()
    {
      console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageUname = "Update Sucess";
+        }else{
+          this.toastMessageUname = "Update Failure";
+        }
        console.log(data);
       }
     );
     }
- 
+
   changeUserpassword(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessagePassword = "Update Sucess !!";
+        }else{
+          this.toastMessagePassword = "Update Failure";
+        }
        console.log(data);
       }
     );
@@ -77,34 +90,58 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageMobile = "Update Sucess !!";
+        }else{
+          this.toastMessageMobile = "Update Failure";
+        }
        console.log(data);
       }
-    );  
+    );
   }
 
   changeEmail(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        this.message = data;
+        if(this.message.status == "success"){
+          this.toastMessageEmail = "Update Sucess !!";
+        }else{
+          this.toastMessageEmail = "Update Failure";
+        }
        console.log(data);
       }
     );
    }
 
   changeGovId(){
-   
+
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        // this.message = data;
+        // if(this.message.status == "success"){
+        //   this.toastMessage = "Update Sucess !!";
+        // }else{
+        //   this.toastMessage = "Update Failure";
+        // }
        console.log(data);
       }
     );
-  
+
   }
   changeGovType(){
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
+        // this.message = data;
+        // if(this.message.status == "success"){
+        //   this.toastMessage = "Update Sucess !!";
+        // }else{
+        //   this.toastMessage = "Update Failure";
+        // }
        console.log(data);
       }
     );
@@ -113,13 +150,20 @@ export class UserProfileComponent implements OnInit {
   deleteAccount()
 {
   console.log(this.user);
-  this.http.deRegister(this.login).subscribe(
+  this.http.deRegister(this.user.userId).subscribe(
     (data : Message) => {
+     this.message = data;
+     if(this.message.status == "success"){    
+          this.toastMessage = "Delete Sucess";
+        }else{
+          this.toastMessage = "Delete Failure "
+        }
       console.log(data);
+
     }
   );
 
-}  
-  
- 
+}
+
+
 }

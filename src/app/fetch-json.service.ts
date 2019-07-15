@@ -8,6 +8,7 @@ import { UserLog } from './Interfaces/UserLog';
 import { Message } from './Interfaces/Message';
 import { Login } from './Interfaces/Login';
 import { CarsBookStat } from './Interfaces/CarsBookStat';
+import { Email } from './Interfaces/Email';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +41,9 @@ export class FetchJSONService {
   }
 
   // User deregister
-  deRegister(login: Login)	{
+  deRegister(userId: string)	{
 	  // Send the login object and it would automatically delete user from db
-	  return this.http.post<Message>(this.baseUrl + '/user/deregister', login, this.httpOptions);
+	  return this.http.delete<Message>(this.baseUrl + '/user/deregister/' + userId, this.httpOptions);
   }
 
   // Update user properties
@@ -67,6 +68,11 @@ export class FetchJSONService {
   addMoney(user: User, money: number)	{
 	  user.wallet += money;
 	  return this.updateUser(user);
+  }
+
+  // Account Recovery this will send mail to user mail id if it is matched correctly
+  recoverAccount(drivingLicenseNum: String)	{
+	  return this.http.get<Message>(this.adminBaseUrl + '/account_recovery/' + drivingLicenseNum, {observe: 'response'});
   }
 
   //************************** Car APIs ***********************************
@@ -104,7 +110,7 @@ export class FetchJSONService {
   // Get latest history
   getLatestUserHistory(userId: string)	{
 	  // Send the userId from the user object to get its history
-	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest' + userId, {observe: 'response'});
+	  return this.http.get<UserLog>(this.baseUrl + '/user_log/latest/' + userId, {observe: 'response'});
   }
 
   // Get complete history
@@ -156,5 +162,9 @@ export class FetchJSONService {
 
   getCarStats()	{
 	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
+  }
+
+  sendMail(email: Email)	{
+	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
   }
 }
