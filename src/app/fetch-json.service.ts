@@ -61,13 +61,18 @@ export class FetchJSONService {
   // Get user_profile
   getUser(login: Login)	{
 	  // As login functionality is removed you have to send login object
-	  return this.http.post<User>(this.baseUrl + '/user/get_user', login, {observe: 'response'});
+	  return this.http.post<User>(this.baseUrl + '/user/get_user', login, this.httpOptions);
   }
 
   // User wallet add money
   addMoney(user: User, money: number)	{
 	  user.wallet += money;
 	  return this.updateUser(user);
+  }
+
+  // Account Recovery this will send mail to user mail id if it is matched correctly
+  recoverAccount(drivingLicenseNum: String)	{
+	  return this.http.get<Message>(this.adminBaseUrl + '/account_recovery/' + drivingLicenseNum, {observe: 'response'});
   }
 
   //************************** Car APIs ***********************************
