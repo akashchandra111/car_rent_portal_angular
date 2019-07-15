@@ -61,7 +61,7 @@ export class FetchJSONService {
   // Get user_profile
   getUser(login: Login)	{
 	  // As login functionality is removed you have to send login object
-	  return this.http.post<User>(this.baseUrl + '/user/get_user', login, this.httpOptions);
+	  return this.http.post<User>(this.baseUrl + '/user/get_user', login, {observe: 'response'});
   }
 
   // User wallet add money
