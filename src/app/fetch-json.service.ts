@@ -14,10 +14,10 @@ import { Email } from './Interfaces/Email';
   providedIn: 'root'
 })
 export class FetchJSONService {
-	baseUrl: string = 'http://9.202.17.174:8080';
-	adminBaseUrl: string = 'http://9.202.17.174:8081';
-	//baseUrl: string = 'http://localhost:8080';
-	//adminBaseUrl: string = 'http://localhost:8081';
+	//baseUrl: string = 'http://9.202.17.174:8080';
+	//adminBaseUrl: string = 'http://9.202.17.174:8081';
+	baseUrl: string = 'http://localhost:8080';
+	adminBaseUrl: string = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {
   }
@@ -165,6 +165,6 @@ export class FetchJSONService {
   }
 
   sendMail(email: Email)	{
-	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+	  return this.http.post<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
   }
 }
