@@ -7,7 +7,7 @@
                <i class="material-icons">menu</i>
                </a>
                <div class="brand-logo">
-                  <a href="#">
+                  <a  (click)="titleclick()">
                   RentoCar
                   </a>
                </div>
@@ -15,31 +15,31 @@
 
 
 
-               <ul class="right hide-on-med-and-down">
-                  <li>
-                     <a href="#login" class="waves-effect waves-dark modal-trigger" >Login</a>
-                  </li>
-                  <li>
-                     <a href="#register" class="waves-effect waves-dark modal-trigger">Register</a>
-                  </li>
-                  <li>
-                     <a href="#about" class="waves-effect waves-dark modal-trigger">About Us</a>
-                  </li>
-               </ul>
-			   </div>
-			   <!-- ifloged is false then it will show user detail -->
+		 <ul class="right hide-on-med-and-down">
+			<li>
+			   <a href="#login" class="waves-effect waves-dark modal-trigger" >Login</a>
+			</li>
+			<li>
+			   <a href="#register" class="waves-effect waves-dark modal-trigger">Register</a>
+			</li>
+			<li>
+			   <a href="#about" class="waves-effect waves-dark modal-trigger">About Us</a>
+			</li>
+		 </ul>
+		 </div>
+		 <!-- ifloged is false then it will show user detail -->
 
 
 
-    </nav>
-      </div>
-	  </div>
+</nav>
+</div>
+</div>
 
 
 
-	  <div *ngIf="!ifLogged">
+<div *ngIf="!ifLogged">
 
-			 <!-- <script type="text/javascript">
+	   <!-- <script type="text/javascript">
 console.log("asd");
 			 	$(".dropdown-trigger").dropdown();
 			  </script> -->
@@ -50,7 +50,7 @@ console.log("asd");
 					   class="material-icons">menu</i>
 				   </a>
 				   <div class="brand-logo">
-					   <a href="#"> RentoCar </a>
+					   <a (click)="titleclick()"> RentoCar </a>
 				   </div>
 				   <ul class="right hide-on-med-and-down">
 					   <li><a
@@ -65,15 +65,14 @@ console.log("asd");
 	 <!-- 								Booking</a></li> -->
 						   <li><a  class="indigo-text" (click)="history()">History</a></li>
 					   </ul>
-					   <li><a href="#username"
-						   class="waves-effect waves-dark dropdown-trigger"
+					   <li><a class="waves-effect waves-dark dropdown-trigger"
 						   data-target="account_dropdown"><i class="material-icons">person_outline</i>
 					   </a></li>
 					   <!-- Account Dropdown -->
 					   <ul id="account_dropdown" class="dropdown-content">
 						   <li><a class="indigo-text">Hi {{usershow}}</a></li>
 						   <li><a class="indigo-text" (click)="profile()">Profile</a></li>
-						   <li><a href="#" (click)="logout()" id="clicklogoutme" class="indigo-text">Logout</a></li>
+						   <li><a href="#" (click)="logout()" id="clicklogoutme" class="indigo-text insidenav">Logout</a></li>
 					   </ul>
 				   </ul>
 			   </div>
@@ -86,8 +85,8 @@ console.log("asd");
 
 
 
-      <!-- Side Navigation for mobile devices -->
-	  <!-- <div class="" *ngIf={{message}}> -->
+<!-- Side Navigation for mobile devices -->
+<!-- <div class="" *ngIf={{message}}> -->
 
 <div *ngIf="ifLogged">
       <ul class="sidenav" id="menu-link">
@@ -110,18 +109,18 @@ console.log("asd");
 
 	  <div *ngIf="!ifLogged" id="clicklogoutme">
 		  <ul class="sidenav" id="menu-link">
-		  <ul class=" ">
+		  <ul class="row">
 			  <li><a href="#modalwallet"
-				  class="waves-effect waves-light modal-trigger">Wallet</a></li>
+				  class="waves-effect waves-light modal-trigger" (click)="walletroute()">Wallet</a></li>
 			  <li><a href="#booking"
 				  class="waves-effect waves-dark dropdown-trigger"
 				  data-target="booking_dropdown1" >Booking</a></li>
 			  <!-- Booking Dropdown -->
 			  <ul id="booking_dropdown1" class="dropdown-content">
-				  <li><a href="/booking" class="indigo-text">Rent a car</a></li>
+				  <li><a (click)="booking()" class="indigo-text">Rent a car</a></li>
 <!-- 						<li><a href="CurrentBooking.jsp" class="indigo-text">Current -->
 <!-- 								Booking</a></li> -->
-				  <li><a href="History.jsp" class="indigo-text">History</a></li>
+				  <li><a (click)="history()" class="indigo-text">History</a></li>
 			  </ul>
 			  <li><a href="#username"
 				  class="waves-effect waves-dark dropdown-trigger"
@@ -129,9 +128,9 @@ console.log("asd");
 			  </a></li>
 			  <!-- Account Dropdown -->
 			  <ul id="account_dropdown1" class="dropdown-content">
-				  <li><a class="indigo-text">Hi {{this.firstName}}</a></li>
-				  <li><a href="user_profile" class="indigo-text">Profile</a></li>
-				  <li><button  (click)="logout()"  class="indigo-text">Logout</button></li>
+				  <li><a class="indigo-text">Hi {{usershow}}</a></li>
+				  <li><a (click)="profile()" class="indigo-text">Profile</a></li>
+				  <li><a (click)="logout()"  class="indigo-text insidenav">Logout</a></li>
 			  </ul>
 		  </ul>
 		  </ul>
@@ -149,90 +148,94 @@ console.log("asd");
 
 
 <!-- </div> -->
-      <!-- Login modal -->
-      <div class="modal one" id="login" *ngIf="iftrue">
-         <form class="form" action="login" method="post">
-            <div class="modal-content">
-               <div class="">
-                  <h4>Login</h4>
-               </div>
-               <div class="input-field">
-                  <input type="text" [(ngModel)]="username" id="username" class="validate" name="username" required>
-                  <label for="username">Username/ Email/ Phone</label>
-               </div>
-               <div class="input-field">
-                  <input type="password" [(ngModel)]="password" id="password" name="password" class="validate" required>
-                  <label for="password">Password</label>
-               </div>
-               <div id="logindiv" style="color:red;" *ngIf="ifAlert">
-               Login Failed
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
-               Login
-               <i class="material-icons right">send</i>
-               </button>
-            </div>
-         </form>
-      </div>
+<!-- Login modal -->
+<div class="modal one" id="login" *ngIf="iftrue">
+   <form class="form" action="login" method="post">
+	  <div class="modal-content">
+		 <div class="">
+			<h4>Login</h4>
+		 </div>
+		 <div class="input-field">
+			<input type="text" [(ngModel)]="username" id="username" class="validate" name="username" required>
+			<label for="username">Username/ Email/ Phone</label>
+		 </div>
+		 <div class="input-field">
+			<input type="password" [(ngModel)]="password" id="password" name="password" class="validate" required>
+			<label for="password">Password</label>
+		 </div>
+		 <div id="logindiv" style="color:red;" *ngIf="ifAlert">
+		 Login Failed
+		 </div>
+	  </div>
+	  <div class="modal-footer">
+		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
+		 Login
+		 <i class="material-icons right">send</i>
+		 </button>
+	  </div>
+   </form>
+</div>
 
-      <!-- Register modal -->
-      <div class="modal" id="register">
-         <form class="form" action="register" method="post">
-            <div class="modal-content">
-               <div class="">
-                  <h4>Register with Us</h4>
-               </div>
-               <div class="input-field">
-                  <input type="text" [(ngModel)]="firstName" name="firstName" id="firstname" class="validate" required>
-                  <label for="firstname">First name</label>
-               </div>
-               <div class="input-field">
-                  <input type="text" name="lastname" [(ngModel)]="lastName" id="lastname" class="validate" required>
-                  <label for="lastname">Last name</label>
-               </div>
-               <div class="input-field">
-                  <input type="text" name="mobileno" id="mobileno" [(ngModel)]="mobileNum" class="validate" required>
-                  <label for="mobileno">Mobile number</label>
-               </div>
-               <div class="row">
-                  <div class="input-field col s4">
-                     <select class="input-field" name="idtype" [(ngModel)]="idType" >
-                        <option value="" selected disabled>Verify with</option>
-                        <option value="aadhar" >Aadhar</option>
-                        <option value="pan">PAN</option>
-                        <option value="passport">Passport</option>
-                     </select>
-                  </div>
-                  <div class="input-field col s8">
-                     <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" class="validate" required>
-                     <label for="verification_id">UID number</label>
-                  </div>
-               </div>
-               <div class="input-field">
-                  <input type="text" name="driving_id" id="driving_id" [(ngModel)]="driving_id" class="validate" required>
-                  <label for="username">Driving License Number</label>
-               </div>
-               <div class="input-field">
-                  <input type="text" name="username" id="username" [(ngModel)]="userName" class="validate" required>
-                  <label for="username">Username</label>
-               </div>
-               <div class="input-field">
-                  <input type="text" name="email" id="email" [(ngModel)]="email" class="validate" required>
-                  <label for="username">Email</label>
-               </div>
-               <div class="input-field">
-                  <input type="password" name="password" id="password" [(ngModel)]="passwordregister" class="validate" required>
-                  <label for="password">Password</label>
-               </div>
+<!-- Register modal -->
+<div class="modal" id="register">
+   <form class="form" action="register" method="post">
+	  <div class="modal-content">
+		 <div class="">
+			<h4>Register with Us</h4>
+		 </div>
+		 <div class="input-field">
+			<input type="text" [(ngModel)]="firstName" name="firstName" id="firstname" class="validate" required>
+			<label for="firstname">First name</label>
+		 </div>
+		 <div class="input-field">
+			<input type="text" name="lastname" [(ngModel)]="lastName" id="lastname" class="validate" required>
+			<label for="lastname">Last name</label>
+		 </div>
+		 <div class="input-field">
+			<input type="text" name="mobileno" id="mobileno" [(ngModel)]="mobileNum" class="validate" required>
+			<label for="mobileno">Mobile number</label>
+		 </div>
+		 <div class="row">
+			<div class="input-field col s4">
+			   <select class="input-field" name="idtype" [(ngModel)]="idType" >
+				  <option value="" selected disabled>Verify with</option>
+				  <option value="aadhar" >Aadhar</option>
+				  <option value="pan">PAN</option>
+				  <option value="passport">Passport</option>
+			   </select>
+			</div>
+			<div class="input-field col s8">
+			   <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" class="validate" required>
+			   <label for="verification_id">UID number</label>
+			</div>
+		 </div>
+		 <div class="input-field">
+			<input type="text" name="driving_id" id="driving_id" [(ngModel)]="driving_id" class="validate" required>
+			<label for="username">Driving License Number</label>
+		 </div>
+		 <div class="input-field">
+			 <input type="file" class="file-path-wrapper" [(ngModel)]="fileName" name="photo" ng2FileSelect [uploader]="uploader"/>
+			 <button type="button" class="btn btn-indigo" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
+		 </div>
+		 <div class="input-field">
+			<input type="text" name="username" id="username" [(ngModel)]="userName" class="validate" required>
+			<label for="username">Username</label>
+		 </div>
+		 <div class="input-field">
+			<input type="text" name="email" id="email" [(ngModel)]="email" class="validate" required>
+			<label for="username">Email</label>
+		 </div>
+		 <div class="input-field">
+			<input type="password" name="password" id="password" [(ngModel)]="passwordregister" class="validate" required>
+			<label for="password">Password</label>
+		 </div>
 
-            </div>
-            <div class="modal-footer">
-               <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close " id="registerclicked" name="submit" (click)="register()" onclick="loginClicked()">
-               Register
-               <i class="material-icons right">send</i>
-               </button>
-            </div>
-         </form>
-      </div>
+	  </div>
+	  <div class="modal-footer">
+		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close " id="registerclicked" name="submit" (click)="register()" onclick="loginClicked()">
+		 Register
+		 <i class="material-icons right">send</i>
+		 </button>
+	  </div>
+   </form>
+</div>

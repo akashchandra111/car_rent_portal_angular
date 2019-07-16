@@ -109,7 +109,8 @@
 	        </div>
 	        <div class="card-content">
 	           <span class="card-title activator grey-text text-darken-4">{{ car.carName }}<i class="material-icons right">more_vert</i></span>
-	        </div>
+<p><a  class="modal-trigger" href="#login7" (click)="setid(car.carId)">Book this car</a></p>
+			</div>
 	        <div class="card-reveal indigo lighten-3">
 	           <span class="card-title grey-text text-darken-4 "><b>{{ car.carName }}</b><i class="material-icons right">close</i></span>
 	           <p>
@@ -122,4 +123,30 @@
 	        </div>
 	     </div>
 	</div>
+</div>
+<div class="modal three" id="login7">
+   <form class="form" action="login" method="post">
+	  <div class="modal-content">
+		 <div class="">
+			<h4>Login</h4>
+		 </div>
+		 <div class="input-field">
+			<input type="text" [(ngModel)]="username" id="username" class="validate" name="username" required>
+			<label for="username">Username/ Email/ Phone</label>
+		 </div>
+		 <div class="input-field">
+			<input type="password" [(ngModel)]="password" id="password" name="password" class="validate" required>
+			<label for="password">Password</label>
+		 </div>
+		 <div id="logindiv" style="color:red;" *ngIf="ifAlert">
+		 Login Failed
+		 </div>
+	  </div>
+	  <div class="modal-footer">
+		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close insidenav" id="loginbutton2" name="submit" (click)="carlogin()">
+		 Login
+		 <i class="material-icons right">send</i>
+		 </button>
+	  </div>
+   </form>
 </div>

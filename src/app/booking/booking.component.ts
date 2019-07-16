@@ -39,6 +39,7 @@ export class BookingComponent implements OnInit {
   calculatedBookingCost: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
+	  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
