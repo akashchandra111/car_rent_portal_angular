@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/Interfaces/User';
 import { UserLog } from 'src/app/Interfaces/UserLog';
 import { Login } from 'src/app/Interfaces/Login';
 import { FetchJSONService } from '../fetch-json.service';
+import { Email } from 'src/app/Interfaces/Email';
 
 @Component({
   selector: 'app-userpage',
@@ -17,7 +19,7 @@ export class UserpageComponent implements OnInit {
   money : number;
   response : any;
   login: Login;
-  userId: string; //
+  userId: string; 
   password: string;
   startTime: string;
   endTime: string;
@@ -28,11 +30,12 @@ export class UserpageComponent implements OnInit {
   unixStartTime: number;
   unixEndTime: number;
   userObject: any;
+  email : Email;
 
   currentDate: any = new Date().getTime(); 
-  currentUnixTime : any = parseInt(this.currentDate);  
+  currentUnixTime : any = parseInt(this.currentDate); 
 
-  constructor( private http: FetchJSONService) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login = {
       id: JSON.parse(localStorage.getItem('user')).userId,
       password: JSON.parse(localStorage.getItem('user')).password
@@ -43,35 +46,21 @@ export class UserpageComponent implements OnInit {
         this.user = data['body'];
         this.http.getCompleteHistory(this.user.userId).subscribe(
           (data)=>  {
+           
             this.userlog = data['body'];
-            this.userTemplog = this.userObject;
-            var index = 0;
-            console.log(this.userlog.startTime);
-            console.log(parseInt(this.userlog.startTime));
-                // for(var log = 0; log < this.userTemplog.length; log++) 
-                // {
-                //   if(parseInt(this.userObject.startTime) >  this.currentUnixTime)
-                //   {
-                //     console.log("user"+this.userlog);
-                //     this.userlog[index] = this.userTemplog[log];
-                //     index++;
-                //   }            
-                // } 
-            console.log("userlog is "+this.userlog);
+            this.userlog = this.userlog.slice(0, 3);
 
-                for(let log of this.userlog)  {
-                  
-                  log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
-                  log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
-                  
-                }  
-                        
-          });
-
-    this.http.getUser(this.login).subscribe(
-      (data)=>  {
-        this.user = data['body'];
-      });           
+            
+            for(let i = 0; i < this.userlog.length; i++){
+              this.userlog[i].startTime = new Date(parseInt(this.userlog[i].startTime)).toLocaleString();
+              this.userlog[i].endTime = new Date(parseInt(this.userlog[i].endTime)).toLocaleString();
+            }
+            
+        });
+        this.http.getUser(this.login).subscribe(
+          (data)=>  {
+            this.user = data['body'];
+        });           
     });          
   }
 
@@ -79,7 +68,29 @@ export class UserpageComponent implements OnInit {
     
   }
   postQuery(){
-     
-      
+      this.http.sendMail(this.email).subscribe(
+        (data)=> {
+         this.email = data['body'];
+         console.log(this.email);
+      });
   }
+
+  bookingPage(){
+    console.log("working");
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/choose_car'])); 
+  }
+
+  bookedCar(){
+    console.log("working");
+    
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/history'])); 
+  }
+
+  addMoneyToWallet(){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/wallet'])); 
+  }
+  
 }

@@ -70,6 +70,11 @@ export class FetchJSONService {
 	  return this.updateUser(user);
   }
 
+  // Account Recovery this will send mail to user mail id if it is matched correctly
+  recoverAccount(drivingLicenseNum: String)	{
+	  return this.http.get<Message>(this.adminBaseUrl + '/account_recovery/' + drivingLicenseNum, {observe: 'response'});
+  }
+
   //************************** Car APIs ***********************************
   // Add car
   addCar(car: Car)	{
@@ -160,6 +165,6 @@ export class FetchJSONService {
   }
 
   sendMail(email: Email)	{
-	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+	  return this.http.post<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
   }
 }

@@ -2,13 +2,37 @@
 <!-- Card Panel [Author: Akash Chandra]-->
 <div class="container">
 <div class="row">
+
+    <div class="col s12 ">
+        <div class="card-panel card-style red z-depth-3">
+          <div class="row">
+            <div class="col s9">
+              <div class="card-content white-text">
+                <h4><i class="small material-icons white-text lighten-4">book</i>  Upcoming Bookings</h4> 
+                <!-- <ng-template [ngIf]="userlog.startTime > currentUnixTime" [ngIfElse]="isLesser"> -->
+                  <p *ngFor="let userHistory of userlog">
+                    Pick up your car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
+                    Use this secret key: <b>{{ userHistory.secretKey }}</b>       
+                      <!-- <a class="waves-effect waves-light btn-floating red modal-trigger" href="#delete" (click)="onDelete(userHistory.userLogId)">
+                      <i class="material-icons left">delete</i></a> -->
+                  </p>
+                <!-- </ng-template> -->
+                
+                <!-- <ng-template #isLesser> -->
+                  <!-- <p>No Upcoming Bookings</p> -->
+                <!-- </ng-template> -->
+    
+              </div>
+            </div>
+          </div>
+          <a class = "btn waves-effect waves-light white red-text darken-3" id="bookedcar" name="bookedcar" (click) = "bookedCar()"><b>For More Details >></b></a>
+        </div>
+      </div>
+    
+
   <div class="col s12"> 
     <div class="card-panel card-style blue darken-3 z-depth-3">
       <div class="row">
-        <!-- <div class="col s3">
-           <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">account_balance_wallet</i> -->
-        <!-- </div> --> 
         <div class="col s9">
           <div class="card-content white-text">
             <h4><i class="small material-icons white-text lighten-4">account_balance_wallet</i>   Wallet</h4>
@@ -30,105 +54,47 @@
           </div>
         </div>
       </div>
+      <a class = "btn waves-effect waves-light  white blue-text darken-5 right-align " (click) = "addMoneyToWallet()"><b>Add Money</b></a>
     </div>
   </div>
-  <div class="col s12 ">
-    <div class="card-panel card-style yellow darken-3 z-depth-3">
-      <div class="row">
-        <!-- <div class="col s3">
-          <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">bookmark</i>
-        </div> -->
-        <div class="col s9">
-          <div class="card-content white-text">
-            <h4><i class="small material-icons white-text lighten-4">book</i>  Upcoming Bookings</h4>
-           
-            <!-- <ng-template [ngIf]="unixStartTime > currentUnixTime" [ngIfElse]="isLesser"> -->
-              <p *ngFor="let userHistory of userlog">
-                Pick up your car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
-                Use this secret key: <b>{{ userHistory.secretKey }}</b>
-              </p>
-            <!-- </ng-template> -->
-            
-            <!-- <ng-template #isLesser>
-              <p>No Upcoming Bookings</p>
-            </ng-template> -->
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <div class="row">
       <div class="col s12 "> 
-        <div class="card-panel card-style red darken-3 z-depth-3">
+        <div class="card-panel card-style yellow darken-3 z-depth-3">
           <div class="row">
             <div class="col s9">
               <div class="card-content white-text">
                 <h4><i class="small material-icons white-text lighten-4">live_help</i>  Post Your Query</h4>
                   <p>
                    Have any query? 
-                  <a href="#query" class="waves-effect waves-dark white-text modal-trigger"><u>Click to post</u></a>
+                  <a href="#query" class="waves-effect waves-dark white-text modal-trigger"><h6><b><u>Click To Post</u></b></h6></a>
                   </p>
                 
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+  </div>         
 
   <div class="col s12">
     <div class="card-panel green darken-3 z-depth-3">
       <div class="row">
-        <!-- <div class="col s3">
-          <i class="material-icons medium right blue-text text-lighten-2"
-            style="margin-top: 30%">volume_up</i>
-        </div> -->
         <div class="col s9">
           <div class="card-content white-text">
-            <h4><i class="small material-icons white-text lighten-4">volume_up</i>  Promotion</h4>
-            <p>
-              Have you enjoyed? Please promote our page.
+            <h4><i class="small material-icons white-text lighten-4">history</i>  History</h4>
+            <p *ngFor="let userHistory of userlog">
+              Pick up your car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
+              Use this secret key: <b>{{ userHistory.secretKey }}</b> 
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Modal Structure  [Author: Dheeeraj Joshi]-->
-  <div id="modalwallet" class="modal">
-    <form class="form" action="addwallet" method="post">
-      <div class="row container" style="margin-top: 2%;">
-        <div class="col s12">
-          <div class="modal-content">
-            <h4>Add Money</h4>
-          </div>
-        </div>
-      </div>
-      <div class="row container">
-        <div class="col s6 l8">
-          <div class="input-field ">
-
-            <input id="amount" name="amount" type="text" class="validate">
-            <label for="money">Enter Amount </label>
-          </div>
-        </div>
-        <div class="col s6 l4">
-          <div class="modal-footer">
-
-            <button type="submit"
-              class="modal-close waves-effect waves-indigo btn left indigo "
-              onclick="M.toast({html: 'Money added!'})"
-              style="margin-left: 2%;" [(ngModel)] = "addMoney">Add Money</button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
 </div>
-
+</div>
+  
 
 <!-- Modal for query -->
 <div class="modal" id="query">
@@ -157,5 +123,22 @@
           </button>
        </div>
     </form>
- </div>
 </div>
+
+<!-- Button to go for choose car -->
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" id="postquery" name="submit" (click)="bookingPage()">
+    <i class="large material-icons">time_to_leave</i></a>
+</div>
+
+<!-- Modal for delete -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h5>Delete Upcoming History</h5>
+      <p>Are you sure want to delete</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+      

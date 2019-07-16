@@ -3,8 +3,11 @@ import { FetchJSONService } from '../fetch-json.service';
 import { Login } from '../Interfaces/Login';
 import { User } from '../Interfaces/User';
 import { Message } from '../Interfaces/Message';
-import { Router,NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
+// Static url for file upload server to get images of drivingLicenseNum
+const uploadURL = 'http://localhost:4201/license/upload';
 
 @Component({
     selector: 'app-header',
@@ -18,6 +21,7 @@ export class HeaderComponent implements OnInit {
     ifLogged: boolean = true;
     ifAlert: boolean = false;
     iftrue: boolean = true;
+	fileName: string;
 
 // @Output userobject= new EventEmitter();
     usershow: string = "";
@@ -26,14 +30,16 @@ export class HeaderComponent implements OnInit {
     mobileNum: string;
     idType: string;
     verification_id: string;
-    drivingLicenseNum: string;
-    userName: string;
+    driving_id: string;
+    userNameregister: string;
     email: string;
     passwordregister: string;
     message: Message;
     wallet: string;
 
     // @Output() public loginEvent = new EventEmitter < User > ();
+	// Used for uploading file on another [file upload server]
+	public uploader: FileUploader = new FileUploader({url: uploadURL, itemAlias: 'photo'});;
 
 
     constructor(private http: FetchJSONService, private router: Router) {
@@ -45,11 +51,41 @@ export class HeaderComponent implements OnInit {
             this.iftrue = true;
 
 
-        } else {
+        }
+		else if(JSON.parse(localStorage.getItem('user'))!=null && localStorage.getItem('carid')!=null){
+console.log("it us riunn");
 			this.iftrue = false;
-if(JSON.parse(localStorage.getItem('user')).userId == 0) {
+			this.ifLogged=false;
+this.router.navigate(['/booking/'+localStorage.getItem("carid")], {
+}).then(() => {
+	this.ifLogged = false;
+	this.iftrue = false;
+
+this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
+});
+	}
+		else {
+			this.iftrue = false;
+if(JSON.parse(localStorage.getItem('user')).userId== "0") {
+	console.log("routing to admins");
                 this.router.navigate(['/admin']);
-            } else {
+            }
+			else if(JSON.parse(localStorage.getItem('user'))!=null && localStorage.getItem('carid')!=null){
+	console.log("it is here");
+	this.iftrue = false;
+	this.ifLogged=false;
+	this.router.navigate(['/booking/'+localStorage.getItem("carid")], {
+	}).then(() => {
+		this.ifLogged = false;
+		this.iftrue = false;
+	this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
+	});
+		}
+
+
+			 else {
 
                 this.iftrue = false;
 
@@ -68,18 +104,31 @@ if(JSON.parse(localStorage.getItem('user')).userId == 0) {
                             console.log("user not present");
                             this.ifLogged = true;
                             this.iftrue = true;
-                        } else {
+                        }
+						else if(JSON.parse(localStorage.getItem('user'))!=null && localStorage.getItem('carid')!=null){
+						console.log("on 3rd");
+							this.iftrue = false;
+							this.ifLogged=false;
+						this.router.navigate(['/booking/'+localStorage.getItem("carid")], {
+						}).then(() => {
+							this.ifLogged = false;
+							this.iftrue = false;
+
+						this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+						});
+						}
+						else {
 
                             console.log("user is present");
                             this.ifLogged = false;
 
                             this.iftrue = false;
-
+this.usershow = JSON.parse(localStorage.getItem('user')).firstName;
 
                             this.router.navigate(['/dashboard'], {
-                                queryParams: {}
-                            }).then(() => {
 
+                            }).then(() => {
+this.usershow = JSON.parse(localStorage.getItem('user')).firstName;
 
 
                             });
@@ -133,6 +182,13 @@ if(JSON.parse(localStorage.getItem('user')).userId == 0) {
 
 
     ngOnInit() {
+		// File uploading code to accept user drivingLicenseNum image
+		this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+		this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+	 		console.log('file uploaded: ', item, status, response);
+			alert('File uploaded successfully');
+ 		};
+
 		this.user=JSON.parse(localStorage.getItem('user'));
         this.usershow = JSON.parse(localStorage.getItem('user')).firstName;
         if (JSON.parse(localStorage.getItem('user')).firstName == null) {
@@ -140,7 +196,22 @@ if(JSON.parse(localStorage.getItem('user')).userId == 0) {
             console.log("user not present");
             this.ifLogged = true;
             this.iftrue = true;
-        } else {
+        }
+		else if(JSON.parse(localStorage.getItem('user'))!=null && localStorage.getItem('carid')!=null){
+		console.log("4th place");
+			this.iftrue = false;
+			this.ifLogged=false;
+		this.router.navigate(['/booking/'+localStorage.getItem("carid")], {
+		}).then(() => {
+
+			this.ifLogged = false;
+			this.iftrue = false;
+
+		this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+
+		});
+		}
+		else {
 
             console.log("user is present");
             this.ifLogged = false;
@@ -171,6 +242,8 @@ if(JSON.parse(localStorage.getItem('user')).userId == 0) {
                     this.iftrue = true;
                     this.ifAlert = true;
                 } else {
+
+
                     console.log(this.user);
                     console.log("user is present");
                     this.ifLogged = false;
@@ -178,18 +251,23 @@ if(JSON.parse(localStorage.getItem('user')).userId == 0) {
                     this.iftrue = false;
                     this.ifAlert = false;
                     localStorage.setItem('user', JSON.stringify(this.user));
+					if(JSON.parse(localStorage.getItem('user')).userId == "0") {
+						console.log("routing to admins");
+					                window.location.href="/admin"
+					            }
+								else{
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 this.router.navigate(['/dashboard'], {
-	queryParams: {}
 }).then(() => {
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 
 });
                     this.iftrue = false;
                     this.ifLogged = false;
+}
 
-                }
-            }
+}
+			}
         );
     }
 
@@ -203,8 +281,8 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
             mobileNum: this.mobileNum,
             govtIdType: this.idType,
             govtIdNum: this.verification_id,
-            drivingLicenseNum: this.drivingLicenseNum,
-            userName: this.userName,
+            drivingLicenseNum: this.driving_id,
+            userName: this.userNameregister,
             password: this.passwordregister,
             email: this.email,
             wallet: 0
@@ -226,36 +304,49 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 
                 } else {
                     let login: Login = {
-                        id: this.userName,
+                        id: this.userNameregister,
                         password: this.passwordregister
                     };
+					this.http.getUser(login).subscribe(
+			            (data) => {
 
-                    this.http.getUser(login).subscribe(
-                        (data) => {
-                            this.user = data['body'];
-                            console.log(this.user);
-                            if (this.user.userId == null) {
-                                console.log(this.user);
-                                console.log("user not present");
-                                this.ifLogged = true;
-                            } else {
-                                console.log(this.user);
-                                console.log("user is present");
-                                this.ifLogged = false;
-                                localStorage.setItem('user', this.user.userName);
+			                this.user = data['body'];
 
-                            }
-                        }
-                    );
-                    console.log("user is present");
-                    this.ifLogged = false;
+			                if (this.user.userId == null) {
 
-                }
+			                    console.log("user not present");
+			                    this.ifLogged = true;
+			                    this.iftrue = true;
+			                    this.ifAlert = true;
+			                } else {
 
-            }
-        );
-    }
 
+			                    console.log(this.user);
+			                    console.log("user is present");
+			                    this.ifLogged = false;
+
+			                    this.iftrue = false;
+			                    this.ifAlert = false;
+			                    localStorage.setItem('user', JSON.stringify(this.user));
+								if(JSON.parse(localStorage.getItem('user')).userId == "0") {
+									console.log("routing to admins");
+								                window.location.href="/admin";
+								            }
+											else{
+			this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
+			window.location.href="/dashboard";
+			                    this.iftrue = false;
+			                    this.ifLogged = false;
+			}
+
+			}
+						}
+			        );
+
+}
+});
+
+}
 
     logout() {
         console.log("logout running");
@@ -268,7 +359,7 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
         this.ifLogged = true;
         localStorage.removeItem('user');
         localStorage.clear();
-        window.location = "/";
+        window.location.href= "/";
 
 
     }
@@ -305,5 +396,17 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 
 		});
+	}
+
+	titleclick(){
+		console.log("titleclick");
+		localStorage.removeItem('carid');
+		if(JSON.parse(localStorage.getItem('user')).userId== "0") {
+		window.location.href="/admin";
+		}else{
+
+
+		this.router.navigate(['/dashboard']);
+}
 	}
 }
