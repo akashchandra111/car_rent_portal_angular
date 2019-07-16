@@ -85,10 +85,12 @@ export class UserpageComponent implements OnInit {
     
   }
   postQuery(){    
-    console.log("working");
+    let userInfo: string = "UserId: " + this.user.userId + " ,E-mail: " + this.user.email + " ,Mobile Number : " +this.user.mobileNum;
     this.email.to = 'vyshnavigadiparthi20@gmail.com';
     this.email.subject = this.subject;
-    this.email.text = this.text;
+    this.email.text = userInfo + " Query :" + this.text;
+    this.user.userId = this.text;
+    this.user.email = this.text;
     console.log(this.email);
       this.http.sendMail(this.email).subscribe(
         (data : Message)=> {
@@ -106,7 +108,7 @@ export class UserpageComponent implements OnInit {
     console.log("working");
     
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/'])); 
+    this.router.navigate(['/bookedcar/:carNo'])); 
   }
 
   addMoneyToWallet(){
