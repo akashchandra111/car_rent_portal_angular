@@ -160,6 +160,6 @@ export class FetchJSONService {
   }
 
   sendMail(email: Email)	{
-	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+	  return this.http.post<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
   }
 }

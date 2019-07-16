@@ -5,6 +5,8 @@ import { UserLog } from 'src/app/Interfaces/UserLog';
 import { Login } from 'src/app/Interfaces/Login';
 import { FetchJSONService } from '../fetch-json.service';
 import { Email } from 'src/app/Interfaces/Email';
+import { Message } from '../Interfaces/Message';
+
 
 @Component({
   selector: 'app-userpage',
@@ -15,11 +17,11 @@ export class UserpageComponent implements OnInit {
 
   user : User;
   userlog : any;
-  userTemplog : UserLog[];
+  // userTemplog : UserLog[];
   money : number;
   response : any;
   login: Login;
-  userId: string; 
+  userId: string;
   password: string;
   startTime: string;
   endTime: string;
@@ -27,13 +29,13 @@ export class UserpageComponent implements OnInit {
   dropLocation: string;
   secretKey: string;
   wallet: number;
-  unixStartTime: number;
-  unixEndTime: number;
-  userObject: any;
   email : Email;
+  latestHistory: any;
+  subject : string;
+  text: string;
 
   currentDate: any = new Date().getTime(); 
-  currentUnixTime : any = parseInt(this.currentDate); 
+  currentUnixTime = parseInt(this.currentDate); 
 
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login = {
@@ -41,15 +43,20 @@ export class UserpageComponent implements OnInit {
       password: JSON.parse(localStorage.getItem('user')).password
     }
 
+    this.email = {
+      to: '',
+      subject: '',
+      text: ''
+    }
+
     this.http.getUser(this.login).subscribe(
       (data)=>  {
         this.user = data['body'];
         this.http.getCompleteHistory(this.user.userId).subscribe(
           (data)=>  {
-           
+          
             this.userlog = data['body'];
             this.userlog = this.userlog.slice(0, 3);
-
             
             for(let i = 0; i < this.userlog.length; i++){
               this.userlog[i].startTime = new Date(parseInt(this.userlog[i].startTime)).toLocaleString();
@@ -57,21 +64,35 @@ export class UserpageComponent implements OnInit {
             }
             
         });
-        this.http.getUser(this.login).subscribe(
-          (data)=>  {
-            this.user = data['body'];
-        });           
+      this.http.getLatestUserHistory(this.user.userId).subscribe(
+        (data)=> {
+          this.latestHistory = data['body'];
+          console.log(this.latestHistory);
+          let tempStartTime = parseInt(this.latestHistory.startTime)
+          console.log(tempStartTime);
+          if(tempStartTime > this.currentUnixTime){
+            this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();
+          }      
+      });
+      this.http.getUser(this.login).subscribe(
+        (data)=>  {
+        this.user = data['body'];
+      });           
     });          
   }
 
   ngOnInit() {
     
   }
-  postQuery(){
+  postQuery(){    
+    console.log("working");
+    this.email.to = 'vyshnavigadiparthi20@gmail.com';
+    this.email.subject = this.subject;
+    this.email.text = this.text;
+    console.log(this.email);
       this.http.sendMail(this.email).subscribe(
-        (data)=> {
-         this.email = data['body'];
-         console.log(this.email);
+        (data : Message)=> {
+          let message: Message = data;
       });
   }
 
@@ -85,7 +106,7 @@ export class UserpageComponent implements OnInit {
     console.log("working");
     
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/history'])); 
+    this.router.navigate(['/'])); 
   }
 
   addMoneyToWallet(){
