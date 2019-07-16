@@ -18,8 +18,8 @@ export class BookingComponent implements OnInit {
   carId: string;
   carNo: string;
   checkCurrentCarStatus: boolean = true;
-
   toastMessage: string;
+  todaysDate: string;
 
   user: User;
   userLog: UserLog;
@@ -43,6 +43,7 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
+	  this.todaysDate = new Date().toISOString().slice(0, 10);
 	  this.carId = this.route.snapshot.paramMap.get('carId');
 
 	  // Getting car from carId name

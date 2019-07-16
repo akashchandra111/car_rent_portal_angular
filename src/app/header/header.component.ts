@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
     ifAlert: boolean = false;
     iftrue: boolean = true;
 	fileName: string;
-
+	isForgotActivated: boolean = false;
+	isMailSent: boolean = false;
+	drivingLicenseNum: string;
 // @Output userobject= new EventEmitter();
     usershow: string = "";
     firstName: string;
@@ -396,6 +398,28 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 
 		});
+	}
+
+	openForgotBox()	{
+		console.log("Forgot Box: " + this.isForgotActivated);
+		if(this.isForgotActivated)	this.isForgotActivated = false;
+		else	this.isForgotActivated = true;
+	}
+
+	sendForgotMail()	{
+		this.http.recoverAccount(this.drivingLicenseNum).subscribe(
+			(data)=>	{
+				this.message = data['body'];
+				console.log("sendForgotMail():");
+				console.log(this.message);
+				if(this.message.status == "success")	{
+					
+				}
+				else	{
+
+				}
+			}
+		);
 	}
 
 	titleclick(){
