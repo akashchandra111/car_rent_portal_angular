@@ -20,6 +20,11 @@ id:string;
 ifAlert:boolean=false;
 user:User;
 
+miniCarImgPath: string;
+microCarImgPath: string;
+suvCarImgPath: string;
+deluxeCarImgPath: string;
+
   constructor(private http: FetchJSONService, private router: Router) {
 
  }

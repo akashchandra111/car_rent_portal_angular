@@ -5,7 +5,7 @@
 <div class="container">
     <div class="col s6 m6 l12">
       <div class="card horizontal">
-        <!-- <ng-template [ngIf] = "tempstartTime > currentUnixTime" [ngIfElse] = "isLesser"> -->
+        <ng-template [ngIf] = "tempstartTime > currentUnixTime" [ngIfElse] = "isLesser">
           <div class="card-image">
               <!-- <img [src]="car.imgPath" alt="No Image found"> -->
               <img src="assets/images/i20.jpg">
@@ -55,10 +55,10 @@
 
             </div>
           </div>
-          <!-- </ng-template> -->
-          <!-- <ng-template #isLesser>
+          </ng-template>
+          <ng-template #isLesser>
             <h5 class="red-text" align = "center"> No Upcoming Bookings Found....</h5>
-          </ng-template> -->
+          </ng-template>
         </div>
       </div>   
       </div>
