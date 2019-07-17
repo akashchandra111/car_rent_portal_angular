@@ -17,10 +17,18 @@
 			</div>
 		</div>
 		<div class="col s12 m6">
-			<div class="input-field">
+			<div class="input-field col s12">
+				<select id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
+				<option value="" disabled selected>Choose your option</option>
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>
+				</select>
+			</div>
+			<!-- <div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
 				<label for="autocomplete-input black-text darken-3">Start Location</label>
-	        </div>
+	        </div> -->
 		</div>
 		<div class="col s12 m6">
 			<div class="input-field">
@@ -52,7 +60,7 @@
 				<span><h5>Cost: {{ calculatedBookingCost }}</h5><a class="btn-small indigo waves-light darken-3 right"(click)="checkCost()">Check Cost</a></span>
 			</div>
 			<div>
-				<button class="btn indigo waves-effect waves-light darken-3" (click)="bookCar()">Book Car</button>
+				<button class="btn indigo waves-effect waves-light darken-3" ng-disabled="button" (click)="bookCar()">Book Car</button>
 				{{ toastMessage }}
 			</div>
 		</div>
