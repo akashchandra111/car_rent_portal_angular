@@ -1,4 +1,5 @@
 import { User } from './User';
+import { CarStatus } from './CarStatus';
 
 export interface UserLog	{
 	userLogId: string;
@@ -9,5 +10,5 @@ export interface UserLog	{
 	dropLocation: string;
 	secretKey: string;
 	totalAmount: number;
-	paidAmount: number;
+	carNo: string;
 }
