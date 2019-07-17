@@ -18,8 +18,8 @@ export class BookingComponent implements OnInit {
   carId: string;
   carNo: string;
   checkCurrentCarStatus: boolean = true;
-
   toastMessage: string;
+  todaysDate: string;
 
   user: User;
   userLog: UserLog;
@@ -43,6 +43,7 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
+	  this.todaysDate = new Date().toISOString().slice(0, 10);
 	  this.carId = this.route.snapshot.paramMap.get('carId');
 
 	  // Getting car from carId name
@@ -91,6 +92,7 @@ export class BookingComponent implements OnInit {
 	  this.checkCost();
 
 	// User booking object would be added to user_log table and car_status would be updated
+
 	this.userLog = {
 		userLogId: Math.floor(Math.random() * 10e7).toString(),
 		userId: this.user,
@@ -100,7 +102,7 @@ export class BookingComponent implements OnInit {
 		dropLocation: this.dropLocation,
 		secretKey: Math.floor(Math.random() * 10e7).toString(),
 		totalAmount: this.calculatedBookingCost,
-		carNo: ""
+		carNo: ''
 	}
 
 	  // Getting free car from the car_status

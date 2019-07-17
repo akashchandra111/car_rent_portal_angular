@@ -34,8 +34,8 @@ export class UserpageComponent implements OnInit {
   text: string;
   tempStartTime: any;
 
-  currentDate: any = new Date().getTime(); 
-  currentUnixTime = parseInt(this.currentDate); 
+  currentDate: any = new Date().getTime();
+  currentUnixTime = parseInt(this.currentDate);
 
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login = {
@@ -54,15 +54,15 @@ export class UserpageComponent implements OnInit {
         this.user = data['body'];
         this.http.getCompleteHistory(this.user.userId).subscribe(
           (data)=>  {
-          
+
             this.userlog = data['body'];
             this.userlog = this.userlog.slice(0, 3);
-            
+
             for(let i = 0; i < this.userlog.length; i++){
               this.userlog[i].startTime = new Date(parseInt(this.userlog[i].startTime)).toLocaleString();
               this.userlog[i].endTime = new Date(parseInt(this.userlog[i].endTime)).toLocaleString();
             }
-            
+
         });
       this.http.getLatestUserHistory(this.user.userId).subscribe(
         (data)=> {
@@ -74,18 +74,21 @@ export class UserpageComponent implements OnInit {
       this.http.getUser(this.login).subscribe(
         (data)=>  {
         this.user = data['body'];
-      });           
-    });          
+      });
+    });
   }
 
   ngOnInit() {
-    
+
   }
-  postQuery(){    
-    let userInfo: string = "UserId: " + this.user.userId + " ,E-mail: " + this.user.email + " ,Mobile Number : " +this.user.mobileNum;
+  postQuery(){
+    let userInfo: string = "UserId: " + this.user.userId + " , E-mail: " + this.user.email + " , Mobile Number: " + this.user.mobileNum;
     this.email.to = 'vyshnavigadiparthi20@gmail.com';
+
+	// Static email for sending this mail to common admin mail account
+    //this.email.to = 'akashchandracs0007@gmail.com';
     this.email.subject = this.subject;
-    this.email.text = userInfo + " Query :" + this.text;
+    this.email.text = userInfo + " has following query: " + this.text;
     this.user.userId = this.text;
     this.user.email = this.text;
     //console.log(this.email);
@@ -100,12 +103,12 @@ export class UserpageComponent implements OnInit {
   bookingPage(){
     
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/choose_car'])); 
+    this.router.navigate(['/choose_car']));
   }
 
   bookedCar(){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(['/bookedcar'])); 
   }
-  
+
 }

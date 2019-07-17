@@ -157,11 +157,11 @@ export class FetchJSONService {
 
   //************************** admin method APIs ***********************************
   getTotalUser()	{
-	  return this.http.get<number>(this.adminBaseUrl + '/total_users', {observe: 'response'});
+	  return this.http.get<number>(this.adminBaseUrl + '/admin/total_users', {observe: 'response'});
   }
 
   getCarStats()	{
-	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
+	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/admin/stats/cars', {observe: 'response'});
   }
 
   sendMail(email: Email)	{

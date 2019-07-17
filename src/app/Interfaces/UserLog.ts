@@ -1,4 +1,5 @@
 import { User } from './User';
+import { CarStatus } from './CarStatus';
 
 export interface UserLog	{
 	userLogId: string;
