@@ -18,7 +18,7 @@
             </thead>
 
               <tbody>
-                  <ng-template [ngIf]="userlog != null" [ngIfElse]="isNull">
+                  <ng-template [ngIf]="userlog != 0" [ngIfElse]="isNull">
                     <tr *ngFor="let userHistory of userlog">
                       <td>{{ userHistory.userLogId }}</td>
                         <td>{{ userHistory.currentLocation }}</td>
