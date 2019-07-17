@@ -17,7 +17,6 @@ export class UserpageComponent implements OnInit {
 
   user : User;
   userlog : any;
-  // userTemplog : UserLog[];
   money : number;
   response : any;
   login: Login;
@@ -33,6 +32,7 @@ export class UserpageComponent implements OnInit {
   latestHistory: any;
   subject : string;
   text: string;
+  tempStartTime: any;
 
   currentDate: any = new Date().getTime(); 
   currentUnixTime = parseInt(this.currentDate); 
@@ -67,12 +67,9 @@ export class UserpageComponent implements OnInit {
       this.http.getLatestUserHistory(this.user.userId).subscribe(
         (data)=> {
           this.latestHistory = data['body'];
-          console.log(this.latestHistory);
-          let tempStartTime = parseInt(this.latestHistory.startTime)
-          console.log(tempStartTime);
-          if(tempStartTime > this.currentUnixTime){
-            this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();
-          }      
+          this.tempStartTime = parseInt(this.latestHistory.startTime)
+          this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();     
+          
       });
       this.http.getUser(this.login).subscribe(
         (data)=>  {
@@ -91,29 +88,24 @@ export class UserpageComponent implements OnInit {
     this.email.text = userInfo + " Query :" + this.text;
     this.user.userId = this.text;
     this.user.email = this.text;
-    console.log(this.email);
+    //console.log(this.email);
       this.http.sendMail(this.email).subscribe(
         (data : Message)=> {
           let message: Message = data;
       });
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/dashboard'])); 
   }
 
   bookingPage(){
-    console.log("working");
+    
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(['/choose_car'])); 
   }
 
   bookedCar(){
-    console.log("working");
-    
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/bookedcar/:carNo'])); 
-  }
-
-  addMoneyToWallet(){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/wallet'])); 
+    this.router.navigate(['/bookedcar'])); 
   }
   
 }

@@ -9,5 +9,5 @@ export interface UserLog	{
 	dropLocation: string;
 	secretKey: string;
 	totalAmount: number;
-	paidAmount: number;
+	carNo: string;
 }

@@ -100,7 +100,7 @@ export class BookingComponent implements OnInit {
 		dropLocation: this.dropLocation,
 		secretKey: Math.floor(Math.random() * 10e7).toString(),
 		totalAmount: this.calculatedBookingCost,
-		paidAmount: this.calculatedBookingCost
+		carNo: ""
 	}
 
 	  // Getting free car from the car_status
@@ -116,6 +116,7 @@ export class BookingComponent implements OnInit {
 				// Altering the car_status object
 				this.carStatus.userId = this.user;
 				this.carStatus.status = 'booked';
+				this.userLog.carNo = this.carStatus.carNo;
 
 				// Changing the car_status
 				if(this.user.wallet >= this.calculatedBookingCost)	{
