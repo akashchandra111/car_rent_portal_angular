@@ -49,7 +49,6 @@ export class UserProfileComponent implements OnInit {
         console.log(data);
        });
    }
-
   ngOnInit() {
 
   }
@@ -146,6 +145,9 @@ export class UserProfileComponent implements OnInit {
       }
     );
 
+  }
+  changeDrivingNum(){
+    
   }
   deleteAccount()
 {

@@ -85,7 +85,7 @@ export class UserpageComponent implements OnInit {
     console.log("working");
     
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/history'])); 
+    this.router.navigate(['/booked_car/:carNo'])); 
   }
 
   addMoneyToWallet(){

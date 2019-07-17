@@ -1,3 +1,65 @@
-<p>
-  booked-car works!
-</p>
+<div>
+  <h5 align = "center"><b>Upcoming Booking</b></h5>
+</div>
+
+<div class="container">
+    <div class="col s6 m6 l12">
+      <div class="card horizontal">
+        <!-- <ng-template [ngIf] = "tempstartTime > currentUnixTime" [ngIfElse] = "isLesser"> -->
+          <div class="card-image">
+              <!-- <img [src]="car.imgPath" alt="No Image found"> -->
+              <img src="assets/images/i20.jpg">
+              <div class="card-content">
+                  <span class="card-title"></span>
+                  <b>Type:</b> <br>
+                  <b>Cost:</b> <br>
+                  <b>Mileage:</b>  <br>
+                  <b>Seaters:</b> <br>
+                  <b>Desciption:</b>  <br> 
+                </div>
+            </div>
+            <!-- <div class="card-content">
+              <span class="card-title">{{ car.carName }}</span>
+              <b>Type:</b> {{ car.carType }}<br>
+              <b>Cost:</b> {{ car.cost }}/hr<br>
+              <b>Mileage:</b> {{ car.mileage }}<br>
+              <b>Seaters:</b> {{ car.seaters }}<br>
+              <b>Desciption:</b> {{ car.description }}<br> 
+            </div> -->
+          <div class="card-stacked">
+            <div class="card-content">
+              <div class="row">
+                
+              </div>
+              <div class="row center">
+                 <i class="medium material-icons red-text">access_time</i>
+                    <p> Start Time : <span> {{ userlog.startTime }}</span></p>
+                    <p> Drop Time : <span> {{  userlog.endTime }} </span>
+
+              </div>
+              <div class="row center">
+                 <i class="medium material-icons green-text">location_on</i>
+                 <p> Origin location : <span> {{  userlog.currentLocation }}</span></p>
+                 <p> Drop Location : <span> {{ userlog.dropLocation }}</span></p>
+                
+              </div>
+              <div class="row center">
+                <i class="small material-icons blue-text">account_balance_wallet</i>
+                <p>Amount: <span>{{ userlog.totalAmount }}</span></p>
+              </div>
+            </div>
+            <div class="card-action">
+               <!-- Modal Trigger -->
+            <!-- <a class="waves-effect waves-light btn red align-right" href="#modal1" (click) = "cancelBooking(userlog.userLogId)">Cancel Booking</a> -->
+              <button class="waves-effect waves-light btn red align-right" (click) = "cancelBooking(userlog.userLogId)"> Cancel Booking</button>
+
+            </div>
+          </div>
+          <!-- </ng-template> -->
+          <!-- <ng-template #isLesser>
+            <h5 class="red-text" align = "center"> No Upcoming Bookings Found....</h5>
+          </ng-template> -->
+        </div>
+      </div>   
+      </div>
+     
