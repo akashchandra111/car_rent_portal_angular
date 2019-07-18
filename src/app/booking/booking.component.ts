@@ -20,6 +20,7 @@ export class BookingComponent implements OnInit {
   checkCurrentCarStatus: boolean = true;
   toastMessage: string;
   todaysDate: string;
+  upcomingStatus : boolean = true;
 
   user: User;
   userLog: UserLog;
@@ -37,6 +38,11 @@ export class BookingComponent implements OnInit {
   secretKey: string;
   paidAmount: string;
   calculatedBookingCost: number = 0;
+  latestHistory: any;
+  tempStartTime: any;
+
+  currentDate: any = new Date().getTime();
+  currentUnixTime = parseInt(this.currentDate);
 
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
 	  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -59,11 +65,24 @@ export class BookingComponent implements OnInit {
 		  password: JSON.parse(localStorage.getItem('user')).password
 	  }
 
-	  this.http.getUser(login).subscribe(
+	this.http.getUser(login).subscribe(
 		(data)=>	{
 			this.user = data['body'];
-		}
-	  );
+			this.http.getLatestUserHistory(this.user.userId).subscribe(
+				(data)=>{
+					this.latestHistory = data['body'];
+					//console.log(this.latestHistory.startTime);				
+					this.tempStartTime = parseInt(this.latestHistory.startTime);
+					if(this.tempStartTime > this.currentUnixTime && this.latestHistory.userLogId != null){
+						this.upcomingStatus = true;
+						console.log("working");
+						
+					}
+					else{
+						this.upcomingStatus = false;
+					}
+			});
+		});
 
 	  this.http.getCarStatusByCarId(this.carId).subscribe(
 		  (data)=>	{
@@ -140,6 +159,8 @@ export class BookingComponent implements OnInit {
 												  if(this.message.status == "success")	{
 													  console.log(this.userLog);
 													  this.toastMessage = "Booking success";
+													  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    												  this.router.navigate(['/dashboard'])); 
 													  return;
 												  }
 											  }
