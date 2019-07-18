@@ -7,25 +7,20 @@
       <div class="card horizontal">
         <ng-template [ngIf] = "tempstartTime > currentUnixTime" [ngIfElse] = "isLesser">
           <div class="card-image">
-              <!-- <img [src]="car.imgPath" alt="No Image found"> -->
-              <img src="assets/images/i20.jpg">
+              
+              <img [src]="carStatus.carId.imgPath" alt="No Image found" style="width : 250px; height : 250px">
+              
               <div class="card-content">
-                  <span class="card-title"></span>
-                  <b>Type:</b> <br>
-                  <b>Cost:</b> <br>
-                  <b>Mileage:</b>  <br>
-                  <b>Seaters:</b> <br>
-                  <b>Desciption:</b>  <br> 
+                  <!-- <span class="card-title"> {{ carStatus.carId.carName }}</span> -->
+                  <h5> {{ carStatus.carId.carName }} </h5>
+                  <b>Type:  {{ carStatus.carId.carType }}</b><br>
+                  <b>Cost:  {{ carStatus.carId.cost }}</b> <br>
+                  <b>Mileage: {{ carStatus.carId.mileage }}</b>  <br>
+                  <b>Seaters: {{ carStatus.carId.seaters }}</b> <br>
+                  <b>Desciption:  {{ carStatus.carId.description }}</b>  <br> 
                 </div>
             </div>
-            <!-- <div class="card-content">
-              <span class="card-title">{{ car.carName }}</span>
-              <b>Type:</b> {{ car.carType }}<br>
-              <b>Cost:</b> {{ car.cost }}/hr<br>
-              <b>Mileage:</b> {{ car.mileage }}<br>
-              <b>Seaters:</b> {{ car.seaters }}<br>
-              <b>Desciption:</b> {{ car.description }}<br> 
-            </div> -->
+           
           <div class="card-stacked">
             <div class="card-content">
               <div class="row">
@@ -51,7 +46,7 @@
             <div class="card-action">
                <!-- Modal Trigger -->
             <!-- <a class="waves-effect waves-light btn red align-right" href="#modal1" (click) = "cancelBooking(userlog.userLogId)">Cancel Booking</a> -->
-              <button class="waves-effect waves-light btn red align-right" (click) = "cancelBooking(userlog.userLogId)"> Cancel Booking</button>
+              <button class="waves-effect waves-light btn red right" (click) = "cancelBooking(userlog.userLogId)"> Cancel Booking</button>
 
             </div>
           </div>

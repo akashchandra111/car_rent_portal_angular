@@ -40,7 +40,7 @@ export class BookedCarComponent implements OnInit {
 
   carStatus: CarStatus;
   message : Message;
-  
+ 
   
   
 
@@ -63,22 +63,34 @@ export class BookedCarComponent implements OnInit {
             this.tempstartTime = parseInt(this.userlog.startTime);
             this.userlog.startTime = new Date(parseInt(this.userlog.startTime)).toLocaleString();
             this.userlog.endTime = new Date(parseInt(this.userlog.endTime)).toLocaleString();
-        });
+            console.log(this.userlog.carNo);
+            this.http.getCarStatusByCarNo(this.userlog.carNo).subscribe(
+              (data) =>{
+                  this.carStatus = data['body'];
+                //  console.log(this.carStatus);
+                //  console.log(this.carStatus.carId.carType)   
+              }
+            );
+          });
         this.http.getUser(this.login).subscribe(
           (data)=>  {
             this.user = data['body'];
         });
-           
+         
     }); 
-    console.log(this.car);
-             
+  
+    
+         
   }
 
   
+  
 
   ngOnInit() {
+  
    
   }
+
  
   cancelBooking(userlogId : string){
        
@@ -101,7 +113,7 @@ export class BookedCarComponent implements OnInit {
     });
 
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-      this.router.navigate(['/booked_car/:carNo']))
+      this.router.navigate(['/dashboard']))
        
    
   }

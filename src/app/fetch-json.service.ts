@@ -137,7 +137,7 @@ export class FetchJSONService {
 
   // Get carStatus
   getCarStatusByCarNo(carNo: string)	{
-	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get' + carNo, {observe: 'response'});
+	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get/' + carNo, {observe: 'response'});
   }
 
   // Get car status by car id, if it is not booked the first car would be returned
