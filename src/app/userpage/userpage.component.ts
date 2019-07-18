@@ -69,7 +69,7 @@ export class UserpageComponent implements OnInit {
           this.latestHistory = data['body'];
           this.tempStartTime = parseInt(this.latestHistory.startTime)
           this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();
-
+          
       });
       this.http.getUser(this.login).subscribe(
         (data)=>  {
@@ -83,10 +83,10 @@ export class UserpageComponent implements OnInit {
   }
   postQuery(){
     let userInfo: string = "UserId: " + this.user.userId + " , E-mail: " + this.user.email + " , Mobile Number: " + this.user.mobileNum;
-    //this.email.to = 'vyshnavigadiparthi20@gmail.com';
+    this.email.to = 'vyshnavigadiparthi20@gmail.com';
 
 	// Static email for sending this mail to common admin mail account
-    this.email.to = 'akashchandracs0007@gmail.com';
+    //this.email.to = 'akashchandracs0007@gmail.com';
     this.email.subject = this.subject;
     this.email.text = userInfo + " has following query: " + this.text;
     this.user.userId = this.text;

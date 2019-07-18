@@ -11,7 +11,7 @@
                 <h4><i class="small material-icons white-text lighten-4">book</i>  Upcoming Bookings</h4> 
                 <ng-template [ngIf]="tempStartTime > currentUnixTime" [ngIfElse]="isLesser">
                   <p>
-                    Pick up your car from <b>{{ latestHistory.currentLocation }}</b> to <b>{{ latestHistory.dropLocation }}</b> at <b>{{ latestHistory.startTime }}</b>
+                    Pick up your car with Car No : <b> {{ latestHistory.carNo }}</b> from <b>{{ latestHistory.currentLocation }}</b> to <b>{{ latestHistory.dropLocation }}</b> at <b>{{ latestHistory.startTime }}</b>
                     Use this secret key: <b>{{ latestHistory.secretKey }}</b><br><br>  
                     <a class = "btn waves-effect waves-light white red-text darken-3" id="bookedcar" name="bookedcar" (click) = "bookedCar()"><b>For More Details >></b></a>
                   </p>
@@ -80,7 +80,7 @@
             <h4><i class="small material-icons white-text lighten-4">history</i>  History</h4>
             <ng-template [ngIf]="userlog != 0" [ngIfElse]="isNull">
             <p *ngFor="let userHistory of userlog">
-              You have booked a car from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
+              You have booked a car with Car No : <b>{{ userHistory.carNo }}</b> from <b>{{ userHistory.currentLocation }}</b> to <b>{{ userHistory.dropLocation }}</b> at <b>{{ userHistory.startTime }}</b>
               secret key: <b>{{ userHistory.secretKey }}</b> 
             </p>
             </ng-template>
