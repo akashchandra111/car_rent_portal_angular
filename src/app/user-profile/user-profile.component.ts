@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { FetchJSONService } from '../fetch-json.service';
 import { User } from 'src/app/Interfaces/User';
 import { Login } from 'src/app/Interfaces/Login'
 import { Message } from 'src/app/Interfaces/Message';
+import { LicenseUploadService } from '../license-upload.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,13 +29,21 @@ export class UserProfileComponent implements OnInit {
 
   message: Message;
 
-  userId: string  ;
-  password: string ;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+
+  userId: string;
+  password: string;
   login: Login;
   response: any;
-  toastMessageUname; toastMessagePassword ; toastMessageEmail; toastMessageMobile; toastMessage: string;
+  toastMessageUname: string;
+  toastMessagePassword: string;
+  toastMessageEmail: string;
+  toastMessageMobile: string;
+  toastMessage:string;
+  toastMessageUpload: string;
 
-  constructor(private http: FetchJSONService)
+  constructor(private http: FetchJSONService, private uploadService: LicenseUploadService)
   {
       this.login =
        {
@@ -49,7 +59,6 @@ export class UserProfileComponent implements OnInit {
         console.log(data);
        });
    }
-
   ngOnInit() {
 
   }
@@ -153,7 +162,7 @@ export class UserProfileComponent implements OnInit {
   this.http.deRegister(this.user.userId).subscribe(
     (data : Message) => {
      this.message = data;
-     if(this.message.status == "success"){    
+     if(this.message.status == "success"){
           this.toastMessage = "Delete Sucess";
         }else{
           this.toastMessage = "Delete Failure "
@@ -165,5 +174,19 @@ export class UserProfileComponent implements OnInit {
 
 }
 
+	selectFile(event)	{
+		this.selectedFiles = event.target.files;
+	}
 
+	upload()	{
+		this.currentFileUpload = this.selectedFiles.item(0);
+		this.uploadService.pushFileToStorage(this.user.userId, this.currentFileUpload).subscribe(
+			(event)=>	{
+				if(event instanceof HttpResponse)	{
+					this.toastMessageUpload = "File Uploaded!";
+				}
+			}
+		);
+		this.selectedFiles = undefined;
+	}
 }

@@ -68,7 +68,7 @@ export class UserpageComponent implements OnInit {
         (data)=> {
           this.latestHistory = data['body'];
           this.tempStartTime = parseInt(this.latestHistory.startTime)
-          this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();     
+          this.latestHistory.startTime = new Date(parseInt(this.latestHistory.startTime)).toLocaleString();
           
       });
       this.http.getUser(this.login).subscribe(
@@ -97,18 +97,18 @@ export class UserpageComponent implements OnInit {
           let message: Message = data;
       });
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/dashboard'])); 
+    this.router.navigate(['/dashboard']));
   }
 
   bookingPage(){
-    
+
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate(['/choose_car']));
   }
 
   bookedCar(){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/bookedcar'])); 
+    this.router.navigate(['/bookedcar']));
   }
 
 }

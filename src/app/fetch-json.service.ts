@@ -9,6 +9,7 @@ import { Message } from './Interfaces/Message';
 import { Login } from './Interfaces/Login';
 import { CarsBookStat } from './Interfaces/CarsBookStat';
 import { Email } from './Interfaces/Email';
+import { LicenseImg } from './Interfaces/LicenseImg';
 
 @Injectable({
   providedIn: 'root'
@@ -137,7 +138,7 @@ export class FetchJSONService {
 
   // Get carStatus
   getCarStatusByCarNo(carNo: string)	{
-	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get' + carNo, {observe: 'response'});
+	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get/' + carNo, {observe: 'response'});
   }
 
   // Get car status by car id, if it is not booked the first car would be returned
@@ -166,5 +167,9 @@ export class FetchJSONService {
 
   sendMail(email: Email)	{
 	  return this.http.post<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+  }
+
+  checkLicense(userId: string)	{
+	  return this.http.get<LicenseImg>(this.adminBaseUrl + '/get_license/' + userId, {observe: 'response'});
   }
 }
