@@ -9,15 +9,16 @@ import { Message } from './Interfaces/Message';
 import { Login } from './Interfaces/Login';
 import { CarsBookStat } from './Interfaces/CarsBookStat';
 import { Email } from './Interfaces/Email';
+import { LicenseImg } from './Interfaces/LicenseImg';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FetchJSONService {
-	baseUrl: string = 'http://9.202.17.174:8080';
-	adminBaseUrl: string = 'http://9.202.17.174:8081';
-	//baseUrl: string = 'http://localhost:8080';
-	//adminBaseUrl: string = 'http://localhost:8081';
+	//baseUrl: string = 'http://9.202.17.174:8080';
+	//adminBaseUrl: string = 'http://9.202.17.174:8081';
+	baseUrl: string = 'http://localhost:8080';
+	adminBaseUrl: string = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {
   }
@@ -137,7 +138,7 @@ export class FetchJSONService {
 
   // Get carStatus
   getCarStatusByCarNo(carNo: string)	{
-	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get' + carNo, {observe: 'response'});
+	  return this.http.get<CarStatus>(this.baseUrl + '/car_status/get/' + carNo, {observe: 'response'});
   }
 
   // Get car status by car id, if it is not booked the first car would be returned
@@ -157,14 +158,18 @@ export class FetchJSONService {
 
   //************************** admin method APIs ***********************************
   getTotalUser()	{
-	  return this.http.get<number>(this.adminBaseUrl + '/total_users', {observe: 'response'});
+	  return this.http.get<number>(this.adminBaseUrl + '/admin/total_users', {observe: 'response'});
   }
 
   getCarStats()	{
-	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/stats/cars', {observe: 'response'});
+	  return this.http.get<CarsBookStat[]>(this.adminBaseUrl + '/admin/stats/cars', {observe: 'response'});
   }
 
   sendMail(email: Email)	{
-	  return this.http.put<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+	  return this.http.post<Message>(this.adminBaseUrl + '/mail', email, this.httpOptions);
+  }
+
+  checkLicense(userId: string)	{
+	  return this.http.get<LicenseImg>(this.adminBaseUrl + '/get_license/' + userId, {observe: 'response'});
   }
 }

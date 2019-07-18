@@ -163,6 +163,20 @@ console.log("asd");
 			<input type="password" [(ngModel)]="password" id="password" name="password" class="validate" required>
 			<label for="password">Password</label>
 		 </div>
+		 <div>
+			 <label>
+         		<input type="checkbox" class="filled-in" (click)="openForgotBox()"/>
+         		<span>Forgot Password?</span>
+       		</label>
+			 <div class="input-field" *ngIf="isForgotActivated">
+				<input type="text" [(ngModel)]="drivingLicenseNum" id="password" name="drivingLicenseNum" class="validate" required>
+				<label for="drivingLicenseNum">Enter Driving License Number, you will receive an e-mail</label>
+				<div (click)="sendForgotMail()" class="btn right indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close">
+					Send Mail
+		 			<i class="material-icons right">mail</i>
+				</div>
+			 </div>
+		 </div>
 		 <div id="logindiv" style="color:red;" *ngIf="ifAlert">
 		 Login Failed
 		 </div>

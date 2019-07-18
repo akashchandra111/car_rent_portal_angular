@@ -7,7 +7,7 @@
         <table class = "responsive-table">
             <thead>
               <tr>
-                  <th>User Id</th>
+                  <th>Car No</th>
                   <th>Start Location</th>
                   <th>Drop Location</th>
                   <th>Start Time</th>
@@ -18,9 +18,9 @@
             </thead>
 
               <tbody>
-                  <ng-template [ngIf]="userlog != null" [ngIfElse]="isNull">
+                  <ng-template [ngIf]="userlog != 0" [ngIfElse]="isNull">
                     <tr *ngFor="let userHistory of userlog">
-                      <td>{{ userHistory.userLogId }}</td>
+                      <td>{{ userHistory.carNo }}</td>
                         <td>{{ userHistory.currentLocation }}</td>
                           <td>{{ userHistory.dropLocation }}</td>
                             <td>{{ userHistory.startTime }}</td>

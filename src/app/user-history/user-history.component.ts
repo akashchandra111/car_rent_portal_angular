@@ -33,9 +33,6 @@ export class UserHistoryComponent implements OnInit {
     userId : string; //
     password : string; //
 
-    
-    // normalTimeFormat = this.unixTime.toLocaleString();
-    
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login = {
       id: JSON.parse(localStorage.getItem('user')).userId,
@@ -55,18 +52,11 @@ export class UserHistoryComponent implements OnInit {
       }
       });
       });
-      // console.log(this.normalTimeFormat);
       
    }
 
   ngOnInit() {
    
   }
-  onDelete(userLogId: string) {
-    this.http.cancelBooking(userLogId).subscribe(
-      (data : Message)=> {  
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-        this.router.navigate(['/history']));     
-    });
-  }
+  
 }

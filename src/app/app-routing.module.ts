@@ -56,7 +56,7 @@ const routes: Routes = [
 		component: WalletComponent
 	},
 	{
-		path: 'booked_car/:carNo',
+		path: 'bookedcar',
 		component: BookedCarComponent
 	},
 	{
