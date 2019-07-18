@@ -149,7 +149,7 @@
                             (click)="changeMobileNo()">Change</button>
                     </div>
                 </div>
-               
+
                 <div class="row">
                     <div class="col s8">
                         <div class="input-field">
@@ -183,17 +183,18 @@
                     <div class="col s8">
                         <div class="input-field file-field">
                             <div class="btn indigo">
-                                <input type="file" name="" id=""> upload dl
+                                <input type="file" (change)="selectFile($event)">Select
                             </div>
                             <div class="file-path-wrapper">
-                                <input type="text" class="file-path" >
+                                <input type="text" class="file-path">
                             </div>
+							{{ toastMessageUpload }}
                         </div>
                 <!-- <button type="submit" class="waves-effect waves-light btn indigo scale-transition  " (click)="deleteAccount()">Delete</button> -->
-                        
+
                     </div>
-                    <div class="col4 ">
-                            <button  type="submit" class="waves-effect waves-light btn indigo right "  (click)="changeDrivingNum()">Change</button>
+                    <div class="col s4">
+						<button [disabled]="!selectedFiles" (click)="upload()" class="btn btn-indigo right waves-effect waves-light scale-transition">Upload</button>
                     </div>
                 </div>
 
@@ -207,6 +208,5 @@
         <a class="btn-floating btn-large red" (click)="deleteAccount()">
           <i class="large material-icons">delete</i>
         </a>
-       
+
       </div>
-    
