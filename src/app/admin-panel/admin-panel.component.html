@@ -20,7 +20,7 @@
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Add Car</h4>
-                       <p>There are currently <b>1004</b>Cars we have </p>
+
                     </div>
                  </div>
               </div>
@@ -35,7 +35,7 @@
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Update Car</h4>
-                       <p>At the moment <b>5000</b> had rented our Car </p>
+
                     </div>
                  </div>
               </div>
@@ -50,7 +50,7 @@
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Delete Car</h4>
-                       <p>There are currently {{me}} <b>4000</b>  </p>
+
                     </div>
                  </div>
               </div>
@@ -122,11 +122,14 @@
 							 </div>
 						  </div>
 						   <div class="row">
-							  <div class="col s12 input-field">
-								 <i class="material-icons prefix">mode_edit</i>
-								 <input type="text" id="car_aval" name="car_aval" class="validate" [(ngModel)]="car_aval">
-								 <label for="car_aval">Enter the Avialability</label>
-							  </div>
+							   <div class="input-field col s4">
+   								<i class="material-icons prefix">directions_car</i>
+   							<select class="input-field" name="idtype" [(ngModel)]="car_aval" >
+   							   <option value="" selected disabled>Status</option>
+   							   <option value="available" >available</option>
+   							   <option value="booked">booked</option>
+   							</select>
+   						 </div>
 						   </div>
 
 
@@ -174,59 +177,53 @@
   <div id="test3" class="col s12">
      <!-- Card Panel [Author: Akash Chandra]-->
      <div class="row">
-        <div class="col s12 m6 l4">
-           <div class="card-panel blue darken-3 z-depth-2 userstatcard">
-              <div class="row">
-                 <div class="col s3">
-                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">person</i>
-                 </div>
-                 <div class="col s9">
-                    <div class="card-content white-text">
-                       <h4>Total Users</h4>
-                       <p>There are currently <b>100000 Users</b>using our app </p>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-        <div class="col s12 m6 l4" >
+
+        <div class="col s12 m6 l6" >
            <div class="card-panel blue darken-3 z-depth-3 rentedstatecard" (click)="carstats()">
               <div class="row">
                  <div class="col s3">
-                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">directions_car</i>
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 10%">directions_car</i>
                  </div>
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Current Cars Booked</h4>
-                       <p>At the moment <b>5000</b> had rented our Car </p>
+
                     </div>
                  </div>
               </div>
            </div>
         </div>
-        <div class="col s12 m6 l4">
+        <div class="col s12 m6 l6">
            <div class="card-panel blue darken-3 z-depth-3 topcarstatcard">
               <div class="row">
                  <div class="col s3">
-                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 30%">vertical_align_top</i>
+                    <i class="material-icons medium right blue-text text-lighten-2" style="margin-top: 10%">vertical_align_top</i>
                  </div>
                  <div class="col s9">
                     <div class="card-content white-text">
                        <h4>Top Rented Cars</h4>
-                       <p>These Cars are Rented  <b>Most</b> often </p>
+
                     </div>
                  </div>
               </div>
            </div>
         </div>
      </div>
-     <div class="card" >
-        <canvas id="myuserstatChart"></canvas>
-     </div>
+	<a class="waves-effect waves-light btn-small piebutton" id="piebuttonid" >Piechart</a>
+	<a class="waves-effect waves-light btn-small piebuttontype light-blue darken-1" id="piebuttontypeid" style="display:none">Rented Cars</a>
+
+
+
      <div class="card">
-        <canvas id="myrentedcarstatChart" style="display:none"></canvas>
+        <canvas id="myrentedcarstatChart"></canvas>
      </div>
      <div class="card">
         <canvas id="mytopcarChart" style="display:none"></canvas>
      </div>
+	 <div class="card" >
+		<canvas id="myrentedcarstatAvailablePie" style="display:none"></canvas>
+	 </div>
+	 <div class="card" >
+	   <canvas id="myrentedcarstatRentedPie" style="display:none"></canvas>
+	</div>
   </div>

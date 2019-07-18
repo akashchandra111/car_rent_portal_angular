@@ -6,13 +6,13 @@
   		<base href="/">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
   		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 		<!-- JQuery -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 		<!-- Initializing all the materialize elements -->
-
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -287,26 +287,20 @@ console.log("insidedav run");
 
 
 
-				// show total user stats
-				$(".userstatcard").click(function(){
-					$('html, body').animate({
-						scrollTop: $("#myuserstatChart").offset().top
-					}, 1000);
-					$("#myuserstatChart").show("slow");
 
-					$("#myrentedcarstatChart").hide("slow");
-					$("#mytopcarChart").hide("slow");
-
-				});
 				// show total car rented stats
 				$(".rentedstatecard").click(function(){
 					$('html, body').animate({
 						scrollTop: $("#myrentedcarstatChart").offset().top
 					}, 1000);
 					$("#myuserstatChart").hide("slow");
-
+$("#myrentedcarstatRentedPie").hide("slow");
 					$("#myrentedcarstatChart").show("slow");
 					$("#mytopcarChart").hide("slow");
+$("#myrentedcarstatAvailablePie").hide("slow");
+$('#piebuttonid').show('slow');
+$('#piebuttontypeid').hide('slow');
+$('#piebuttonid').text("PieChart");
 
 				});
 				// show top car rented stats
@@ -315,13 +309,87 @@ console.log("insidedav run");
 						scrollTop: $("#mytopcarChart").offset().top
 					}, 1000);
 					$("#myuserstatChart").hide("slow");
-
+$("#myrentedcarstatRentedPie").hide("slow");
 					$("#myrentedcarstatChart").hide("slow");
 					$("#mytopcarChart").show("slow");
+$("#myrentedcarstatAvailablePie").hide("slow");
+$('#piebuttonid').hide('slow');
+$('#piebuttontypeid').hide('slow');
+				});
+
+var graphpie=true;
+var pietype=false;
+
+
+				$(".piebutton").click(function(){
+					if(graphpie==true){
+						$('html, body').animate({
+							scrollTop: $("#myrentedcarstatAvailablePie").offset().top
+						}, 1000);
+						$("#myuserstatChart").hide("slow");
+
+						$("#mytopcarChart").hide("slow");
+						$("#myrentedcarstatChart").hide("slow");
+						$("#myrentedcarstatAvailablePie").show("slow");
+						$("#myrentedcarstatRentedPie").hide("slow");
+
+						graphpie=false;
+						$('#piebuttonid').text("Chart");
+						$('#piebuttontypeid').show();
+				}
+				else{
+					$('html, body').animate({
+						scrollTop: $("#myrentedcarstatChart").offset().top
+					}, 1000);
+					$("#myuserstatChart").hide("slow");
+console.log("graphpie false");
+					$("#mytopcarChart").hide("slow");
+					$("#myrentedcarstatChart").show("slow");
+					$("#myrentedcarstatAvailablePie").hide("slow");
+					$("#myrentedcarstatRentedPie").hide("slow");
+					graphpie=true;
+					$('#piebuttonid').text('PieChart');
+					$('#piebuttontypeid').hide('slow');
+
+				}
 
 				});
 
+				$(".piebuttontype").click(function(){
 
+					if(pietype==true){
+						$('html, body').animate({
+							scrollTop: $("#myrentedcarstatAvailablePie").offset().top
+						}, 1000);
+						$("#myuserstatChart").hide("slow");
+
+						$("#mytopcarChart").hide("slow");
+						$("#myrentedcarstatChart").hide("slow");
+						$("#myrentedcarstatAvailablePie").show("slow");
+
+						$("#myrentedcarstatRentedPie").hide("slow");
+						pietype=false;
+						$('#piebuttontypeid').text('RentedCars');
+
+				}
+				else{
+					$('html, body').animate({
+						scrollTop: $("#myrentedcarstatChart").offset().top
+					}, 1000);
+					$("#myuserstatChart").hide("slow");
+console.log("graphpie false");
+					$("#mytopcarChart").hide("slow");
+					$("#myrentedcarstatChart").hide("slow");
+					$("#myrentedcarstatAvailablePie").hide("slow");
+					pietype=true;
+					$("#myrentedcarstatRentedPie").show("slow");
+
+					$('#piebuttontypeid').text('AvailableCars');
+
+
+				}
+
+});
 				// show payment issue collection
 				$(".paymentissuecard").click(function(){
 
@@ -389,66 +457,129 @@ console.log("insidedav run");
 			);
 		</script>
 		<script>
-
+console.log("here i am");
 			// total users rented graph
 			window.onload = function () {
-				const userAction = async () => {
-			const response = await fetch('http://9.202.17.174:8080/stats/cars');
-			const myJson = await response.json(); //extract JSON from the http response
-			console.log(myJson);
-			// do something with myJson
+				console.log("admin ki shakti");
 				var carname=[];
-				var carnum=[];
-			// 	var i=0;
-				myJson.forEach(function(myJson){
-			carname.push(myJson.carType);
-			carnum.push(myJson.rentedCars);
-			console.log(carname);
-		});
-			}
+				var caravialable=[];
+				var carRented=[];
+				var myJson;
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
 
-				var ctx = document.getElementById('myuserstatChart').getContext('2d');
-				var chart = new Chart(ctx, {
-					// The type of chart we want to create
-					type: 'line',
+	 myJson=this.response;
 
-					// The data for our dataset
-					data: {
-						labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Agust','September'],
-						datasets: [{
-							label: 'Car Rented Statistics',
-							// backgroundColor: 'rgb(255, 99, 132)',
-							borderColor: 'rgb(255, 99, 132)',
-							data: [0, 10, 5, 2, 20, 30, 45,7,27]
-						}]
-					},
+	 var stuff = JSON.parse(myJson);
+	 Object.keys(stuff).forEach(function(key){
 
-					// Configuration options go here
-					options: {}
-				});
+		 			carname.push(stuff[key]["carType"]);
+					caravialable.push(stuff[key]["availableCars"]);
+						carRented.push(stuff[key]["rentedCars"]);
+
+	 });
+
+    }
+
+};
+  xhttp.open("GET", "http://9.202.17.174:8081/admin/stats/cars", false);
+  xhttp.send();
+
+  var piedata = {
+  	datasets: [{
+  		data: caravialable,
+		 backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+  	}],
+
+  	// These labels appear in the legend and in the tooltips when hovering different arcs
+  	labels: carname
+
+  };
+
+var ctx = document.getElementById('myrentedcarstatAvailablePie').getContext('2d');
+  var myPieChart = new Chart(ctx, {
+      type: 'pie',
+
+      data: piedata,
+	  options:{
+		  title: {
+            display: true,
+            text: 'Available Cars'
+        }
+	}
+
+
+      // options: options
+  });
+
+  var piedata = {
+    datasets: [{
+  	  data: carRented,
+  	   backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: carname
+
+  };
+
+  var ctx = document.getElementById('myrentedcarstatRentedPie').getContext('2d');
+  var myPieChart = new Chart(ctx, {
+  	type: 'pie',
+
+  	data: piedata,
+  	options:{
+		title: {
+		   display: true,
+		   text: 'Rented Cars'
+	   }
+	}
+
+
+  	// options: options
+  });
+
+
+
+
+
+
+
+
 
 				// total cars rented graph
 				var ctx = document.getElementById('myrentedcarstatChart').getContext('2d');
 				var chart = new Chart(ctx, {
 					// The type of chart we want to create
 					type: 'line',
-					var chart = new Chart(ctx, {
-						// The type of chart we want to create
-						type: 'line',
+
 
 					// The data for our dataset
 					data: {
-						labels: carname,
+						labels:carname,
 						datasets: [{
 							label: 'Booking Statistics',
 							// backgroundColor: 'rgb(255, 99, 132)',
 							borderColor: 'rgb(122, 99, 132)',
-							data: carnum
+							data: caravialable
 						}]
 					},
 
 					// Configuration options go here
-					options: {}
+					options: {
+						title: {
+				              display: true,
+				              text: 'Current Car Booked Chart'
+				          },
+						scales: {
+		   yAxes: [{
+			   ticks: {
+				   beginAtZero: true
+			   }
+		   }]
+	   }
+					}
 				});
 
 
@@ -457,17 +588,19 @@ console.log("insidedav run");
 				var ctx = document.getElementById('mytopcarChart').getContext('2d');
 				var chart = new Chart(ctx, {
 					// The type of chart we want to create
-					type: 'line',
+					type: 'bar',
 
 					// The data for our dataset
 					data: {
-						labels: ['Audi', 'Bmw', 'Mercedes', 'Ferrari'],
+						labels: carname,
 						datasets: [{
 							label: 'Top Cars Rented Graph',
 							// backgroundColor: 'rgb(255, 99, 132)',
 							borderColor: 'rgb(222, 129, 32)',
-							data: [20, 10, 15, 2]
-						}]
+							data: carRented,
+							backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+						}],
+
 					},
 
 					// Configuration options go here
