@@ -46,6 +46,7 @@
                         <div class="input-field">
                             <i class="material-icons indigo-text prefix">contacts</i>
                             <input type="text" name="userName" [(ngModel)]="user.userName" #userName=ngModel pattern="[(a-z)(A-Z)]{4,15}" required>
+                            <!-- <label>Update User name</label> -->
                         </div>
                         <div *ngIf="userName?.touched">
                             <div *ngIf="userName.errors?.required">
@@ -166,20 +167,14 @@
             </div>
 
             <div class="card-action">
-                <!-- <p class="card-title">Delete Account</p> -->
-                <!-- <button type="submit" class="waves-effect waves-light btn indigo scale-transition  " (click)="deleteAccount()">Delete</button> -->
+               
+                
 
                 <span class="card-title">
                     <b>Update Driving License </b>
                 </span>
                 <div class="row">
-                        <!-- <div class="col s8">
-                                <div class="input-field">
-                                    <i class="material-icons indigo-text prefix">edit</i>
-                                    <input type="text" name="drivingLicenseNum" [(ngModel)]="user.drivingLicenseNum" #drivingLicenseNum=ngModel id="drivingLicenseNum" class="validate"
-                                        required>
-                                </div>
-                            </div> -->
+                       
                     <div class="col s8">
                         <div class="input-field file-field">
                             <div class="btn indigo">
@@ -189,24 +184,35 @@
                                 <input type="text" class="file-path" >
                             </div>
                         </div>
-                <!-- <button type="submit" class="waves-effect waves-light btn indigo scale-transition  " (click)="deleteAccount()">Delete</button> -->
+                
                         
                     </div>
                     <div class="col4 ">
-                            <button  type="submit" class="waves-effect waves-light btn indigo right "  (click)="changeDrivingNum()">Change</button>
+                            <button  type="submit" class="waves-effect waves-light btn indigo  "  (click)="changeDrivingNum()">Change</button>
                     </div>
                 </div>
-
+                <span class="card-title">
+                        <b>Delete Account </b>
+                    </span>
+                  <div class="row">
+                      <div class="col s8"> 
+                        <p> Are You Sure You want To Delete Account</p>
+                      </div>
+                      <div class="col s4">
+                          <!-- <button type="submit" class="waves-effect waves-light btn green">No</button> -->
+                            <button  type="submit" class="waves-effect waves-light btn red"  (click)="confirm()">Yes</button>
+                      </div>
+                  </div>
             </div>
         </div>
 
     </div>
 
 </div>
-<div class="fixed-action-btn">
+<div class="fixed-action-btn" *ngIf="deleteConfirm">
         <a class="btn-floating btn-large red" (click)="deleteAccount()">
           <i class="large material-icons">delete</i>
         </a>
        
       </div>
-    
+   

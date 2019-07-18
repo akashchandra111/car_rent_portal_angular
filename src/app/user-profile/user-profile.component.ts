@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 import { FetchJSONService } from '../fetch-json.service';
 import { User } from 'src/app/Interfaces/User';
 import { Login } from 'src/app/Interfaces/Login'
@@ -32,8 +33,9 @@ export class UserProfileComponent implements OnInit {
   login: Login;
   response: any;
   toastMessageUname; toastMessagePassword ; toastMessageEmail; toastMessageMobile; toastMessage: string;
+  deleteConfirm : boolean = false;
 
-  constructor(private http: FetchJSONService)
+  constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService)
   {
       this.login =
        {
@@ -149,6 +151,12 @@ export class UserProfileComponent implements OnInit {
   changeDrivingNum(){
     
   }
+  confirm(){
+   this.deleteConfirm  = true;
+   console.log(this.deleteConfirm);
+   
+    
+  }
   deleteAccount()
 {
   console.log(this.user);
@@ -164,6 +172,8 @@ export class UserProfileComponent implements OnInit {
 
     }
   );
+  // this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  // this.router.navigate(['']))
 
 }
 
