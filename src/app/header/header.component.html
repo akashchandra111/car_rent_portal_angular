@@ -248,15 +248,18 @@ console.log("asd");
 			   </select>
 			</div>
 			<div class="input-field col s8">
-			   <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" class="validate" required>
+			   <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" #uidNumber= ngModel pattern="[(A-Z)(0-9)]{6,20}" class="validate" required>
 			   <label for="verification_id">UID number</label>
 			</div>
 			<!-- Validation for UID Number -->
-			<!-- <div *ngIf ="uidNumber?.touched">
+			<div *ngIf ="uidNumber?.touched">
+				<div *ngIf = "uidNumber.errors?.pattern">
+					<span class="red-text">Enter a valid UID Number </span>
+				</div>
 				<div *ngIf = "uidNumber.errors?.required">
 					<span class="red-text">UID Number is required</span>
 				</div>
-			</div> -->
+			</div>
 		 </div>
 		 <div class="input-field">
 			<input type="text" name="driving_id" id="driving_id" [(ngModel)]="driving_id" #drivingLicense= ngModel pattern="[(a-z)(A-Z)(0-9)]{16}" class="validate" required>
@@ -271,10 +274,10 @@ console.log("asd");
 				<span class="red-text">Driving License is required</span>
 			</div>
 		</div>
-		 <div class="input-field">
+		 <!-- <div class="input-field">
 			 <input type="file" class="file-path-wrapper" [(ngModel)]="fileName" name="photo" ng2FileSelect [uploader]="uploader"/>
 			 <button type="button" class="btn btn-indigo" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
-		 </div>
+		 </div> -->
 		 <div class="input-field">
 			<input type="text" name="username" id="username" [(ngModel)]="userNameregister" #userName= ngModel pattern="[(a-z)(A-Z)(0-9)]{1,15}" class="validate" required>
 			<label for="userName">Username</label>
@@ -302,13 +305,13 @@ console.log("asd");
 			</div>
 		</div>
 		 <div class="input-field">
-			<input type="password" name="password" id="password" [(ngModel)]="passwordregister" #passwordRegister= ngModel pattern="[(a-z)(A-Z)(0-9)]{8,20}" class="validate" required>
+			<input type="password" name="password" id="password" [(ngModel)]="passwordregister" #passwordRegister= ngModel pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate" required>
 			<label for="password">Password</label>
 		 </div>
 		 <!-- Validation for Password -->
 		<div *ngIf ="passwordRegister?.touched">
 			<div *ngIf = "passwordRegister.errors?.pattern">
-				<span class="red-text">Password should contain atleat 8 character</span>
+				<span class="red-text">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</span>
 			</div>
 			<div *ngIf = "passwordRegister.errors?.required">
 				<span class="red-text">Password is required</span>

@@ -184,12 +184,12 @@ this.usershow = JSON.parse(localStorage.getItem('user')).firstName;
 
 
     ngOnInit() {
-		// File uploading code to accept user drivingLicenseNum image
-		this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-		this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-	 		console.log('file uploaded: ', item, status, response);
-			alert('File uploaded successfully');
- 		};
+		// // File uploading code to accept user drivingLicenseNum image
+		// this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+		// this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+	 	// 	console.log('file uploaded: ', item, status, response);
+		// 	alert('File uploaded successfully');
+ 		// };
 
 		this.user=JSON.parse(localStorage.getItem('user'));
         this.usershow = JSON.parse(localStorage.getItem('user')).firstName;
