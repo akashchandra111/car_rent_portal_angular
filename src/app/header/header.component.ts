@@ -4,10 +4,10 @@ import { Login } from '../Interfaces/Login';
 import { User } from '../Interfaces/User';
 import { Message } from '../Interfaces/Message';
 import { Router, NavigationEnd } from '@angular/router';
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+//import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
 // Static url for file upload server to get images of drivingLicenseNum
-const uploadURL = 'http://localhost:4201/license/upload';
+//const uploadURL = 'http://localhost:4201/license/upload';
 
 @Component({
     selector: 'app-header',
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
 
     // @Output() public loginEvent = new EventEmitter < User > ();
 	// Used for uploading file on another [file upload server]
-	public uploader: FileUploader = new FileUploader({url: uploadURL, itemAlias: 'photo'});;
+	//public uploader: FileUploader = new FileUploader({url: uploadURL, itemAlias: 'photo'});;
 
 
     constructor(private http: FetchJSONService, private router: Router) {
@@ -413,7 +413,7 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 				console.log("sendForgotMail():");
 				console.log(this.message);
 				if(this.message.status == "success")	{
-					
+
 				}
 				else	{
 
