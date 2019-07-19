@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { FetchJSONService } from '../fetch-json.service';
 import { User } from 'src/app/Interfaces/User';
@@ -42,7 +43,11 @@ export class UserProfileComponent implements OnInit {
   toastMessageMobile: string;
   toastMessage:string;
   toastMessageUpload: string;
-
+  licensedetails: any;
+  imgPath: any;
+  deleteConfirm: boolean;
+  checkImagePath:boolean = true;
+ 
   constructor(private http: FetchJSONService, private uploadService: LicenseUploadService)
   {
       this.login =
@@ -57,7 +62,24 @@ export class UserProfileComponent implements OnInit {
       (data) => {
         this.user = data['body'];
         console.log(data);
+        console.log(this.user.userId);
+        this.http.checkLicense(this.user.userId).subscribe(
+          (data) => {
+           
+              this.licensedetails = data['body'];
+            console.log(this.licensedetails);
+            console.log(this.licensedetails.imgPath); 
+            if(this.licensedetails.imgPath == null){
+                this.checkImagePath = true;
+            } else{
+                this.checkImagePath = false;
+            }
+          });
+        
        });
+      
+       
+    
    }
   ngOnInit() {
 
@@ -130,13 +152,7 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
-        // this.message = data;
-        // if(this.message.status == "success"){
-        //   this.toastMessage = "Update Sucess !!";
-        // }else{
-        //   this.toastMessage = "Update Failure";
-        // }
-       console.log(data);
+        console.log(data);
       }
     );
 
@@ -145,16 +161,19 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
       (data: Message)=>  {
-        // this.message = data;
-        // if(this.message.status == "success"){
-        //   this.toastMessage = "Update Sucess !!";
-        // }else{
-        //   this.toastMessage = "Update Failure";
-        // }
        console.log(data);
       }
     );
 
+  }
+  changeDrivingNum(){
+    
+  }
+  confirm(){
+   this.deleteConfirm  = true;
+   console.log(this.deleteConfirm);
+   
+    
   }
   deleteAccount()
 {
@@ -171,6 +190,8 @@ export class UserProfileComponent implements OnInit {
 
     }
   );
+  // this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  // this.router.navigate(['']))
 
 }
 
