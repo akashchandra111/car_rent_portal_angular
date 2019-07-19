@@ -16,8 +16,12 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-		<!-- Compiled and minified JavaScript -->
-
+		<!-- Google Maps api -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=
+		AIzaSyAZQokTsdbyE2A3IOB1Gv3jrE9xLjNquOA
+		&callback=myMap"></script>
 
 	</head>
 	<body>
@@ -36,6 +40,11 @@
 
 		$(document).ready(
 			() => {
+				var mapProp= {
+  center:new google.maps.LatLng(13.0475205,77.6192442),
+  zoom:15,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 // $('.navbar-fixed').bind("DOMSubtreeModified",inintalizedropdown());
 $("#loginbutton").on( "click", function() {
 	setTimeout( function(){
