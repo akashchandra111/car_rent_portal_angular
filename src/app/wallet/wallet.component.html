@@ -1,3 +1,272 @@
-<p>
-  wallet works!
-</p>
+<!-- 
+<div class="row " style="margin-left:35%;">
+    <div class="col s12 m6 center" >
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Wallet</span>
+          <p>Enter Wallet Amount</p>
+        </div>
+        <div class="card-action">
+      
+  <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+              <div class="input-field">
+                  <form name="form1" class="form" action="login" method="post">
+            
+                <input type="text" name="userNameReg" id="userNameReg" class="form-control" />
+                 
+                   <label for="userNameReg">Enter Amount(in Rupees)</label>
+                   </form>
+                   
+                </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    
+
+    <a class="waves-effect waves-light btn-small">CLICK TO ADD MONEY</a>
+
+ -->
+
+
+    <!-- <div class="input-field">
+        <form name="form1" class="form" action="login" method="post">
+  
+      <input type="text" name="userNameReg" id="userNameReg" class="form-control" />
+       
+         <label for="userNameReg">Username</label>
+         </form>
+
+      </div>
+
+   <a class="waves-effect waves-light btn-small">CLICK TO ADD MONEY</a>
+
+
+  </div>
+      </div>
+    </div>
+  </div>
+            
+ Card -->
+
+
+
+
+
+
+
+
+
+
+ <p>paymentgateway works!</p>
+
+
+<div class="modal" style="max-width:600px" id="div1">
+    <div class="card">
+            <div class="card blue-grey darken-1">
+                
+     
+    <div style="margin-left:2%;" class="container">
+      <h2 >Payment Form</h2>
+    
+    <img style="margin-left:3%" src="/assets/images/amex.jpg">
+    
+    <img src="/assets/images/mastercard.jpg">
+    <img src="/assets/images/visa.jpg">
+    </div>
+    <form class="card-content" >
+    
+
+    <p>
+    <input class="input col s2" type="text" class="validate">
+    <label>Card Owner</label></p>
+    
+    <p>      
+    <input class="input col s2" type="text" class="validate">
+    <label>Card Number</label></p>
+    
+    <p>      
+    <input class="input-field" type="text" class="validate">
+    <label>CVV CODE</label></p>
+    
+    <p>      
+        <input class="input-field" type="text" class="validate">
+        <label>Expiration Date</label></p>
+    
+        
+        
+    <button (click)="showDialog = !showDialog" class="waves-effect waves-light btn">Press Ok</button>
+    
+    <button type="submit" id="submitc" class="waves-effect waves-light btn" >Comfirm Payment</button>
+
+
+    <br>
+    <p>      
+    <button class="waves-effect waves-light btn" (click)="funcDoPop()">Cancel Payment</button></p>
+        
+    </form>
+    </div>
+    </div>
+</div>
+
+ 
+
+
+<!-- <div id="id01" class="modal">     -->
+        
+<div class="container"  id="div2" style="max-width:600px" >
+        
+  <div class="card-panel grey lighten-5" style="border: 2px solid black;">
+
+    <div class="row">
+            
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h4 class="text-center">Payment Details</h4>
+                        <img class="img-responsive cc-img" height="25%" width="25%" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    
+
+                            <form role="form" name="form5" [formGroup]="form5" class="form"  method="post">
+                        
+
+                                
+                        <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                            <label color="blue-grey">Amount</label>
+                                        <div class="input-field">
+                                            <input type="number" class="form-control" name="money" id="money" [(ngModel)]="money" placeholder="Valid Card Number" 
+                                            formControlName="money"
+                                            [ngClass]="{'is-invalid' : form5.get('money').touched && form5.get('money').invalid}">
+                                         
+                                            <div *ngIf="form5.get('money').touched && form5.get('money').invalid" class="invalid-feedback">
+                                                       <div class="popup" *ngIf="form5.get('money').errors.required">Amount is required</div>
+                                                       <div *ngIf="form5.get('money').hasError('pattern')"><span style="color: red;">Enter digits only</span></div>
+                                                    </div>  
+                                         
+    
+    
+    
+    
+    
+                                            <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                        <label color="blue-grey">CARD NUMBERRR</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" name="cardNo" id="cardNo" [(ngModel)]="cardNo" placeholder="Valid Card Number" 
+                                        formControlName="cardNo"
+                                        [ngClass]="{'is-invalid' : form5.get('cardNo').touched && form5.get('cardNo').invalid}">
+                                     
+                                        <div *ngIf="form5.get('cardNo').touched && form5.get('cardNo').invalid" class="invalid-feedback">
+                                                   <div class="popup" *ngIf="form5.get('cardNo').errors.required">Card No. is required</div>
+                                                   <div *ngIf="form5.get('cardNo').hasError('pattern')"><span style="color: red;">The cardNo. is not
+                                                         valid.</span></div>
+                                                </div>  
+                                     
+
+
+
+
+
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input type="text" class="form-control" name="expNo" id="expNo" [(ngModel)]="expNo" placeholder="MM / YY" 
+                                    formControlName="expNo"
+                                    [ngClass]="{'is-invalid' : form5.get('expNo').touched && form5.get('expNo').invalid}">
+                           
+                                    <div *ngIf="form5.get('expNo').touched && form5.get('expNo').invalid" class="invalid-feedback">
+                                               <div class="popup" *ngIf="form5.get('expNo').errors.required">Expiry No. is required</div>
+                                               <div *ngIf="form5.get('expNo').hasError('pattern')"><span style="color: red;">The ExpiryNo. is not
+                                                     valid.</span></div>
+                                            </div>  
+                                 
+
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label>CV CODE</label>
+                                    <input type="text" class="form-control" name="cvcNo" [(ngModel)]="cvcNo" placeholder="CVC"
+                                    formControlName="cvcNo"
+                                    [ngClass]="{'is-invalid' : form5.get('cvcNo').touched && form5.get('cvcNo').invalid}">
+                                 
+                                    <div *ngIf="form5.get('cvcNo').touched && form5.get('cvcNo').invalid" class="invalid-feedback">
+                                            <div class="popup" *ngIf="form5.get('cvcNo').errors.required">CVC No. is required</div>
+                                            <div *ngIf="form5.get('cvcNo').hasError('pattern')"><span style="color: red;">The CVC No. is not
+                                                  valid.</span></div>
+                                         </div>  
+
+
+
+                                 
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>CARD OWNER</label>
+                                    <input type="text" class="form-control" name="ownerName" [(ngModel)]="ownerName" placeholder="Card Owner Names" 
+                                    formControlName="ownerName"
+                                    [ngClass]="{'is-invalid' : form5.get('ownerName').touched && form5.get('ownerName').invalid}">
+                                    <div *ngIf="form5.get('ownerName').touched && form5.get('ownerName').invalid" class="invalid-feedback">
+                                            <div class="popup" *ngIf="form5.get('ownerName').errors.required">Card Owner Name  is required</div>
+                                            <div *ngIf="form5.get('ownerName').hasError('pattern')"><span style="color: red;">The Card owner name is not
+                                                  valid.</span></div>
+                                         </div>  
+                                    
+                                   
+
+
+                                  
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button (click)="funcDo()" [disabled]="!form5.valid" type="submit" value="Register" id="validationclicked" name="submit" class="btn btn-warning btn-lg btn-block" (click)="addMoney()">Process payment</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- 
+</div> -->
