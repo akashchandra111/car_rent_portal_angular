@@ -40,6 +40,7 @@ export class BookingComponent implements OnInit {
   calculatedBookingCost: number = 0;
   latestHistory: any;
   tempStartTime: any;
+  ckeckLicenseUpload: boolean = true;
 
   currentDate: any = new Date().getTime();
   currentUnixTime = parseInt(this.currentDate);
@@ -75,12 +76,21 @@ export class BookingComponent implements OnInit {
 					this.tempStartTime = parseInt(this.latestHistory.startTime);
 					if(this.tempStartTime > this.currentUnixTime && this.latestHistory.userLogId != null){
 						this.upcomingStatus = true;
-						console.log("working");
-						
 					}
 					else{
 						this.upcomingStatus = false;
 					}
+			});
+			this.http.checkLicense(this.user.userId).subscribe(
+				(data)=> {
+					let licenseDetails = data['body'];
+					console.log(licenseDetails);
+					if(licenseDetails.imgPath != null){
+						this.ckeckLicenseUpload = true;
+						this.toastMessage = "You already had booked one car, cannot book more than one";
+					}else{
+						this.ckeckLicenseUpload = false;
+					}		
 			});
 		});
 
@@ -93,8 +103,8 @@ export class BookingComponent implements OnInit {
 			  else	{
 				  this.checkCurrentCarStatus = true;
 			  }
-		  }
-	  );
+	  });
+	  
   }
 
   checkCost()	{

@@ -91,14 +91,7 @@
 		</div>
 		
 		<div class = "col s12 m6">
-			<div>
-				<select>
-					<option value="4" >Choose your option</option>
-					<option value="1">Option 1</option>
-					<option value="2">Option 2</option>
-					<option value="3">Option 3</option>
-				</select>
-			</div>
+			<div *ngIf="ckeckLicenseUpload; else uploadLicense">
 			<div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
 				<label for="autocomplete-input black-text darken-3">Start Location</label>
@@ -134,6 +127,14 @@
 				<button class="btn indigo waves-effect waves-light darken-3" [disabled]="upcomingStatus" (click)="bookCar()">Book Car</button>
 					{{ toastMessage }}
 			</div>
+			</div>
+			<ng-template #uploadLicense>
+					<div class="jumbotron card-panel hoverable red lighten-1 white-text text-darken-2">
+						<i class="material-icons large">blur_off</i>
+						<h3>Driving license is compulsary to book car, Please upload your license and come back </h3>
+						<a [routerLink]="['/user_profile']"><b class="white-text"><u>Go Back</u></b></a>
+					</div>
+			</ng-template>
 		</div>
 	</div>
 </div>
