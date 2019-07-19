@@ -26,37 +26,38 @@ export class WalletComponent implements OnInit {
   form5 = new FormGroup({
    money : new FormControl('', [
       Validators.required,  
-      Validators.minLength(5),  
-      Validators.maxLength(80),  
-      Validators.pattern("^([0-9]{2,15})$")
+      Validators.minLength(1),  
+      Validators.maxLength(20),  
+      Validators.pattern("^([0-9]{1,15})$")
       
    ]),
 
    cardNo : new FormControl('', [
     Validators.required,  
-    Validators.minLength(5),  
+    Validators.minLength(3),  
     Validators.maxLength(80),  
-    Validators.pattern("^([a-zA-Z1-10]{2,15})$")  
+    Validators.pattern("^[0-9]{16}$")  
  ]),
  expNo:new FormControl('',[
       
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern("^[689][0-9]{9}$") 
+      Validators.pattern("^(0[1-9]|10|11|12)/20[0-9]{2}$") 
     ]),
 
     cvcNo:new FormControl('',[
       
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern("^[689][0-9]{9}$") 
+      Validators.pattern("^[0-9]{3}$") 
     ]),
 
     ownerName:new FormControl('',[
       
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern("^[689][0-9]{9}$") 
+      Validators.pattern("^((?:[A-Za-z]+ ?){1,3})$")
+       
     ]),
   })
 
