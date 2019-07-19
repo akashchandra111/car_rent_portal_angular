@@ -92,6 +92,19 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <span class="card-title">
+                        <b>Delete Account</b>
+                    </span>
+                    <div class="col s8">
+
+                        <p> Are You Sure You want To Delete Account</p>
+                    </div>
+                    <div class="col s4">
+
+                        <button type="submit" class="waves-effect waves-light btn red" (click)="confirm()">Yes</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -151,29 +164,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="row">
-                    <div class="col s8">
-                        <div class="input-field">
-                            <span>Update {{user.govtIdType}} Number</span>
-                            
-                            <input type="text" name="govtIdNum" [(ngModel)]="user.govtIdNum" #govtIdNum=ngModel id="verification_id" class="validate"
-                                required>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <button type="submit" class="waves-effect waves-light btn indigo " style="margin-top:10%;" (click)="changeGovId()">Change</button>
-                    </div>
-                </div> -->
-
-                <div class="row">
-                    <div class="col s8">
-                        <p> Are You Sure You want To Delete Account</p>
-                    </div>
-                    <div class="col s4">
-
-                        <button type="submit" class="waves-effect waves-light btn red" (click)="confirm()">Yes</button>
-                    </div>
-                </div>
             </div>
 
             <div class="card-action">
@@ -181,13 +171,17 @@
                     <b>Update Driving License </b>
                 </span>
                 <div class="card-image">
-                    <img src="assets/images/wallet.jpg">
+
+                        <img [src]="licensedetails.imgPath" alt="No Image found" >
+              
+
+
                 </div>
 
 
 
-                <div class="row">
-
+                <div class="row" *ngIf = "checkImagePath" >
+                   
                     <div class="col s8">
                         <div class="input-field file-field">
                             <div class="btn indigo">
@@ -197,10 +191,9 @@
                                 <input type="text" class="file-path">
                             </div>
                             {{ toastMessageUpload }}
-                        </div>
-
-
+                         </div>
                     </div>
+                 
                     <div class="col s4">
                         <button [disabled]="!selectedFiles" (click)="upload()" class="btn btn-indigo right waves-effect waves-light scale-transition">Upload</button>
                     </div>

@@ -43,9 +43,11 @@ export class UserProfileComponent implements OnInit {
   toastMessageMobile: string;
   toastMessage:string;
   toastMessageUpload: string;
-
+  licensedetails: any;
+  imgPath: any;
   deleteConfirm: boolean;
-
+  checkImagePath:boolean = true;
+ 
   constructor(private http: FetchJSONService, private uploadService: LicenseUploadService)
   {
       this.login =
@@ -60,7 +62,24 @@ export class UserProfileComponent implements OnInit {
       (data) => {
         this.user = data['body'];
         console.log(data);
+        console.log(this.user.userId);
+        this.http.checkLicense(this.user.userId).subscribe(
+          (data) => {
+           
+              this.licensedetails = data['body'];
+            console.log(this.licensedetails);
+            console.log(this.licensedetails.imgPath); 
+            if(this.licensedetails.imgPath == null){
+                this.checkImagePath = true;
+            } else{
+                this.checkImagePath = false;
+            }
+          });
+        
        });
+      
+       
+    
    }
   ngOnInit() {
 
