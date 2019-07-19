@@ -17,8 +17,7 @@
               </tr>
             </thead>
 
-              <tbody>
-                  <ng-template [ngIf]="userlog != 0" [ngIfElse]="isNull">
+            <tbody *ngIf="checkUserlog; else noHistory">
                     <tr *ngFor="let userHistory of userlog">
                       <td>{{ userHistory.carNo }}</td>
                         <td>{{ userHistory.currentLocation }}</td>
@@ -31,13 +30,11 @@
                                       <a class="waves-effect waves-light btn-floating red modal-trigger" (click)="onDelete(userHistory.userLogId)">
                                       <i class="material-icons left">delete</i></a>
                                     </td> -->
-                    </tr>
-                  </ng-template>  
-                
-                  <ng-template #isNull> 
-                        <p>You do not have any bookings. Keep on Booking! :)</p>
-                  </ng-template>  
+                    </tr>       
             </tbody>
         </table>
+        <ng-template #noHistory> 
+            <p>You do not have any bookings, Keep on Booking! :)</p>
+        </ng-template> 
     </div>
 </div>    

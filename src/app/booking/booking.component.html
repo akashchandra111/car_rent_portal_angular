@@ -91,7 +91,7 @@
 		</div>
 		
 		<div class = "col s12 m6">
-			<div *ngIf="ckeckLicenseUpload; else uploadLicense">
+			<div *ngIf="ckeckLicenseUpload; else uploadLicense">	  			
 			<div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
 				<label for="autocomplete-input black-text darken-3">Start Location</label>
@@ -130,9 +130,9 @@
 			</div>
 			<ng-template #uploadLicense>
 					<div class="jumbotron card-panel hoverable red lighten-1 white-text text-darken-2">
-						<i class="material-icons large">blur_off</i>
+						<i class="material-icons large">add_a_photo</i>
 						<h3>Driving license is compulsary to book car, Please upload your license and come back </h3>
-						<a [routerLink]="['/user_profile']"><b class="white-text"><u>Go Back</u></b></a>
+						<a [routerLink]="['/user_profile']"><b class="white-text"><u>Go to profile and upload</u></b></a>
 					</div>
 			</ng-template>
 		</div>
@@ -140,9 +140,11 @@
 </div>
 </div>
 <ng-template #messageBlock>
+	<div class="container">
 		<div class="jumbotron card-panel hoverable red lighten-1 white-text text-darken-2">
 			<i class="material-icons large">blur_off</i>
 			<h3>Sorry all the car of this model have been booked choose another model or come after sometime.</h3>
-			<a [routerLink]="['/choose_car']">Go Back</a>
+			<a [routerLink]="['/choose_car']"><b class="white-text"><u>Go Back</u></b></a>
 		</div>
+	</div>	
 </ng-template>
