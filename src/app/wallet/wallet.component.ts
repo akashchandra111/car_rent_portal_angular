@@ -45,8 +45,9 @@ export class WalletComponent implements OnInit {
         else  {
           this.toastMessage = "Money not added";
         }
-      }
-    );
+      });
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['/dashboard']));
   }
 
   addMoneyNet()  {
@@ -58,8 +59,9 @@ export class WalletComponent implements OnInit {
         else  {
           this.toastMessage = "Money not added";
         }
-      }
-    );
+      });
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['/dashboard']));
   }
 
 
