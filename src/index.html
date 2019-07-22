@@ -42,7 +42,7 @@ $("#loginbutton").on( "click", function() {
 	setTimeout( function(){
 $(".dropdown-trigger").dropdown();
 		$('.sidenav').sidenav();
-
+		M.updateTextFields();
 	var pathname = window.location.pathname;
 console.log(pathname);
 		if(pathname=="/"){

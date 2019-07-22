@@ -14,9 +14,9 @@ import { LicenseUploadService } from '../license-upload.service';
 })
 export class UserProfileComponent implements OnInit {
 
-   user: User = {
+  user: User = {
     userId: '',
-    firstName:'',
+    firstName: '',
     lastName: '',
     mobileNum: '',
     govtIdType: '',
@@ -41,22 +41,20 @@ export class UserProfileComponent implements OnInit {
   toastMessagePassword: string;
   toastMessageEmail: string;
   toastMessageMobile: string;
-  toastMessage:string;
+  toastMessage: string;
   toastMessageUpload: string;
   licensedetails: any;
   imgPath: any;
   deleteConfirm: boolean;
-  checkImagePath:boolean = true;
- 
-  constructor(private http: FetchJSONService, private uploadService: LicenseUploadService)
-  {
-      this.login =
-       {
-      id: JSON.parse(localStorage.getItem('user')).userId,
-      password: JSON.parse(localStorage.getItem('user')).password
-      // id : this.userId,
-      // password : this.password
-       }
+  checkImagePath: boolean = true;
+
+  constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService, private uploadService: LicenseUploadService) {
+    this.login =
+      {
+        id: JSON.parse(localStorage.getItem('user')).userId,
+        password: JSON.parse(localStorage.getItem('user')).password
+      
+      }
 
     this.http.getUser(this.login).subscribe(
       (data) => {
@@ -65,149 +63,122 @@ export class UserProfileComponent implements OnInit {
         console.log(this.user.userId);
         this.http.checkLicense(this.user.userId).subscribe(
           (data) => {
-           
-              this.licensedetails = data['body'];
+
+            this.licensedetails = data['body'];
             console.log(this.licensedetails);
-            console.log(this.licensedetails.imgPath); 
-            if(this.licensedetails.imgPath == null){
-                this.checkImagePath = true;
-            } else{
-                this.checkImagePath = false;
+            console.log(this.licensedetails.imgPath);
+            if (this.licensedetails.imgPath == null) {
+              this.checkImagePath = true;
+            } else {
+              this.checkImagePath = false;
             }
           });
-        
-       });
-      
-       
-    
-   }
+
+      });
+
+
+
+  }
   ngOnInit() {
 
   }
 
 
-  changeUserName()
-   {
-     console.log(this.user);
+  changeUserName() {
+    console.log(this.user);
     this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
+      (data: Message) => {
         this.message = data;
-        if(this.message.status == "success"){
+        if (this.message.status == "success") {
           this.toastMessageUname = "Update Sucess";
-        }else{
+        } else {
           this.toastMessageUname = "Update Failure";
         }
-       console.log(data);
-      }
-    );
-    }
-
-  changeUserpassword(){
-    console.log(this.user);
-    this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
-        this.message = data;
-        if(this.message.status == "success"){
-          this.toastMessagePassword = "Update Sucess !!";
-        }else{
-          this.toastMessagePassword = "Update Failure";
-        }
-       console.log(data);
-      }
-    );
-   }
-
-  changeMobileNo(){
-    console.log(this.user);
-    this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
-        this.message = data;
-        if(this.message.status == "success"){
-          this.toastMessageMobile = "Update Sucess !!";
-        }else{
-          this.toastMessageMobile = "Update Failure";
-        }
-       console.log(data);
-      }
-    );
-  }
-
-  changeEmail(){
-    console.log(this.user);
-    this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
-        this.message = data;
-        if(this.message.status == "success"){
-          this.toastMessageEmail = "Update Sucess !!";
-        }else{
-          this.toastMessageEmail = "Update Failure";
-        }
-       console.log(data);
-      }
-    );
-   }
-
-  changeGovId(){
-
-    console.log(this.user);
-    this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
         console.log(data);
       }
     );
-
   }
-  changeGovType(){
+
+  changeUserpassword() {
     console.log(this.user);
     this.http.updateUser(this.user).subscribe(
-      (data: Message)=>  {
-       console.log(data);
+      (data: Message) => {
+        this.message = data;
+        if (this.message.status == "success") {
+          this.toastMessagePassword = "Update Sucess !!";
+        } else {
+          this.toastMessagePassword = "Update Failure";
+        }
+        console.log(data);
       }
     );
+  }
 
+  changeMobileNo() {
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message) => {
+        this.message = data;
+        if (this.message.status == "success") {
+          this.toastMessageMobile = "Update Sucess !!";
+        } else {
+          this.toastMessageMobile = "Update Failure";
+        }
+        console.log(data);
+      }
+    );
   }
-  changeDrivingNum(){
-    
+
+  changeEmail() {
+    console.log(this.user);
+    this.http.updateUser(this.user).subscribe(
+      (data: Message) => {
+        this.message = data;
+        if (this.message.status == "success") {
+          this.toastMessageEmail = "Update Sucess !!";
+        } else {
+          this.toastMessageEmail = "Update Failure";
+        }
+        console.log(data);
+      }
+    );
   }
-  confirm(){
-   this.deleteConfirm  = true;
-   console.log(this.deleteConfirm);
-   
-    
-  }
-  deleteAccount()
-{
-  console.log(this.user);
-  this.http.deRegister(this.user.userId).subscribe(
-    (data : Message) => {
-     this.message = data;
-     if(this.message.status == "success"){
+
+  confirm() {
+    this.deleteConfirm = true;
+    console.log(this.deleteConfirm);
+   }
+
+  deleteAccount() {
+    console.log(this.user);
+    this.http.deRegister(this.user.userId).subscribe(
+      (data: Message) => {
+        this.message = data;
+        if (this.message.status == "success") {
           this.toastMessage = "Delete Sucess";
-        }else{
+        } else {
           this.toastMessage = "Delete Failure "
         }
-      console.log(data);
+        console.log(data);
+      });
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate(['']))
 
-    }
-  );
-  // this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-  // this.router.navigate(['']))
+  }
 
-}
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
 
-	selectFile(event)	{
-		this.selectedFiles = event.target.files;
-	}
-
-	upload()	{
-		this.currentFileUpload = this.selectedFiles.item(0);
-		this.uploadService.pushFileToStorage(this.user.userId, this.currentFileUpload).subscribe(
-			(event)=>	{
-				if(event instanceof HttpResponse)	{
-					this.toastMessageUpload = "File Uploaded!";
-				}
-			}
-		);
-		this.selectedFiles = undefined;
-	}
+  upload() {
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.uploadService.pushFileToStorage(this.user.userId, this.currentFileUpload).subscribe(
+      (event) => {
+        if (event instanceof HttpResponse) {
+          this.toastMessageUpload = "File Uploaded!";
+        }
+      }
+    );
+    this.selectedFiles = undefined;
+  }
 }
