@@ -1,1 +1,84 @@
-Contact US!
+<div class="container">
+    <div class="card blue darken-2">
+
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <i class=" large material-icons center red-text darken-4">location_on</i>
+                <br>
+                <b class="white-text"> D2 Block, Manyata Embassy Business Park, Outer Ring Rd, Nagawara, Bengaluru, Karnataka 560045</b>
+            </div>
+            <div class="col s6 m6 l6 center">
+                <i class="material-icons white-text darken-4">call</i>
+                <br>
+                <b class="white-text">999-999-9999</b>
+                <br>
+                <br>
+                <i class="material-icons white-text darken-4">email</i>
+                <br>
+                <b class="white-text">contact123@gmail.com</b>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col s6 m6 l6" style="margin-top : 10%">
+            <form>
+                <div class="input-field">
+                    <i class="material-icons prefix indigo-text">account_circle</i>
+                    <input type="text" name="name" [(ngModel)]="name" id="name" #userName= ngModel pattern="[(a-z)(A-Z)(0-9)]{1,15}"  class="validate" required>
+                    <label for="name">Name</label>
+                </div>
+                <div *ngIf ="userName?.touched">
+                    <div *ngIf = "userName.errors?.pattern">
+                        <span class="red-text">Username should contain only alphabets and Numbers</span>
+                    </div>
+                    <div *ngIf = "userName.errors?.required">
+                        <span class="red-text">Name is required</span>
+                    </div>
+                </div>
+               
+               
+                <div class="input-field">
+                    <i class="material-icons prefix indigo-text">phone</i>
+                    <input type="text" name="mobile" [(ngModel)]="mobile" id="mobile" #mobilenum= ngModel pattern="[0-9]{10}"  class="validate" required>
+                    <label id="mobile">Phone</label>
+                 </div>
+                 <div *ngIf ="mobilenum?.touched">
+                    <div *ngIf = "mobilenum.errors?.pattern">
+                        <span class="red-text">Enter valid Mobile Number </span>
+                    </div>
+                    <div *ngIf = "mobilenum.errors?.required">
+                        <span class="red-text">Mobile Number is required</span>
+                    </div>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix indigo-text">edit</i>
+                    <input type="text" name="subject" [(ngModel)]="subject" id="subject"  class="validate" required>
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix indigo-text">insert_comment</i>
+                    <input type="text" name="message" [(ngModel)]="message" id="message"   class="validate" required>
+                    <label for="message">Message</label>
+                 </div>
+                
+                 <div>
+                     <button class="waves-effect waves-light btn right indigo" type="submit"[disabled]="userName.errors || mobilenum.errors " (click)="sendMessage()">Send message</button>
+                     {{ toastMessage }}
+                 </div>
+            </form>
+        </div>
+        <div class="col s6 m6 l6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="assets/images/map.jpg">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
