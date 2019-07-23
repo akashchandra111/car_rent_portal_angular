@@ -92,14 +92,34 @@
 
 		<div class = "col s12 m6">
 			<div *ngIf="ckeckLicenseUpload; else uploadLicense">
-			<div class="input-field">
+			<!-- <div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
 				<label for="autocomplete-input black-text darken-3">Start Location</label>
+			</div> -->
+			<div class="row">
+				<div class="input-field col s4">
+					Start Location :
+					<select class="browser-default" name="idtype" [(ngModel)]="startLocation">
+						<option value="" selected disabled>Select Location</option>
+						<option value="Nagawara" >Nagawara</option>
+						<option value="Hebbal">Hebbal</option>
+						<option value="White Field">White Field</option>
+					</select>
+				</div>
+				<div class="input-field col s4">
+					Drop Location :
+					<select class="browser-default" name="idtype" [(ngModel)]="dropLocation">
+						<option value="" selected disabled>Select Location</option>
+						<option value="Nagawara" >Nagawara</option>
+						<option value="Hebbal">Hebbal</option>
+						<option value="White field">White Field</option>
+					</select>
+				</div>
 			</div>
-			<div class="input-field">
+			<!-- <div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="dropLocation">
 				<label for="autocomplete-input black-text darken-3">Drop Location</label>
-			</div>
+			</div> -->
 			<div class="row">
 				<div class="input-field col s6">
 					<input type="date" [min]="todaysDate" class="datepicker" id="start-date" [(ngModel)]="startDate">
@@ -147,4 +167,24 @@
 			<a [routerLink]="['/choose_car']"><b class="white-text"><u>Go Back</u></b></a>
 		</div>
 	</div>
-</ng-template>
+</ng-template> 
+
+
+
+<!-- <mat-form-field>
+		<mat-label>Cars</mat-label>
+		<select matNativeControl required>
+		  <option value="volvo">Volvo</option>
+		  <option value="saab">Saab</option>
+		  <option value="mercedes">Mercedes</option>
+		  <option value="audi">Audi</option>
+		</select>
+	  </mat-form-field> -->
+
+<div class="row">
+	<div class="input-field">
+
+
+	</div>
+</div>	  
+

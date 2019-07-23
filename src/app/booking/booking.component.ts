@@ -15,6 +15,7 @@ import { Message } from '../Interfaces/Message';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+	
   carId: string;
   carNo: string;
   checkCurrentCarStatus: boolean = true;
