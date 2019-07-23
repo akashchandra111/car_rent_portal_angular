@@ -102,6 +102,10 @@ export class FetchJSONService {
 	  return this.http.delete<Message>(this.baseUrl + '/car/delete/' + carId, this.httpOptions);
   }
 
+  getTotalCars()	{
+	  return this.http.get<Car[]>(this.baseUrl + '/car/total', {observe: 'response'});
+  }
+
   //************************** user log APIs ***********************************
   // Add user log
   addUserLog(userLog: UserLog)	{

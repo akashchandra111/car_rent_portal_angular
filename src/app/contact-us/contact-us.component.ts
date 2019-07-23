@@ -20,7 +20,7 @@ export class ContactUsComponent implements OnInit {
   email : Email;
   login: Login;
   toastMessage : string;
- 
+
 
   constructor(private http: FetchJSONService) {
     this.login = {
@@ -37,7 +37,7 @@ export class ContactUsComponent implements OnInit {
     (data)=>  {
     this.user = data['body'];
     });
-   
+
    }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class ContactUsComponent implements OnInit {
   sendMessage(){
         let contactdata = "Name : " + this.name  + ", Contact Number : " + this.mobile + ", E-mail : " +this.user.email;
         //this.email.to = this.mail;
-        this.email.to = "bhavana261195@gmail.com";
+        this.email.to = "akashchandracs0007@gmail.com";
         this.email.subject = this.subject;
         this.email.text =  contactdata + ", Query : " +this.message;
         this.http.sendMail(this.email).subscribe(
@@ -54,12 +54,12 @@ export class ContactUsComponent implements OnInit {
           console.log("working");
           let message: Message = data;
           console.log(message);
-          
+
           if(message.status == "success"){
             this.toastMessage = "Query sent successfully";
           }else{
             this.toastMessage = "Failed to send";
           }
-      });  
+      });
   }
 }

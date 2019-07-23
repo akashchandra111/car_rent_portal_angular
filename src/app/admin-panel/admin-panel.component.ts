@@ -22,6 +22,7 @@ car_no_update:string;
 updatestatus:string;
 car_no_delete:string;
 deletestatus:string;
+totalCars: Car[];
 
 	  constructor(private router:Router,private http: FetchJSONService) {
 
@@ -31,6 +32,11 @@ deletestatus:string;
 		  }
 	  }
   ngOnInit() {
+	  this.http.getTotalCars().subscribe(
+  		(data)=>	{
+  			this.totalCars = data['body'];
+  		}
+  	)
   }
 
 	addCar(){
@@ -45,6 +51,13 @@ deletestatus:string;
 			cost: 0
 		};
 
+		for(let currCar of this.totalCars)	{
+			//console.log(currCar);
+			if(currCar.carId == this.carId)	{
+				car = currCar;
+				break;
+			}
+		}
 
 		let carstatus:CarStatus = {
 		carNo: this.carNumber,
@@ -87,6 +100,13 @@ else{
 			cost: 0
 		};
 
+		for(let currCar of this.totalCars)	{
+			//console.log(currCar);
+			if(currCar.carId == this.car_id_update)	{
+				car = currCar;
+				break;
+			}
+		}
 
 		let carstatus:CarStatus = {
 		carNo: this.car_no_update,
