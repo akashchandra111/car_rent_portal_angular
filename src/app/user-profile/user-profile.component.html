@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12 m6">
-        <div class="card">
+        <div class="card ">
             <div class="card-content">
                 <span class="card-title">
                     <b style="color:indigo"> My Account</b>
@@ -46,6 +46,7 @@
                         <div class="input-field">
                             <i class="material-icons indigo-text prefix">contacts</i>
                             <input type="text" name="userName" [(ngModel)]="user.userName" #userName=ngModel pattern="[(a-z)(A-Z)]{4,15}" required>
+                            <label class="active" for="userName">Change User Name</label>
                         </div>
                         <div *ngIf="userName?.touched">
                             <div *ngIf="userName.errors?.required">
@@ -72,6 +73,7 @@
                             <i class="material-icons indigo-text prefix">security</i>
                             <input type="password" name="password" [(ngModel)]="user.password" #password=ngModel pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 required>
+                                <label class="active" for="password">Change Password</label>
                         </div>
                         <div *ngIf="password?.touched">
                             <div *ngIf="password.errors?.pattern">
@@ -91,6 +93,19 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <span class="card-title">
+                        <b>Delete Account</b>
+                    </span>
+                    <div class="col s8">
+
+                        <p> Are You Sure You want To Delete Account</p>
+                    </div>
+                    <div class="col s4">
+
+                        <button type="submit" class="waves-effect waves-light btn red" (click)="confirm()">Yes</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -107,6 +122,7 @@
                             <i class="material-icons indigo-text prefix">mail</i>
                             <input id="email" type="email" name="email" [(ngModel)]="user.email" #email=ngModel pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 required>
+                                <label class="active" for="email">Change Email</label>
                         </div>
                         <div *ngIf="email?.touched">
                             <div *ngIf="email.errors?.pattern">
@@ -131,6 +147,7 @@
                             <i class="material-icons indigo-text prefix">call</i>
                             <input id="updateMobile" type="text" name="mobileNum" [(ngModel)]="user.mobileNum" #mobileNum=ngModel pattern="[0-9]{10}"
                                 required>
+                                <label class="active" for="mobileNum">Change Mobile Number</label>
                         </div>
                         <div *ngIf="mobileNum?.touched">
                             <div *ngIf="mobileNum.errors?.pattern">
@@ -150,36 +167,24 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col s8">
-                        <div class="input-field">
-                            <span>Update {{user.govtIdType}} Number</span>
-                            <!-- <i class="material-icons indigo-text prefix">edit</i> -->
-                            <input type="text" name="govtIdNum" [(ngModel)]="user.govtIdNum" #govtIdNum=ngModel id="verification_id" class="validate"
-                                required>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <button type="submit" class="waves-effect waves-light btn indigo " style="margin-top:10%;" (click)="changeGovId()">Change</button>
-                    </div>
-                </div>
             </div>
 
             <div class="card-action">
-                <!-- <p class="card-title">Delete Account</p> -->
-                <!-- <button type="submit" class="waves-effect waves-light btn indigo scale-transition  " (click)="deleteAccount()">Delete</button> -->
-
                 <span class="card-title">
                     <b>Update Driving License </b>
                 </span>
-                <div class="row">
-                        <!-- <div class="col s8">
-                                <div class="input-field">
-                                    <i class="material-icons indigo-text prefix">edit</i>
-                                    <input type="text" name="drivingLicenseNum" [(ngModel)]="user.drivingLicenseNum" #drivingLicenseNum=ngModel id="drivingLicenseNum" class="validate"
-                                        required>
-                                </div>
-                            </div> -->
+                <div class="card-image">
+
+                        <img [src]="licensedetails.imgPath" alt="No Image found" >
+              
+
+
+                </div>
+
+
+
+                <div class="row" *ngIf = "checkImagePath">
+                   
                     <div class="col s8">
                         <div class="input-field file-field">
                             <div class="btn indigo">
@@ -188,13 +193,12 @@
                             <div class="file-path-wrapper">
                                 <input type="text" class="file-path">
                             </div>
-							{{ toastMessageUpload }}
-                        </div>
-                <!-- <button type="submit" class="waves-effect waves-light btn indigo scale-transition  " (click)="deleteAccount()">Delete</button> -->
-
+                            {{ toastMessageUpload }}
+                         </div>
                     </div>
+                 
                     <div class="col s4">
-						<button [disabled]="!selectedFiles" (click)="upload()" class="btn btn-indigo right waves-effect waves-light scale-transition">Upload</button>
+                        <button [disabled]="!selectedFiles" (click)="upload()" class="btn btn-indigo right waves-effect waves-light scale-transition">Upload</button>
                     </div>
                 </div>
 
@@ -204,9 +208,9 @@
     </div>
 
 </div>
-<div class="fixed-action-btn">
-        <a class="btn-floating btn-large red" (click)="deleteAccount()">
-          <i class="large material-icons">delete</i>
-        </a>
+<div class="fixed-action-btn" *ngIf="deleteConfirm">
+    <a class="btn-floating btn-large red" (click)="deleteAccount()">
+        <i class="large material-icons">delete</i>
+    </a>
 
-      </div>
+</div>

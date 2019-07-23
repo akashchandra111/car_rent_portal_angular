@@ -27,6 +27,7 @@ export class UserHistoryComponent implements OnInit {
     totalAmount : string;
     paidAmount : string;
     bookingId : string;
+    checkUserlog: boolean = true;
     
 
   // get the objects from [session] userId & password
@@ -47,11 +48,17 @@ export class UserHistoryComponent implements OnInit {
         (data)=>  {
           this.userlog = data['body'];
           for(let log of this.userlog)  {
+            if(log.userLogId != null){
+              this.checkUserlog = true;
+            }else{
+              this.checkUserlog = false;
+            }
             log.startTime = new Date(parseInt(log.startTime)).toLocaleString();
             log.endTime = new Date(parseInt(log.endTime)).toLocaleString();
-      }
+          }
+          
       });
-      });
+    });
       
    }
 

@@ -20,6 +20,7 @@ export class BookingComponent implements OnInit {
   checkCurrentCarStatus: boolean = true;
   toastMessage: string;
   todaysDate: string;
+  upcomingStatus : boolean = true;
 
   user: User;
   userLog: UserLog;
@@ -37,6 +38,12 @@ export class BookingComponent implements OnInit {
   secretKey: string;
   paidAmount: string;
   calculatedBookingCost: number = 0;
+  latestHistory: any;
+  tempStartTime: any;
+  ckeckLicenseUpload: boolean = true;
+
+  currentDate: any = new Date().getTime();
+  currentUnixTime = parseInt(this.currentDate);
 
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
 	  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -59,11 +66,33 @@ export class BookingComponent implements OnInit {
 		  password: JSON.parse(localStorage.getItem('user')).password
 	  }
 
-	  this.http.getUser(login).subscribe(
+	this.http.getUser(login).subscribe(
 		(data)=>	{
 			this.user = data['body'];
-		}
-	  );
+			this.http.getLatestUserHistory(this.user.userId).subscribe(
+				(data)=>{
+					this.latestHistory = data['body'];
+					//console.log(this.latestHistory.startTime);				
+					this.tempStartTime = parseInt(this.latestHistory.startTime);
+					if(this.tempStartTime > this.currentUnixTime && this.latestHistory.userLogId != null){
+						this.upcomingStatus = true;
+					}
+					else{
+						this.upcomingStatus = false;
+					}
+			});
+			this.http.checkLicense(this.user.userId).subscribe(
+				(data)=> {
+					let licenseDetails = data['body'];
+					console.log(licenseDetails);
+					if(licenseDetails.imgPath != null){
+						this.ckeckLicenseUpload = true;
+						this.toastMessage = "You already had booked one car, cannot book more than one";
+					}else{
+						this.ckeckLicenseUpload = false;
+					}		
+			});
+		});
 
 	  this.http.getCarStatusByCarId(this.carId).subscribe(
 		  (data)=>	{
@@ -74,8 +103,8 @@ export class BookingComponent implements OnInit {
 			  else	{
 				  this.checkCurrentCarStatus = true;
 			  }
-		  }
-	  );
+	  });
+	  
   }
 
   checkCost()	{
@@ -140,6 +169,8 @@ export class BookingComponent implements OnInit {
 												  if(this.message.status == "success")	{
 													  console.log(this.userLog);
 													  this.toastMessage = "Booking success";
+													  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    												  this.router.navigate(['/dashboard'])); 
 													  return;
 												  }
 											  }

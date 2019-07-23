@@ -156,7 +156,7 @@ console.log("asd");
 			<h4>Login</h4>
 		 </div>
 		 <div class="input-field">
-			<input type="text" [(ngModel)]="username" id="username" class="validate" name="username" required>
+			<input type="text" [(ngModel)]="username"  id="username" class="validate" name="username" required>
 			<label for="username">Username/ Email/ Phone</label>
 		 </div>
 		 <div class="input-field">
@@ -182,7 +182,7 @@ console.log("asd");
 		 </div>
 	  </div>
 	  <div class="modal-footer">
-		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" name="submit" (click)="getlogin()" onclick="loginClicked();">
+		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close" id="loginbutton" [disabled] ="username == null || password == null" name="submit" (click)="getlogin()" onclick="loginClicked();">
 		 Login
 		 <i class="material-icons right">send</i>
 		 </button>
@@ -198,17 +198,46 @@ console.log("asd");
 			<h4>Register with Us</h4>
 		 </div>
 		 <div class="input-field">
-			<input type="text" [(ngModel)]="firstName" name="firstName" id="firstname" class="validate" required>
+			<input type="text" [(ngModel)]="firstName" name="firstName" #firstname= ngModel pattern="[(a-z)(A-Z)]{1,15}" id="firstname" class="validate" required>
 			<label for="firstname">First name</label>
 		 </div>
+		 	<!-- validation for firstName -->
+		 	<div *ngIf ="firstname?.touched">
+				<div *ngIf = "firstname.errors?.required">
+					<span class="red-text">First Name is required </span>
+				</div>
+				<div *ngIf = "firstname.errors?.pattern">
+					<span class="red-text">First Name should contain only alphabets and less than 15 characters</span>
+			   </div>
+			</div>
+			  
 		 <div class="input-field">
-			<input type="text" name="lastname" [(ngModel)]="lastName" id="lastname" class="validate" required>
+			<input type="text" name="lastName" [(ngModel)]="lastName" #lastname= ngModel pattern="[(a-z)(A-Z)]{1,15}" id="lastName" class="validate" required>
 			<label for="lastname">Last name</label>
 		 </div>
+			 <!-- Validation for lastName -->
+			<div *ngIf ="lastname?.touched">
+				<div *ngIf = "lastname.errors?.required">
+					<span class="red-text">Last Name is required </span>
+				</div>
+				<div *ngIf = "lastname.errors?.pattern">
+					<span class="red-text">Last Name should contain only alphabets and less than 15 characters</span>
+			   </div>
+			</div>
+		 	
 		 <div class="input-field">
-			<input type="text" name="mobileno" id="mobileno" [(ngModel)]="mobileNum" class="validate" required>
+			<input type="text" name="mobileno" id="mobileno" [(ngModel)]="mobileNum" #mobilenum= ngModel pattern="[0-9]{10}" class="validate" required>
 			<label for="mobileno">Mobile number</label>
 		 </div>
+		 <!-- Validation for Mobile Number -->
+		<div *ngIf ="mobilenum?.touched">
+			<div *ngIf = "mobilenum.errors?.pattern">
+				<span class="red-text">Enter valid Mobile Number </span>
+			</div>
+			<div *ngIf = "mobilenum.errors?.required">
+				<span class="red-text">Mobile Number is required</span>
+			</div>
+		</div>
 		 <div class="row">
 			<div class="input-field col s4">
 			   <select class="input-field" name="idtype" [(ngModel)]="idType" >
@@ -219,34 +248,78 @@ console.log("asd");
 			   </select>
 			</div>
 			<div class="input-field col s8">
-			   <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" class="validate" required>
+			   <input type="text" name="verification_id" id="verification_id" [(ngModel)]="verification_id" #uidNumber= ngModel pattern="[(A-Z)(0-9)]{6,20}" class="validate" required>
 			   <label for="verification_id">UID number</label>
+			</div>
+			<!-- Validation for UID Number -->
+			<div *ngIf ="uidNumber?.touched">
+				<div *ngIf = "uidNumber.errors?.pattern">
+					<span class="red-text">Enter a valid UID Number </span>
+				</div>
+				<div *ngIf = "uidNumber.errors?.required">
+					<span class="red-text">UID Number is required</span>
+				</div>
 			</div>
 		 </div>
 		 <div class="input-field">
-			<input type="text" name="driving_id" id="driving_id" [(ngModel)]="driving_id" class="validate" required>
+			<input type="text" name="driving_id" id="driving_id" [(ngModel)]="driving_id" #drivingLicense= ngModel pattern="[(a-z)(A-Z)(0-9)]{16}" class="validate" required>
 			<label for="username">Driving License Number</label>
 		 </div>
-		 <div class="input-field">
+		 <!-- Validation for driving license Number -->
+		<div *ngIf ="drivingLicense?.touched">
+			<div *ngIf = "drivingLicense.errors?.pattern">
+				<span class="red-text">Enter a valid driving license number </span>
+			</div>
+			<div *ngIf = "drivingLicense.errors?.required">
+				<span class="red-text">Driving License is required</span>
+			</div>
+		</div>
+		 <!-- <div class="input-field">
 			 <input type="file" class="file-path-wrapper" [(ngModel)]="fileName" name="photo" ng2FileSelect [uploader]="uploader"/>
 			 <button type="button" class="btn btn-indigo" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
-		 </div>
+		 </div> -->
 		 <div class="input-field">
-			<input type="text" name="username" id="username" [(ngModel)]="userNameregister" class="validate" required>
-			<label for="username">Username</label>
+			<input type="text" name="username" id="username" [(ngModel)]="userNameregister" #userName= ngModel pattern="[(a-z)(A-Z)(0-9)]{1,15}" class="validate" required>
+			<label for="userName">Username</label>
 		 </div>
+		 <!-- Validation for UserName -->
+		<div *ngIf ="userName?.touched">
+			<div *ngIf = "userName.errors?.pattern">
+				<span class="red-text">Username should contain only alphabets and Numbers</span>
+			</div>
+			<div *ngIf = "userName.errors?.required">
+				<span class="red-text">Username is required</span>
+			</div>
+		</div>
 		 <div class="input-field">
-			<input type="text" name="email" id="email" [(ngModel)]="email" class="validate" required>
-			<label for="username">Email</label>
+			<input type="text" name="email" id="email" [(ngModel)]="email" #emailId= ngModel pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$" class="validate" required>
+			<label for="email">Email</label>
 		 </div>
+		 <!-- Validation for Email -->
+		 <div *ngIf ="emailId?.touched">
+			<div *ngIf = "emailId.errors?.pattern">
+				<span class="red-text">Enter a valid Email Id </span>
+			</div>
+			<div *ngIf = "emailId.errors?.required">
+				<span class="red-text">Email Id is required</span>
+			</div>
+		</div>
 		 <div class="input-field">
-			<input type="password" name="password" id="password" [(ngModel)]="passwordregister" class="validate" required>
+			<input type="password" name="password" id="password" [(ngModel)]="passwordregister" #passwordRegister= ngModel pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="validate" required>
 			<label for="password">Password</label>
 		 </div>
-
+		 <!-- Validation for Password -->
+		<div *ngIf ="passwordRegister?.touched">
+			<div *ngIf = "passwordRegister.errors?.pattern">
+				<span class="red-text">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</span>
+			</div>
+			<div *ngIf = "passwordRegister.errors?.required">
+				<span class="red-text">Password is required</span>
+			</div>
+		</div>
 	  </div>
 	  <div class="modal-footer">
-		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close " id="registerclicked" name="submit" (click)="register()" onclick="loginClicked()">
+		 <button type="submit" class="btn indigo darken-1 grey-text text-lighten-2 waves-effect waves-dark modal-close " id="registerclicked" name="submit" [disabled] = "firstname.errors || lastname.errors || mobilenum.errors || drivingLicense.errors || userName.errors || emailId.errors || passwordRegister.errors " (click)="register()" onclick="loginClicked()">
 		 Register
 		 <i class="material-icons right">send</i>
 		 </button>
