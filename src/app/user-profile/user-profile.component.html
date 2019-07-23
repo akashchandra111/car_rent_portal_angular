@@ -171,20 +171,13 @@
 
             <div class="card-action">
                 <span class="card-title">
-                    <b>Update Driving License </b>
+                    <b>Driving License </b>
                 </span>
-                <div class="card-image">
-
-                        <img [src]="licensedetails.imgPath" alt="No Image found" >
-              
-
-
+                <div class="card-image" *ngIf="!checkImagePath">
+                        <img src="/assets/images/tick_green.png" style="width: 40%; height: 40%;" alt="No Image found">
                 </div>
 
-
-
-                <div class="row" *ngIf = "checkImagePath">
-                   
+                <div class="row" *ngIf="checkImagePath">
                     <div class="col s8">
                         <div class="input-field file-field">
                             <div class="btn indigo">
@@ -196,7 +189,6 @@
                             {{ toastMessageUpload }}
                          </div>
                     </div>
-                 
                     <div class="col s4">
                         <button [disabled]="!selectedFiles" (click)="upload()" class="btn btn-indigo right waves-effect waves-light scale-transition">Upload</button>
                     </div>

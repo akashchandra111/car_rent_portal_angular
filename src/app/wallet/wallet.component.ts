@@ -22,6 +22,12 @@ export class WalletComponent implements OnInit {
   moneyCard: number;
   moneyNet: number;
 
+  accountNum: string;
+  accountname: string;
+  cVV: string;
+  userid: string;
+  password: string;
+
   constructor(private route: ActivatedRoute, private router: Router, private http: FetchJSONService) {
     this.login= {
 		  id: JSON.parse(localStorage.getItem('user')).userId,
@@ -30,7 +36,7 @@ export class WalletComponent implements OnInit {
     this.http.getUser(this.login).subscribe(
       (data)=>  {
         this.user = data['body'];
-    });    
+    });
    }
 
   ngOnInit() {

@@ -53,7 +53,6 @@ export class UserProfileComponent implements OnInit {
       {
         id: JSON.parse(localStorage.getItem('user')).userId,
         password: JSON.parse(localStorage.getItem('user')).password
-      
       }
 
     this.http.getUser(this.login).subscribe(
@@ -90,7 +89,7 @@ export class UserProfileComponent implements OnInit {
       (data: Message) => {
         this.message = data;
         if (this.message.status == "success") {
-          this.toastMessageUname = "Update Sucess";
+          this.toastMessageUname = "Update Sucess !!";
         } else {
           this.toastMessageUname = "Update Failure";
         }
@@ -155,7 +154,7 @@ export class UserProfileComponent implements OnInit {
       (data: Message) => {
         this.message = data;
         if (this.message.status == "success") {
-          this.toastMessage = "Delete Sucess";
+          this.toastMessage = "Delete Sucess !!";
         } else {
           this.toastMessage = "Delete Failure "
         }
