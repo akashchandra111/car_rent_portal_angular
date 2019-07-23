@@ -413,7 +413,7 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 				console.log("sendForgotMail():");
 				console.log(this.message);
 				if(this.message.status == "success")	{
-					
+
 				}
 				else	{
 
@@ -433,4 +433,13 @@ this.usershow=JSON.parse(localStorage.getItem('user')).firstName;
 		this.router.navigate(['/dashboard']);
 }
 	}
+
+	aboutusclick(){
+
+
+
+		this.router.navigate(['/about']);
+	}
+
+
 }

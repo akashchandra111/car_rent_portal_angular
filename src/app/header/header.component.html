@@ -23,7 +23,7 @@
 			   <a href="#register" class="waves-effect waves-dark modal-trigger">Register</a>
 			</li>
 			<li>
-			   <a href="#about" class="waves-effect waves-dark modal-trigger">About Us</a>
+			   <a (click)="aboutusclick()" class="waves-effect waves-dark modal-trigger">About Us</a>
 			</li>
 		 </ul>
 		 </div>
@@ -97,7 +97,7 @@ console.log("asd");
             <a href="#register" class="waves-effect waves-dark modal-trigger">Register</a>
          </li>
          <li>
-            <a href="#about">About Us</a>
+            <a (click)="aboutusclick()">About Us</a>
          </li>
       </ul>
 	  </div>
@@ -110,7 +110,7 @@ console.log("asd");
 	  <div *ngIf="!ifLogged" id="clicklogoutme">
 		  <ul class="sidenav" id="menu-link">
 		  <ul class="row">
-			  <li><a href="#modalwallet"
+			  <li><a
 				  class="waves-effect waves-light modal-trigger" (click)="walletroute()">Wallet</a></li>
 			  <li><a href="#booking"
 				  class="waves-effect waves-dark dropdown-trigger"

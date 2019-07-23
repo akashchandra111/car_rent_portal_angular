@@ -50,7 +50,7 @@ deletestatus:string;
 		carNo: this.carNumber,
 		carId: car,
 		userId: JSON.parse(localStorage.getItem('user')),
-		status: "avialable"
+		status: "available"
 		};
 
 

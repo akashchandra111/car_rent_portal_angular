@@ -176,7 +176,7 @@ console.log("insidedav run");
 
 				//Author Dheeraj Joshi
 				//User profile Drop down
-				console.log("Asdsa");
+
 				$(".dropdown-trigger").dropdown();
 
 				//Time picker
@@ -219,6 +219,12 @@ console.log("insidedav run");
 
 				$(document).ready(function(){
 					$('.sidenav').sidenav();
+					$('.carousel').carousel();
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
 
 				});
 
@@ -564,7 +570,7 @@ var ctx = document.getElementById('myrentedcarstatAvailablePie').getContext('2d'
 							label: 'Booking Statistics',
 							// backgroundColor: 'rgb(255, 99, 132)',
 							borderColor: 'rgb(122, 99, 132)',
-							data: caravialable
+							data: carRented
 						}]
 					},
 
