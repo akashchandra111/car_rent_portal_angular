@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root'
 })
 export class LicenseUploadService {
-	adminUrl: string = 'http://localhost:8081'
+	adminUrl: string = 'http://9.202.17.174:8081'
+	//adminUrl: string = 'http://localhost:8081'
 
   constructor(private http: HttpClient) { }
 
