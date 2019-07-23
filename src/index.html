@@ -212,7 +212,7 @@ console.log("insidedav run");
 				$('.tooltipped').tooltip();
 
 				$('.fixed-action-btn').floatingActionButton();
-  
+
 
 				//sidenav collapsible initialization
 
@@ -236,7 +236,7 @@ console.log("insidedav run");
     			$('.modal').modal();
 				$('.sidenav').sidenav();
   				});
-				  
+
 
 		$(document).ready(
 			()=>	{
@@ -281,6 +281,159 @@ console.log("insidedav run");
 
 				});
 
+				$(".stats").click(function(){
+
+	// 				console.log("admin ki shakti");
+	// 				var carname=[];
+	// 				var caravialable=[];
+	// 				var carRented=[];
+	// 				var myJson;
+	// var xhttp = new XMLHttpRequest();
+	//   xhttp.onreadystatechange = function() {
+	// 	if (this.readyState == 4 && this.status == 200) {
+	//
+	// 	 myJson=this.response;
+	//
+	// 	 var stuff = JSON.parse(myJson);
+	// 	 Object.keys(stuff).forEach(function(key){
+	//
+	// 					carname.push(stuff[key]["carType"]);
+	// 					caravialable.push(stuff[key]["availableCars"]);
+	// 						carRented.push(stuff[key]["rentedCars"]);
+	//
+	// 	 });
+	//
+	// 	}
+	//
+	// };
+	//   xhttp.open("GET", "http://9.202.17.174:8081/admin/stats/cars", false);
+	//   xhttp.send();
+	//
+	//   var piedata = {
+	// 	datasets: [{
+	// 		data: caravialable,
+	// 		 backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+	// 	}],
+	//
+	// 	// These labels appear in the legend and in the tooltips when hovering different arcs
+	// 	labels: carname
+	//
+	//   };
+	//
+	// var ctx = document.getElementById('myrentedcarstatAvailablePie').getContext('2d');
+	//   var myPieChart = new Chart(ctx, {
+	// 	  type: 'pie',
+	//
+	// 	  data: piedata,
+	// 	  options:{
+	// 		  title: {
+	// 			display: true,
+	// 			text: 'Available Cars'
+	// 		}
+	// 	}
+	//
+	//
+	// 	  // options: options
+	//   });
+	//
+	//   var piedata = {
+	// 	datasets: [{
+	// 	  data: carRented,
+	// 	   backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+	// 	}],
+	//
+	// 	// These labels appear in the legend and in the tooltips when hovering different arcs
+	// 	labels: carname
+	//
+	//   };
+	//
+	//   var ctx = document.getElementById('myrentedcarstatRentedPie').getContext('2d');
+	//   var myPieChart = new Chart(ctx, {
+	// 	type: 'pie',
+	//
+	// 	data: piedata,
+	// 	options:{
+	// 		title: {
+	// 		   display: true,
+	// 		   text: 'Rented Cars'
+	// 	   }
+	// 	}
+	//
+	//
+	// 	// options: options
+	//   });
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	// 				// total cars rented graph
+	// 				var ctx = document.getElementById('myrentedcarstatChart').getContext('2d');
+	// 				var chart = new Chart(ctx, {
+	// 					// The type of chart we want to create
+	// 					type: 'line',
+	//
+	//
+	// 					// The data for our dataset
+	// 					data: {
+	// 						labels:carname,
+	// 						datasets: [{
+	// 							label: 'Booking Statistics',
+	// 							// backgroundColor: 'rgb(255, 99, 132)',
+	// 							borderColor: 'rgb(122, 99, 132)',
+	// 							data: carRented
+	// 						}]
+	// 					},
+	//
+	// 					// Configuration options go here
+	// 					options: {
+	// 						title: {
+	// 							  display: true,
+	// 							  text: 'Current Car Booked Chart'
+	// 						  },
+	// 						scales: {
+	// 		   yAxes: [{
+	// 			   ticks: {
+	// 				   beginAtZero: true
+	// 			   }
+	// 		   }]
+	// 	   }
+	// 					}
+	// 				});
+	//
+	//
+	//
+	// 				// Top Cars rented graph
+	// 				var ctx = document.getElementById('mytopcarChart').getContext('2d');
+	// 				var chart = new Chart(ctx, {
+	// 					// The type of chart we want to create
+	// 					type: 'bar',
+	//
+	// 					// The data for our dataset
+	// 					data: {
+	// 						labels: carname,
+	// 						datasets: [{
+	// 							label: 'Top Cars Rented Graph',
+	// 							// backgroundColor: 'rgb(255, 99, 132)',
+	// 							borderColor: 'rgb(222, 129, 32)',
+	// 							data: carRented,
+	// 							backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B"]
+	// 						}],
+	//
+	// 					},
+	//
+	// 					// Configuration options go here
+	// 					options: {}
+	// 				});
+
+
+
+
+				});
 
 
 
