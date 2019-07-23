@@ -51,6 +51,7 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
 	  this.todaysDate = new Date().toISOString().slice(0, 10);
+
 	  this.carId = this.route.snapshot.paramMap.get('carId');
 
 	  // Getting car from carId name
@@ -72,7 +73,7 @@ export class BookingComponent implements OnInit {
 			this.http.getLatestUserHistory(this.user.userId).subscribe(
 				(data)=>{
 					this.latestHistory = data['body'];
-					//console.log(this.latestHistory.startTime);				
+					//console.log(this.latestHistory.startTime);
 					this.tempStartTime = parseInt(this.latestHistory.startTime);
 					if(this.tempStartTime > this.currentUnixTime && this.latestHistory.userLogId != null){
 						this.upcomingStatus = true;
@@ -87,10 +88,10 @@ export class BookingComponent implements OnInit {
 					console.log(licenseDetails);
 					if(licenseDetails.imgPath != null){
 						this.ckeckLicenseUpload = true;
-						this.toastMessage = "You already had booked one car, cannot book more than one";
+						//this.toastMessage = "You already had booked one car, cannot book more than one";
 					}else{
 						this.ckeckLicenseUpload = false;
-					}		
+					}
 			});
 		});
 
@@ -104,7 +105,7 @@ export class BookingComponent implements OnInit {
 				  this.checkCurrentCarStatus = true;
 			  }
 	  });
-	  
+
   }
 
   checkCost()	{
@@ -170,7 +171,7 @@ export class BookingComponent implements OnInit {
 													  console.log(this.userLog);
 													  this.toastMessage = "Booking success";
 													  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    												  this.router.navigate(['/dashboard'])); 
+    												  this.router.navigate(['/dashboard']));
 													  return;
 												  }
 											  }

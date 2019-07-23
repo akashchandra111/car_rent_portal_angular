@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="col s12 m6">
-			
+
 		</div>
 		<div class="col s12 m6">
 			<div class="input-field">
@@ -89,9 +89,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class = "col s12 m6">
-			<div *ngIf="ckeckLicenseUpload; else uploadLicense">	  			
+			<div *ngIf="ckeckLicenseUpload; else uploadLicense">
 			<div class="input-field">
 				<input type="text" id="autocomplete-input" class="autocomplete" [(ngModel)]="startLocation">
 				<label for="autocomplete-input black-text darken-3">Start Location</label>
@@ -102,7 +102,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input type="date" class="datepicker" id="start-date" [(ngModel)]="startDate"> 
+					<input type="date" [min]="todaysDate" class="datepicker" id="start-date" [(ngModel)]="startDate">
 				    <label for="start-date">Start Date</label>
 				</div>
 				<div class="input-field col s6">
@@ -146,5 +146,5 @@
 			<h3>Sorry all the car of this model have been booked choose another model or come after sometime.</h3>
 			<a [routerLink]="['/choose_car']"><b class="white-text"><u>Go Back</u></b></a>
 		</div>
-	</div>	
+	</div>
 </ng-template>
