@@ -15,8 +15,8 @@ import { LicenseImg } from './Interfaces/LicenseImg';
   providedIn: 'root'
 })
 export class FetchJSONService {
-	//baseUrl: string = 'http://9.202.17.174:8080';
-	//adminBaseUrl: string = 'http://9.202.17.174:8081';
+	// baseUrl: string = 'http://9.202.17.174:8080';
+	// adminBaseUrl: string = 'http://9.202.17.174:8081';
 	baseUrl: string = 'http://localhost:8080';
 	adminBaseUrl: string = 'http://localhost:8081';
 
