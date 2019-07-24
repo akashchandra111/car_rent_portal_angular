@@ -23,6 +23,7 @@ updatestatus:string;
 car_no_delete:string;
 deletestatus:string;
 totalCars: Car[];
+totalCarsStatus: CarStatus[];
 
 	  constructor(private router:Router,private http: FetchJSONService) {
 
@@ -36,7 +37,13 @@ totalCars: Car[];
   		(data)=>	{
   			this.totalCars = data['body'];
   		}
-  	)
+  	);
+
+	this.http.getTotalCarsStatus().subscribe(
+		(data)=>	{
+			this.totalCarsStatus = data['body'];
+		}
+	);
   }
 
 	addCar(){
@@ -100,21 +107,19 @@ else{
 			cost: 0
 		};
 
-		for(let currCar of this.totalCars)	{
-			//console.log(currCar);
-			if(currCar.carId == this.car_id_update)	{
-				car = currCar;
+		for(let carStatus of this.totalCarsStatus)	{
+			if(this.car_no_update == carStatus.carNo)	{
+				car = carStatus.carId;
 				break;
 			}
 		}
 
-		let carstatus:CarStatus = {
-		carNo: this.car_no_update,
-		carId: car,
-		userId: JSON.parse(localStorage.getItem('user')),
-		status: this.car_aval
+		let carstatus: CarStatus = {
+			carNo: this.car_no_update,
+			carId: car,
+			userId: JSON.parse(localStorage.getItem('user')),
+			status: this.car_aval
 		};
-
 
 		console.log(carstatus);
 
@@ -139,7 +144,14 @@ else{
 
 	deleteCar(){
 console.log(this.car_no_delete);
+for(let carStatus of this.totalCarsStatus)	{
+	if(this.car_no_delete == carStatus.carNo)	{
 let carNo=this.car_no_delete;
+		break;
+	}
+}
+let carNo=this.car_no_delete;
+
 		this.http.deleteCarStatus(carNo).subscribe(
 			(data:Message) => {
 

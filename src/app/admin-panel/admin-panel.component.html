@@ -69,8 +69,10 @@
 						   <div class="row">
 						      <div class="col s12 input-field">
 						   	  <i class="material-icons prefix">mode_edit</i>
-						   	  <input  type="text" id="car_id" class="validate" name="carid" [(ngModel)]="carId" >
-						   	  <label for="car_id">Car Id</label>
+							  <select name="carId" [(ngModel)]="carId">
+  								<option value="" disabled selected>Select Car</option>
+  								<option *ngFor="let car of totalCars"  [value]="car.carId">{{ car.carName}}-{{car.carId }}</option>
+  							</select>
 						      </div>
 						   </div>
 
@@ -109,18 +111,32 @@
 
                           <div class="row">
                              <div class="col s12 input-field">
-                                <i class="material-icons prefix">directions_car</i>
-                                <input type="text" id="car_no_update" name="car_no_update" class="validate" [(ngModel)]="car_no_update">
-                                <label for="car_no_update">Enter Car Number</label>
+
+                                <!-- <input type="text" id="car_no_update" name="car_no_update" class="validate" [(ngModel)]="car_no_update">
+                                <label for="car_no_update">Enter Car Number</label> -->
+								<div class="input-field col s12">
+<i class="material-icons prefix">directions_car</i>
+									<select name="car_id_update" [(ngModel)]="car_no_update">
+										<option value="" disabled selected>Select Car</option>
+										<option *ngFor="let carStatus of totalCarsStatus"  [value]="carStatus.carNo">{{ carStatus.carNo }} - {{ carStatus.carId.carType }} - {{ carStatus.carId.carName }} - {{ carStatus.status }} - {{ carStatus.carId.carId }}</option>
+									</select>
+								</div>
                              </div>
                           </div>
-						  <div class="row">
+						  <!-- <div class="row">
 							 <div class="col s12 input-field">
-								<i class="material-icons prefix">directions_car</i>
-								<input type="text" id="car_id_update" name="car_id_update" class="validate" [(ngModel)]="car_id_update">
+
+							 	<input type="text" id="car_id_update" name="car_id_update" class="validate" [(ngModel)]="car_id_update">
 								<label for="car_id_update">Enter Car Id</label>
+								<div class="input-field col s12">
+									<i class="material-icons prefix">directions_car</i>
+									<select name="car_no_update">
+										<option value="" disabled selected>Select Id</option>
+										<option *ngFor="let car of totalCars" value="carStatus.carId">{{ car.carId }} - {{ car.carName }}</option>
+									</select>
+								</div>
 							 </div>
-						  </div>
+						  </div> -->
 						   <div class="row">
 							   <div class="input-field col s4">
    								<i class="material-icons prefix">directions_car</i>
@@ -155,9 +171,11 @@
                        <div class="col s12 deleteinput">
                           <div class="row">
                              <div class="col s10 input-field">
-                                <i class="material-icons prefix">directions_car</i>
-                                <input id="car_no_delete" id="car_no_delete" name="car_no_delete" class="validate" [(ngModel)]="car_no_delete">
-                                <label for="car_no_delete">Enter Car Number</label>
+								 <i class="material-icons prefix">directions_car</i>
+ 																	<select name="car_no_delete" [(ngModel)]="car_no_delete">
+ 																		<option value="" disabled selected>Select Car</option>
+ 																		<option *ngFor="let carStatus of totalCarsStatus"  [value]="carStatus.carNo">{{ carStatus.carNo }} - {{ carStatus.carId.carType }} - {{ carStatus.carId.carName }} - {{ carStatus.status }} - {{ carStatus.carId.carId }}</option>
+ 																	</select>
                              </div>
 							 </div>
 							 <div class="row">
