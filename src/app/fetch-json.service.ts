@@ -15,10 +15,10 @@ import { LicenseImg } from './Interfaces/LicenseImg';
   providedIn: 'root'
 })
 export class FetchJSONService {
-	//baseUrl: string = 'http://9.202.17.174:8080';
-	//adminBaseUrl: string = 'http://9.202.17.174:8081';
-	baseUrl: string = 'http://localhost:8080';
-	adminBaseUrl: string = 'http://localhost:8081';
+	baseUrl: string = 'http://9.202.17.174:8080';
+	adminBaseUrl: string = 'http://9.202.17.174:8081';
+	// baseUrl: string = 'http://localhost:8080';
+	// adminBaseUrl: string = 'http://localhost:8081';
 
   constructor(private http: HttpClient) {
   }
@@ -158,6 +158,10 @@ export class FetchJSONService {
   // Delete car status
   deleteCarStatus(carNo: string)	{
 	  return this.http.delete<Message>(this.baseUrl + '/car_status/delete/' + carNo, this.httpOptions);
+  }
+
+  getTotalCarsStatus()	{
+	  return this.http.get<CarStatus[]>(this.baseUrl + '/car_status/total', {observe: 'response'});
   }
 
   //************************** admin method APIs ***********************************
